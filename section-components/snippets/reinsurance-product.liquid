@@ -1,4 +1,5 @@
-<div class="reinsurance-product">
+{{ 'reinsurance-product.css' | asset_url | stylesheet_tag }}
+<div class="reinsurance__product">
     <div class="grid">
         {{ settings.icon_reinsurance_1 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_1, 'reinsurance__icon' }}
         <div class="reinsurance__text">

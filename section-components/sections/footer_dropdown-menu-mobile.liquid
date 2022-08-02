@@ -37,7 +37,7 @@
 /* footer dropdown menu mobile // END */
 </style>
 
-<!-- Remplacer les <h2 class="footer-block__heading"> par des <span class="footer-block__heading">-->
+<!-- Remplacer les <h2 class="footer-block__heading"> par des <span class="footer-block__heading"> -->
 <!-- Puis Ajouter la classe 'footer_menu' class sur l'élément pour le convertir en menu dropdown en mobile -->
 {%- if block.settings.heading != blank -%}
   <span class="footer-block__heading {% if block.type == 'link_list' and block.settings.heading != blank %} footer_menu{% endif %}">{{- block.settings.heading | escape -}}</span>

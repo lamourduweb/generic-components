@@ -1,0 +1,59 @@
+<style>
+/* footer dropdown menu mobile */
+ @media screen and (max-width: 749px) {
+   .footer-block--menu .footer_menu {
+    cursor: pointer;
+    padding: 10px 0;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  .footer-block--menu .footer_menu:after {
+    content: "+";
+    content: "\f067";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 13px;
+    color: rgba(var(--color-foreground), 1);
+    float: right;
+    margin-left: 5px;
+  }
+  .footer-block--menu .active:after {
+    content: "-";
+    content: "\f068";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+  .footer-block--menu .list-unstyled:not(.list-social) {
+    padding: 0 10px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s linear;
+  }
+ }
+/* footer dropdown menu mobile // END */
+</style>
+
+<!-- ajoute la classe footer_menu class sur l'élément '.footer-block__heading' pour convertir le menu en dropdown menu mobile -->
+{%- if block.settings.heading != blank -%}
+  <span class="footer-block__heading {% if block.type == 'link_list' and block.settings.heading != blank %} footer_menu{% endif %}">{{- block.settings.heading | escape -}}</span>
+{%- endif -%}
+
+<!-- ajouter le script pour le dropdown menu mobile -->
+<script>
+  const acc = document.getElementsByClassName("footer_menu");
+  Array.from(acc).forEach(el => {
+    el.addEventListener('click', function (e) {
+      this.classList.toggle('active')
+      const panel = this.nextElementSibling
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null
+      } else {
+        panel.style.maxHeight = `${panel.scrollHeight}px`
+      }
+    })
+  })
+</script>

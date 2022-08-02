@@ -1,0 +1,355 @@
+/*add traduction reviews */  
+"reviews": {
+      "name": "Avis",
+      "settings": {
+        "title": {
+          "label": "Titre"
+        },
+        "image_width": {
+          "label": "Largeur d'image",
+          "options__1": {
+            "label": "Un tiers de largeur de la colonne"
+          },
+          "options__2": {
+            "label": "Demi-largeur de colonne"
+          },
+          "options__3": {
+            "label": "Largeur complète de colonne"
+          }
+        },
+        "image_ratio": {
+          "label": "Rapport d'image",
+          "options__1": {
+            "label": "Adapter à l'image"
+          },
+          "options__2": {
+            "label": "Portrait"
+          },
+          "options__3": {
+            "label": "Square"
+          },
+          "options__4": {
+            "label": "Cercle"
+          }
+        },
+        "column_alignment": {
+          "label": "Alignement de colonne",
+          "options__1": {
+            "label": "Gauche"
+          },
+          "options__2": {
+            "label": "Centre"
+          }
+        },
+        "background_style": {
+          "label": "Arrière-plan secondaire",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Afficher comme arrière-plan de la colonne"
+          }
+        },
+        "button_label": {
+          "label": "Texte du bouton"
+        },
+        "button_link": {
+          "label": "Lien du bouton"
+        },
+        "swipe_on_mobile": {
+          "label": "Activer le balayage sur mobile"
+        },
+        "columns_desktop": {
+          "label": "Nombre de colonnes sur ordinateur"
+        },
+        "header_mobile": {
+          "content": "Mise en page sur mobile"
+        },
+        "columns_mobile": {
+          "label": "Nombre de colonnes sur mobile",
+          "options__1": {
+            "label": "1 colonne"
+          },
+          "options__2": {
+            "label": "2 colonnes"
+          }
+        }
+      },
+      "blocks": {
+        "column": {
+          "name": "Avis",
+          "settings": {
+            "image": {
+              "label": "Image utilisateur"
+            },
+            "stars-review": {
+              "label": "Note",
+              "options__1": {
+                "label": "étoiles"
+              },
+              "options__2": {
+                "label": "étoiles"
+              },
+              "options__3": {
+                "label": "étoiles"
+              },
+              "options__4": {
+                "label": "étoiles"
+              },
+              "options__5": {
+                "label": "5 étoiles"
+              }
+            },
+            "text": {
+              "label": "Témoignage"
+            },
+            "author": {
+              "label": "Auteur"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Multicolonne"
+      }
+    },
+/*add traduction reviews // END */
+/*add traduction title-partners */
+    "partners": {
+      "name": "Partenaires",
+      "settings": {
+        "title": {
+          "label": "Titre"
+        },
+        "image_width": {
+          "label": "Largeur d'image",
+          "options__1": {
+            "label": "Un tiers de largeur de la colonne"
+          },
+          "options__2": {
+            "label": "Demi-largeur de colonne"
+          },
+          "options__3": {
+            "label": "Largeur complète de colonne"
+          }
+        },
+        "image_ratio": {
+          "label": "Rapport d'image",
+          "options__1": {
+            "label": "Adapter à l'image"
+          },
+          "options__2": {
+            "label": "Portrait"
+          },
+          "options__3": {
+            "label": "Square"
+          },
+          "options__4": {
+            "label": "Cercle"
+          }
+        },
+        "content_alignment": {
+          "label": "Alignement du contenu",
+          "options__1": {
+            "label": "Haut"
+          },
+          "options__2": {
+            "label": "Centre"
+          },
+          "options__3": {
+            "label": "Bas"
+          }
+        },
+        "column_alignment": {
+          "label": "Alignement de colonne",
+          "options__1": {
+            "label": "Gauche"
+          },
+          "options__2": {
+            "label": "Centre"
+          }
+        },
+        "background_style": {
+          "label": "Arrière-plan secondaire",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Afficher comme arrière-plan de la colonne"
+          }
+        },
+        "button_label": {
+          "label": "Texte du bouton"
+        },
+        "button_link": {
+          "label": "Lien du bouton"
+        },
+        "swipe_on_mobile": {
+          "label": "Activer le balayage sur mobile"
+        },
+        "columns_desktop": {
+          "label": "Nombre de colonnes sur ordinateur"
+        },
+        "header_mobile": {
+          "content": "Mise en page sur mobile"
+        },
+        "columns_mobile": {
+          "label": "Nombre de colonnes sur mobile",
+          "options__1": {
+            "label": "1 colonne"
+          },
+          "options__2": {
+            "label": "2 colonnes"
+          }
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Colonne",
+          "settings": {
+            "subtitle": {
+              "label": "Sous-titre"
+            },
+            "title": {
+              "label": "Titre"
+            },
+            "link_label": {
+              "label": "Étiquette de lien"
+            },
+            "link": {
+              "label": "Lien"
+            }
+          }
+        },
+        "partner": {
+          "name": "Colonne",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Titre"
+            },
+            "text": {
+              "label": "Description"
+            },
+            "link_label": {
+              "label": "Étiquette de lien"
+            },
+            "link": {
+              "label": "Lien"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Partenaires"
+      }
+    },
+/*add traduction reviews // END */
+/*add traduction title-columns */
+    "title-columns": {
+      "name": "Titre avec colonnes",
+      "settings": {
+        "title": {
+          "label": "Titre"
+        },
+        "content_alignment": {
+          "label": "Alignement du contenu",
+          "options__1": {
+            "label": "Haut"
+          },
+          "options__2": {
+            "label": "Centre"
+          },
+          "options__3": {
+            "label": "Bas"
+          }
+        },
+        "column_alignment": {
+          "label": "Alignement de colonne",
+          "options__1": {
+            "label": "Gauche"
+          },
+          "options__2": {
+            "label": "Centre"
+          }
+        },
+        "background_style": {
+          "label": "Arrière-plan secondaire",
+          "options__1": {
+            "label": "Aucune"
+          },
+          "options__2": {
+            "label": "Afficher comme arrière-plan de la colonne"
+          }
+        },
+        "button_label": {
+          "label": "Texte du bouton"
+        },
+        "button_link": {
+          "label": "Lien du bouton"
+        },
+        "swipe_on_mobile": {
+          "label": "Activer le balayage sur mobile"
+        },
+        "columns_desktop": {
+          "label": "Nombre de colonnes sur ordinateur"
+        },
+        "header_mobile": {
+          "content": "Mise en page sur mobile"
+        },
+        "columns_mobile": {
+          "label": "Nombre de colonnes sur mobile",
+          "options__1": {
+            "label": "1 colonne"
+          },
+          "options__2": {
+            "label": "2 colonnes"
+          }
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Colonne",
+          "settings": {
+            "subtitle": {
+              "label": "Sous-titre"
+            },
+            "title": {
+              "label": "Titre"
+            },
+            "link_label": {
+              "label": "Étiquette de lien"
+            },
+            "link": {
+              "label": "Lien"
+            }
+          }
+        },
+        "column": {
+          "name": "Colonne",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Titre"
+            },
+            "text": {
+              "label": "Description"
+            },
+            "link_label": {
+              "label": "Étiquette de lien"
+            },
+            "link": {
+              "label": "Lien"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Titre avec colonnes"
+      }
+    },
+/*add traduction title-columns // END */

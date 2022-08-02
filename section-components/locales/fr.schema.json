@@ -1,3 +1,275 @@
+/* add rich-text-content */
+"sections": {
+    "all": {
+      "class": {
+        "section_class_heading": "Class de la section",
+        "section_class_name": "Ajouter une classe CSS"
+      },
+      "heading_size_hn": {
+        "label": "Taille du titre",
+        "options__6": {
+          "label": "h6"
+        },
+        "options__5": {
+          "label": "h5"
+        },
+        "options__4": {
+          "label": "h4"
+        },
+        "options__3": {
+          "label": "h3"
+        },
+        "options__2": {
+          "label": "h2"
+        },
+        "options__1": {
+          "label": "h1"
+        },
+        "options__0": {
+          "label": "hxl"
+        }
+      }
+    },
+    […]
+}
+"rich-text": {
+      "name": "Texte enrichi",
+      "settings": {
+        "full_width": {
+          "label": "Rendre la section pleine largeur"
+        },
+        "desktop_content_position": {
+          "options__1": {
+            "label": "Gauche"
+          },
+          "options__2": {
+            "label": "Centre"
+          },
+          "options__3": {
+            "label": "Droite"
+          },
+          "label": "Position du contenu sur ordinateur",
+          "info": "La position est automatiquement optimisée pour les mobiles."
+        },
+        "content_alignment": {
+          "options__1": {
+            "label": "Gauche"
+          },
+          "options__2": {
+            "label": "Centre"
+          },
+          "options__3": {
+            "label": "Droite"
+          },
+          "label": "Alignement du contenu"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Image",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "full_width": {
+              "label": "Rendre le conteneur pleine largeur"
+            },
+            "image_width_range": {
+              "unit": "px",
+              "label": "Largeur personnalisée du logo",
+              "info": "Mettre le selecteur 'Largeur d'image' sur l'option 'largeur personnalisée du logo'"
+            },
+            "image_width": {
+              "label": "Largeur d'image",
+              "options__0": {
+                "label": "largeur personnalisée du logo"
+              },
+              "options__1": {
+                "label": "Un tiers de largeur de la colonne"
+              },
+              "options__2": {
+                "label": "Demi-largeur de colonne"
+              },
+              "options__3": {
+                "label": "Largeur complète de colonne"
+              }
+            },
+            "image_ratio": {
+              "label": "Rapport d'image",
+              "options__1": {
+                "label": "Adapter à l'image"
+              },
+              "options__2": {
+                "label": "Portrait"
+              },
+              "options__3": {
+                "label": "Square"
+              },
+              "options__4": {
+                "label": "Cercle"
+              }
+            }
+          }
+        },
+        "heading": {
+          "name": "Titre",
+          "settings": {
+            "heading": {
+              "label": "Titre"
+            }
+          }
+        },
+        "text": {
+          "name": "Texte",
+          "settings": {
+            "text": {
+              "label": "Description"
+            },
+            "color_scheme": {
+              "label": "Couleur du texte"
+            }
+          }
+        },
+        "text_column": {
+          "name": "Texte en colonne",
+          "settings": {
+            "text_left": {
+              "label": "Colonne gauche"
+            },
+            "text_right": {
+              "label": "Colonne droite"
+            },
+            "title_alignment_left": {
+              "label": "Alignement du texte"
+            },
+            "title_alignment_right": {
+              "label": "Alignement du texte"
+            },
+            "color_scheme_1": {
+              "label": "Couleur du texte"
+            },
+            "color_scheme_2": {
+              "label": "Couleur du texte"
+            }
+          }
+        },
+        "list": {
+          "name": "Liste à puce",
+          "settings": {
+            "list": {
+              "label": "Texte à puces",
+              "info": "Faire des sauts de ligne pour créer les puces."
+            },
+            "list_style": {
+              "label": "Style de la liste",
+              "options__1": {
+                "label": "Liste à puce"
+              },
+              "options__2": {
+                "label": "liste ordonnée"
+              }
+            }
+          }
+        },
+        "divider": {
+          "name": "Séparation",
+          "settings": {
+            "divider_style": {
+              "label": "Style de la séparation",
+              "options__1": {
+                "label": "Ligne"
+              },
+              "options__2": {
+                "label": "Pointillés"
+              }
+            },
+            "space_size": {
+              "label": "Marge de la séparation",
+              "options__1": {
+                "label": "Petit"
+              },
+              "options__2": {
+                "label": "Moyen"
+              },
+              "options__3": {
+                "label": "Large"
+              }
+            }
+          }
+        },
+        "buttons": {
+          "name": "Boutons",
+          "settings": {
+            "button_label_1": {
+              "label": "Texte du premier bouton",
+              "info": "Laissez le texte vide pour masquer le bouton."
+            },
+            "button_link_1": {
+              "label": "Lien du premier bouton"
+            },
+            "button_style_secondary_1": {
+              "label": "Utiliser le style de bouton en relief"
+            },
+            "button_label_2": {
+              "label": "Texte du deuxième bouton",
+              "info": "Laissez le texte vide pour masquer le bouton."
+            },
+            "button_link_2": {
+              "label": "Lien du deuxième bouton"
+            },
+            "button_style_secondary_2": {
+              "label": "Utiliser le style de bouton en relief"
+            },
+            "button_alignment": {
+              "label": "Alignement du bouton"
+            }
+          }
+        },
+        "caption": {
+          "name": "Légende",
+          "settings": {
+            "text": {
+              "label": "Texte"
+            },
+            "text_style": {
+              "label": "Style de texte",
+              "options__1": {
+                "label": "Sous‑titre"
+              },
+              "options__2": {
+                "label": "Majuscule"
+              }
+            },
+            "caption_size": {
+              "label": "Taille du texte",
+              "options__1": {
+                "label": "Petit"
+              },
+              "options__2": {
+                "label": "Moyen"
+              },
+              "options__3": {
+                "label": "Grand"
+              }
+            }
+          }
+        },
+        "blockquote": {
+          "name": "blockquote",
+          "settings": {
+            "text": {
+              "label": "Texte"
+            },
+            "title_alignment": {
+              "label": "Alignement du texte"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Texte enrichi"
+      }
+    },
 /* add traduction breaking-news */
 "alert_info": {
       "name": "Barre d'alert info",

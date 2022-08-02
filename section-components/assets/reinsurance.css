@@ -1,0 +1,66 @@
+.reinssurance img {
+  width: 40px;
+  margin-right: 1rem;
+}
+.reinssurance .reassurance__text p {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+.reinssurance .reassurance__text p {
+  font-size: calc(var(--font-heading-scale) * 1.4rem);
+  font-family: var(--font-heading-family);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground));
+}
+
+.footer__reinssurance {
+  padding: 6rem 0;
+}
+.footer__reinssurance .grid {
+  margin-bottom: 0;
+  justify-content: space-between;
+}
+.footer__reinssurance .grid__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 800px) {
+  .footer__reinssurance .grid__item {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 990px) {
+  .footer__reinssurance .grid__item {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .footer-reinssurance .grid__item img {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.product__reinsurance .grid {
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 0;
+  margin-bottom: 1rem;
+}
+.product__reinsurance img {
+  width: 20px;
+}
+.product__reinsurance .reassurance__text {
+  line-height: 1;
+}
+.product__reinsurance .reassurance__text p {
+  display: inline-block;
+  margin: 0;
+  line-height: 1.2;
+  text-transform: none;
+}

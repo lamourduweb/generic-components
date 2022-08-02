@@ -37,12 +37,13 @@
 /* footer dropdown menu mobile // END */
 </style>
 
-<!-- ajoute la classe footer_menu class sur l'élément '.footer-block__heading' pour convertir le menu en dropdown menu mobile -->
+<!-- Remplacer les <h2 class="footer-block__heading"> par des <span class="footer-block__heading">-->
+<!-- Puis Ajouter la classe 'footer_menu' class sur l'élément pour le convertir en menu dropdown en mobile -->
 {%- if block.settings.heading != blank -%}
   <span class="footer-block__heading {% if block.type == 'link_list' and block.settings.heading != blank %} footer_menu{% endif %}">{{- block.settings.heading | escape -}}</span>
 {%- endif -%}
 
-<!-- ajouter le script pour le dropdown menu mobile -->
+<!-- Ajouter le script pour le dropdown menu mobile -->
 <script>
   const acc = document.getElementsByClassName("footer_menu");
   Array.from(acc).forEach(el => {

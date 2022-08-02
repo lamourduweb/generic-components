@@ -1,0 +1,37 @@
+/* footer top */
+.footer-block__heading {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.footer__list-social, .footer__button {
+  margin-top: 2rem;
+}
+.footer__list-social.center {
+  justify-content: center;
+}
+.footer-block__details-content.rte {
+  font-size: 1.4rem;
+}
+
+
+/* footer bottom */
+.footer .footer__content-bottom {
+  padding: 2rem 0;
+}
+.footer__menu .list-menu__item {
+  padding: 1.2rem;
+  font-size: 1rem;
+}
+@media screen and (min-width: 750px) {
+  .footer .footer__column--info {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .footer .footer__payment, .footer .footer__copyright {
+    margin: 0;
+  }
+}
+/* footer end */

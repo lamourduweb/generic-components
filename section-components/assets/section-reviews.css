@@ -1,0 +1,152 @@
+/* section reviews */
+
+/* add Font Awesome */
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fa-regular-400.eot');
+    src: url('fa-regular-400.eot?#iefix') format('embedded-opentype'),
+    url('fa-regular-400.woff2') format('woff2'),
+    url('fa-regular-400.woff') format('woff'),
+    url('fa-regular-400.ttf') format('truetype'),
+    url('fa-regular-400.svg#fontawesome') format('svg');
+}
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    src: url('fa-solid-900.eot');
+    src: url('fa-solid-900.eot?#iefix') format('embedded-opentype'),
+    url('fa-solid-900.woff2') format('woff2'),
+    url('fa-solid-900.woff') format('woff'),
+    url('fa-solid-900.ttf') format('truetype'),
+    url('fa-solid-900.svg#fontawesome') format('svg');
+}
+@font-face {
+    font-family: 'Font Awesome 5 Brands';
+    font-style: normal;
+    font-weight: normal;
+    src: url('fa-brands-400.eot');
+    src: url('fa-brands-400.eot?#iefix') format('embedded-opentype'),
+    url('fa-brands-400.woff2') format('woff2'),
+    url('fa-brands-400.woff') format('woff'),
+    url('fa-brands-400.ttf') format('truetype'),
+    url('fa-brands-400.svg#fontawesome') format('svg');
+}
+@font-face {
+    font-family: 'Font Awesome 5 Pro';
+    font-style: normal;
+    font-weight: normal;
+    src: url('fa-light-300.eot');
+    src: url('fa-light-300.eot?#iefix') format('embedded-opentype'),
+    url('fa-light-300.woff2') format('woff2'),
+    url('fa-light-300.woff') format('woff'),
+    url('fa-light-300.ttf') format('truetype'),
+    url('fa-light-300.svg#fontawesome') format('svg');
+}
+
+.fa, .far, .fas, .fab, .fal {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+.far {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+}
+.fas {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+.fab {
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 400;
+}
+.fal {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 300;
+}
+/**/
+
+.fa-star::before {
+  content: "\f005";
+}
+.stars-review {
+  color: rgba(var(--color-base-accent-1),1);
+}
+.stars-review .fa-star {
+  margin: .25rem;
+}
+
+
+.reviews .multicolumn-card-spacing {
+  padding-top: 0;
+  margin: 0;
+}
+.reviews .multicolumn-card__image-wrapper--third-width {
+  width: 25%;
+  max-width: 80px;
+}
+.reviews .media {
+  background: rgba(var(--color-base-text),.1);
+  background: linear-gradient(180deg, rgba(var(--color-base-text),.05) 0%, rgba(var(--color-foreground),.2) 100%);
+}
+.reviews .media > img {
+  mix-blend-mode: darken;
+}
+
+.reviews .multicolumn-card__info {
+  height: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+.reviews .rte {
+  line-height: 1.2;
+}
+.reviews .multicolumn-list h3 {
+  margin-top: 2rem;
+  font-family: var(--font-body-family);
+  font-weight: bold;
+  color: rgba(var(--color-base-accent-2),1);
+  line-height: 1.2;
+}
+
+.color-background-2.gradient {
+  background-image: url(bg_motif.png);
+  background-repeat: repeat;
+  background-attachment: scroll;
+}
+.reviews {
+  position: relative;
+}
+.reviews .page-width {
+  position: relative;
+  z-index: 1;
+}
+.reviews::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 0;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(bg_reviews.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  background-attachment: scroll;
+  mix-blend-mode: color-burn;
+}
+.reviews.multicolumn.background-primary .multicolumn-card {
+  background: white;
+  border-radius: var(--card-corner-radius);
+  box-shadow: 0 20px 20px -10px rgba(var(--color-base-text),.35);
+}
+/* section reviews //end */

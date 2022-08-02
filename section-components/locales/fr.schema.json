@@ -1,4 +1,30 @@
-/*add traduction reviews */  
+/* add traduction breaking-news */
+"alert_info": {
+      "name": "Barre d'alert info",
+      "settings": {
+        "show_alert": {
+          "label": "Afficher les infos"
+        },
+        "heading": {
+          "label": "Titre"
+        }
+      },
+      "blocks": {
+        "news": {
+          "name": "Infos",
+          "settings": {
+            "text": {
+              "label": "Texte"
+            },
+            "link": {
+              "label": "Lien"
+            }
+          }
+        }
+      }
+},
+/* add traduction breaking-news // END */
+/* add traduction reviews */  
 "reviews": {
       "name": "Avis",
       "settings": {
@@ -113,8 +139,8 @@
         "name": "Multicolonne"
       }
     },
-/*add traduction reviews // END */
-/*add traduction title-partners */
+/* add traduction reviews // END */
+/* add traduction title-partners */
     "partners": {
       "name": "Partenaires",
       "settings": {
@@ -246,8 +272,8 @@
         "name": "Partenaires"
       }
     },
-/*add traduction reviews // END */
-/*add traduction title-columns */
+/* add traduction reviews // END */
+/* add traduction title-columns */
     "title-columns": {
       "name": "Titre avec colonnes",
       "settings": {
@@ -352,4 +378,4 @@
         "name": "Titre avec colonnes"
       }
     },
-/*add traduction title-columns // END */
+/* add traduction title-columns // END */

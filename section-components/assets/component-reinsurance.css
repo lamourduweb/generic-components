@@ -1,3 +1,4 @@
+/* reinssurance generic */
 .reinssurance img {
   width: 40px;
   margin-right: 1rem;
@@ -15,6 +16,7 @@
   color: rgb(var(--color-foreground));
 }
 
+/* reinssurance footer */
 .footer__reinssurance {
   padding: 6rem 0;
 }
@@ -40,25 +42,26 @@
     text-align: center;
     margin-bottom: 3rem;
   }
-  .footer-reinssurance .grid__item img {
+  .footer-reinssurance .reinsurance img {
     margin-right: 0;
     margin-bottom: 1rem;
   }
 }
 
+/* reinssurance product*/
 .product__reinsurance .grid {
   align-items: center;
   flex-wrap: nowrap;
   margin-left: 0;
   margin-bottom: 1rem;
 }
-.product__reinsurance img {
+.product__reinsurance .reinsurance img {
   width: 20px;
 }
-.product__reinsurance .reassurance__text {
+.product__reinsurance .reinsurance .reassurance__text {
   line-height: 1;
 }
-.product__reinsurance .reassurance__text p {
+.product__reinsurance .reinsurance .reassurance__text p {
   display: inline-block;
   margin: 0;
   line-height: 1.2;

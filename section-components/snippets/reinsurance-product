@@ -1,0 +1,26 @@
+<div class="reinsurance-product">
+    <div class="grid">
+        {{ settings.icon_reinsurance_1 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_1, 'reinsurance__icon' }}
+        <div class="reinsurance__text">
+            <p>{{ settings.text_reinsurance_1 }}</p>
+        </div>
+    </div>
+    <div class="grid">
+        {{ settings.icon_reinsurance_2 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_2, 'reinsurance__icon' }}
+        <div class="reinsurance__text">
+            <p>{{ settings.text_reinsurance_2 }}</p>
+        </div>
+    </div>
+    <div class="grid">
+        {{ settings.icon_reinsurance_3 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_3, 'reinsurance__icon' }}
+        <div class="reinsurance__text">
+            <p>{{ settings.text_reinsurance_3 }}</p>
+        </div>
+    </div>
+    <div class="grid">
+        {{ settings.icon_reinsurance_4 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_4, 'reinsurance__icon' }}
+        <div class="reinsurance__text">
+            <p>{{ settings.text_reinsurance_4 }}</p>
+        </div>
+    </div>
+</div>

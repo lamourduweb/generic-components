@@ -1,9 +1,18 @@
-/* add rich-text-content */
+/* add all */
 "sections": {
     "all": {
       "class": {
         "section_class_heading": "Class de la section",
         "section_class_name": "Ajouter une classe CSS"
+      },
+      "decoration_section": {
+        "label": "Ajouter de la décoration à la section"
+      },
+      "decoration_block": {
+        "label": "Ajouter de la décoration à le conteneur"
+      },
+      "decoration_title": {
+        "label": "Styliser le titre"
       },
       "title_alignment": {
         "label": "Alignement du titre",
@@ -44,6 +53,7 @@
     […]
 },
 […]
+/* add rich-text-content */
 "rich-text-content": {
   "name": "Texte enrichi page",
   "settings": {

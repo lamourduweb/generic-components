@@ -67,6 +67,11 @@ h6, .h6 {
   color: rgba(var(--color-base-accent-2),1) !important;
 }
 
+.rich-text .rich-text__text.color-inverse b,
+.rich-text .rich-text__text.color-inverse strong {
+  color: rgba(var(--color-base-accent-1),1) !important;
+}
+
 /* blockquote */
 blockquote {
   font-style: italic;

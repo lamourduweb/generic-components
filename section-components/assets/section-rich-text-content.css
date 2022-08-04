@@ -48,6 +48,25 @@ h6, .h6 {
   }
 }
 
+/* rich-text text colors */
+.rich-text .rich-text__text.color-inverse,
+.rich-text .rich-text__text.color-accent-1,
+.rich-text .rich-text__text.color-accent-2 {
+  background: none;
+}
+.rich-text .rich-text__text.color-inverse p {
+  background: none;
+  color: rgba(var(--color-base-text),1) !important;
+}
+.rich-text .rich-text__text.color-accent-1 p {
+  background: none;
+  color: rgba(var(--color-base-accent-1),1) !important;
+}
+.rich-text .rich-text__text.color-accent-2 p {
+  background: none;
+  color: rgba(var(--color-base-accent-2),1) !important;
+}
+
 /* blockquote */
 blockquote {
   font-style: italic;

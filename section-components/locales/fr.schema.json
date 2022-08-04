@@ -202,7 +202,7 @@
     "blockquote": {
       "name": "blockquote",
       "settings": {
-        "text": {
+        "blockquote": {
           "label": "Texte"
         },
         "title_alignment": {

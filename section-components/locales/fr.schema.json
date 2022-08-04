@@ -31,7 +31,14 @@
       }
     },
     […]
-}
+},
+[…]
+"rich-text-content": {
+    "name": "Texte enrichi page",
+    "presets": {
+    "name": "Texte enrichi page"
+    }
+},
 "rich-text": {
       "name": "Texte enrichi",
       "settings": {

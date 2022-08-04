@@ -111,7 +111,10 @@
     "text": {
       "settings": {
         "color_scheme": {
-          "label": "Couleur du texte"
+          "label": "Couleur du texte",
+          "inverse": {
+            "label": "Par defaut"
+          }
         }
       }
     },
@@ -131,10 +134,16 @@
           "label": "Alignement du texte"
         },
         "color_scheme_1": {
-          "label": "Couleur du texte"
+          "label": "Couleur du texte",
+          "inverse": {
+            "label": "Par defaut"
+          }
         },
         "color_scheme_2": {
-          "label": "Couleur du texte"
+          "label": "Couleur du texte",
+          "inverse": {
+            "label": "Par defaut"
+          }
         }
       }
     },

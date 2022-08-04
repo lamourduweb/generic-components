@@ -79,27 +79,27 @@
               </div>
             {%- endif -%}
             {%- when 'heading' -%}
-              {% if block.settings.heading_size_hn == "h2" %}
+              {% if block.settings.heading_size_hn == 'h2' %}
                 <h2 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
                   {{ block.settings.heading | replace: 'p>', 'span>' }}
                 </h2>
               {%- endif -%}
-              {% if block.settings.heading_size_hn == "h3" %}
+              {% if block.settings.heading_size_hn == 'h3' %}
                 <h3 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
                   {{ block.settings.heading | replace: 'p>', 'span>' }}
                 </h3>
               {%- endif -%}
-              {% if block.settings.heading_size_hn == "h4" %}
+              {% if block.settings.heading_size_hn == 'h4' %}
                 <h4 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
                   {{ block.settings.heading | replace: 'p>', 'span>' }}
                 </h4>
               {%- endif -%}
-              {% if block.settings.heading_size_hn == "h5" %}
+              {% if block.settings.heading_size_hn == 'h5' %}
                 <h5 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
                   {{ block.settings.heading | replace: 'p>', 'span>' }}
                 </h5>
               {%- endif -%}
-              {% if block.settings.heading_size_hn == "h6" %}
+              {% if block.settings.heading_size_hn == 'h6' %}
                 <h6 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
                   {{ block.settings.heading | replace: 'p>', 'span>' }}
                 </h6>

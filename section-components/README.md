@@ -49,9 +49,12 @@ et on colle le code dans le fichier à l'emplacement souhaité
 ```
 
 </details>
+
+2 Ajouter les styles et les traductions sur le thème
+
 <details>
 <summary>
-2. Ajouter le fichier CSS associé à votre section ou snippet sur le thème
+2.a. Ajouter le fichier CSS associé à votre section ou snippet sur le thème
 </summary>
   
 Si EN HAUT de votre fichier.liquid vous avez l'appel d'un fichier.css du genre:
@@ -66,7 +69,7 @@ Si EN HAUT de votre fichier.liquid vous avez l'appel d'un fichier.css du genre:
 </details>
 <details>
 <summary>
-3. Ajouter la traduction des champs de la section sur le thème
+2.b. Ajouter la traduction des champs de la section sur le thème
 </summary>
 
 - Ouvrez le fichier 'locales/fr.schema.json'

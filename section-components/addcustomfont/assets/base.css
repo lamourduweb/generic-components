@@ -5,4 +5,27 @@
   --base_line_height: calc(1 + 0.8 / var(--font-body-scale));
 }
 
+// Placer les nouvelles variables dans le fichier
+
+
+.text-body {
+  line-height: var(--base_line_height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+  //add
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+
 […]

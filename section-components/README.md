@@ -1,0 +1,75 @@
+##  Comment ajouter de nouveaux components dans mon theme shopify ?
+**Ajouter une section**
+<details>
+<summary>
+1.a Ajouter une section sur le thème
+</summary>
+  
+- Dans le dossier sections de votre thème
+  
+- Créer un nouveau fichier en nommant bien votre section
+  
+- Copier-coller le code figurant dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
+
+**Help !**
+Je veux que la section se retrouve au dessus du footer sur toutes les pages !
+
+- Ouvrez alors le fichier 'layout/theme.liquid'
+
+- Reperer le code '{% section 'footer' %}'
+
+- Ajouter de la même manière votre section juste au dessus du footer !
+  
+  ```
+  {% section 'reinsurances' %}
+  ```
+
+</details>
+
+**Ajouter un snippet**
+
+<details>
+<summary>
+1.b Ajouter un snippet sur le thème
+</summary>
+  
+- Dans le dossier snippets de votre thème
+  
+- Créer un nouveau fichier en nommant bien votre snippet
+  
+- Copier-coller le code figurant dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
+
+- Enfin ajouter votre snippet dans un fichier.liquid
+Ex: On veut ajouter le breadcrumb sur la fiche produit
+on ouvre le fichier en question 'sections/main-product.liquid'
+et on colle le code dans le fichier à l'emplacement souhaité
+  
+```
+{% render 'breadcrumb' %}
+```
+
+</details>
+<details>
+<summary>
+2. Ajouter le fichier CSS associé à votre section ou snippet sur le thème
+</summary>
+  
+Si EN HAUT de votre fichier.liquid vous avez l'appel d'un fichier.css du genre:
+  
+```
+{{ 'section-name.css' | asset_url | stylesheet_tag }}
+```
+  
+- Créer un nouveau fichier.css avec le même intitulé 'section-name.css' dans le dossier '/assets/'
+  
+- Copier-coller le code figurant dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
+</details>
+<details>
+<summary>
+3. Ajouter la traduction des champs de la section sur le thème
+</summary>
+
+- Ouvrez le fichier 'locales/fr.schema.json'
+  
+- Copier-coller le code correspondant au nom de votre section dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
+</details>

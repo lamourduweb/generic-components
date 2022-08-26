@@ -1,0 +1,50 @@
+// ajouter les traduction des champs personnalisés créés précédemment    
+"typography": {
+      "name": "Typographie",
+      "settings": {
+        "type_header_font": {
+          "label": "Police",
+          "info": "La sélection d'une police différente peut influencer la vitesse de votre boutique. [En savoir plus sur les polices système.](https:\/\/help.shopify.com\/manual\/online-store\/os\/store-speed\/improving-speed#fonts)"
+        },
+        "header__1": {
+          "content": "Titres"
+        },
+        "header__2": {
+          "content": "Corps"
+        },
+        "description__font": {
+          "content": "Autoriser plusieurs liens, chaque lien dans une nouvelle ligne. Veuillez télécharger vers [Shopify files](\/admin\/settings\/files) et coller le lien ici. Ces formats TTF, OTF, WOFF et WOFF2 sont pris en charge."
+        },
+        "type_body_font": {
+          "label": "Police",
+          "info": "La sélection d'une police différente peut influencer la vitesse de votre boutique. [En savoir plus sur les polices système.](https:\/\/help.shopify.com\/manual\/online-store\/os\/store-speed\/improving-speed#fonts)"
+        },
+        "use_custom_font_heading": {
+          "label": "Utiliser une police personnalisée",
+          "placeholder": "https:\/\/cdn.shopify.com\/s\/files\/1\/0075\/1288\/3285\/files\/roboto.woff2@400",
+          "info": "Format: Link_to_font@font_weight"
+        },
+        "custom_heading_font": {
+          "label": "URL des fichiers de police",
+          "placeholder": "https:\/\/cdn.shopify.com\/s\/files\/1\/0075\/1288\/3285\/files\/roboto.woff2@400",
+          "info": "Format: Link_to_font@font_weight"
+        },
+        "custom_body_font": {
+          "label": "URL des fichiers de police",
+          "placeholder": "https:\/\/cdn.shopify.com\/s\/files\/1\/0075\/1288\/3285\/files\/roboto.woff2@400",
+          "info": "Format: Link_to_font@font_weight"
+        },
+        "custom_heading_weight": {
+          "label": "Font-weight par default"
+        },
+        "custom_body_weight": {
+          "label": "Font-weight par default"
+        },
+        "heading_scale": {
+          "label": "Échelle de taille de police"
+        },
+        "body_scale": {
+          "label": "Échelle de taille de police"
+        }
+      }
+    },

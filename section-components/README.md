@@ -49,7 +49,7 @@ et on colle le code dans le fichier à l'emplacement souhaité
 </details>
 
 
-**2 Ajouter les styles et les traductions sur le thème**
+**2/ Ajouter les styles et les traductions sur le thème**
 
 <details>
 <summary>

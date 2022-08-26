@@ -68,10 +68,10 @@ Si EN HAUT de votre fichier.liquid vous avez l'appel d'un fichier.css du genre:
 </details>
 <details>
 <summary>
-2.b. Ajouter la traduction des champs de la section sur le thème
+2.b. Ajouter la traduction des champs de la section ou snippet sur le thème
 </summary>
 
 - Ouvrez le fichier 'locales/fr.schema.json'
   
-- Copier-coller le code correspondant au nom de votre section dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
+- Copier-coller le code correspondant au nom de votre section ou snippet dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
 </details>

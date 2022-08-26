@@ -1,0 +1,67 @@
+{%- assign header_font = settings.type_header_font -%}
+{%- assign header_font_bolder = header_font | font_modify: 'weight', 'bolder' -%}
+{%- assign header_font_lighter = header_font | font_modify: 'weight', '-100' -%}
+{%- assign base_font = settings.type_body_font -%}
+{%- assign base_font_bolder = base_font | font_modify: 'weight', 'bolder' -%}
+{%- assign base_font_bold = base_font | font_modify: 'weight', 'bold' -%}
+{%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
+{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+{%- assign use_custom_font_heading = settings.use_custom_font_heading -%}
+{%- assign use_custom_font_body = settings.use_custom_font_body -%}
+{%- assign custom_heading_font = settings.custom_heading_font -%}
+{%- assign header_spacing = settings.type_header_spacing -%}
+{%- assign base_line_height = settings.type_base_line_height -%}
+
+{%- capture typo_settings -%}
+  {%- if use_custom_font_heading == true and custom_heading_font != blank -%}
+    {%- assign heading_fonts = custom_heading_font | newline_to_br | split: '<br />' -%}
+    {%- for link in heading_fonts -%}
+      {%- assign link_data = link | split: '@' -%}
+      {%- assign font_url = link_data | first | strip_newlines -%}
+      {%- assign weight = link_data | last -%}
+      {%- assign font_type = font_url | split: 'files/' | last -%}
+      {%- assign font_name_heading = font_type | split: '.' | first -%}
+      @font-face {
+        font-family: '{{ font_name_heading }}';
+        font-weight: {{ weight }};
+        src: url('{{ font_url }}');
+        font-display: swap;
+      }
+    {% endfor %}
+    {%- if heading_fonts != blank -%}
+    :root {
+      --font-heading-family: '{{ font_name_heading }}';
+      --font-weight-header: {{ settings.custom_heading_weight | default: 400 }};
+      --letter-spacing-heading: {{ header_spacing }}px !important;
+    }
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if use_custom_font_body == true and custom_body_font != blank -%}
+    {%- assign body_fonts = custom_body_font | newline_to_br | split: '<br />' -%}
+    {%- for link in body_fonts -%}
+      {%- assign link_data = link | split: '@' -%}
+      {%- assign font_url = link_data | first | strip_newlines -%}
+      {%- assign weight = link_data | last -%}
+      {%- assign font_type = font_url | split: 'files/' | last -%}
+      {%- assign font_name_body = font_type | split: '.' | first -%}
+      @font-face {
+        font-family: '{{ font_name_body }}';
+        font-weight: {{ weight }};
+        src: url('{{ font_url }}');
+        font-display: swap;
+      }
+    {% endfor %}
+    {%- if body_fonts != blank -%}
+      :root {
+        --font-body-family: '{{ font_name_body }}';
+        --font-weight-body: {{ settings.custom_body_weight | default: 400 }};
+        --base_line_height: {{ base_line_height }};
+      }
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+<style media="screen" id="ldw-custom-fonts">
+  {{ typo_settings | strip_newlines | strip }}
+</style>

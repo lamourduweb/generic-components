@@ -1,0 +1,188 @@
+// 1. ajouter les champs personnalisés + leurs traductions dans le fichier 'locales/fr.schema.json'
+{
+    "name": "t:settings_schema.typography.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__1.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_header_font.label",
+        "info": "t:settings_schema.typography.settings.type_header_font.info"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.heading_scale.label",
+        "default": 100
+      },
+      {
+        "type": "checkbox",
+        "id": "use_custom_font_heading",
+        "label": "t:settings_schema.typography.settings.use_custom_font_heading.label",
+        "default": false
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.typography.settings.description__font.content"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_heading_font",
+        "label": "t:settings_schema.typography.settings.custom_heading_font.label",
+        "placeholder": "https:\/\/cdn.shopify.com\/s\/files\/1\/0075\/1288\/3285\/files\/roboto.woff2@400",
+        "info": "t:settings_schema.typography.settings.custom_heading_font.info"
+      },
+      {
+        "type": "select",
+        "id": "custom_heading_weight",
+        "label": "Default font weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "100",
+            "label": "Thin 100"
+          },
+          {
+            "value": "200",
+            "label": "Extra-light 200"
+          },
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "type_header_spacing",
+        "label": {
+          "en": "Letter spacing"
+        },
+        "default": 0,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header__2.content"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4",
+        "label": "t:settings_schema.typography.settings.type_body_font.label",
+        "info": "t:settings_schema.typography.settings.type_body_font.info"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 100,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "t:settings_schema.typography.settings.body_scale.label",
+        "default": 100
+      },
+      {
+        "type": "checkbox",
+        "id": "use_custom_font_body",
+        "label": "t:settings_schema.typography.settings.use_custom_font_heading.label",
+        "default": false
+      },
+      {
+        "id": "custom_body_font",
+        "type": "textarea",
+        "label": "t:settings_schema.typography.settings.custom_body_font.label",
+        "placeholder": "https:\/\/cdn.shopify.com\/s\/files\/1\/0075\/1288\/3285\/files\/roboto.woff2@400",
+        "info": "t:settings_schema.typography.settings.custom_body_font.info"
+      },
+      {
+        "id": "custom_body_weight",
+        "type": "select",
+        "label": "Default font weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "100",
+            "label": "Thin 100"
+          },
+          {
+            "value": "200",
+            "label": "Extra-light 200"
+          },
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "type_base_line_height",
+        "label": "Line height",
+        "default": 28,
+        "min": 14,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
+    ]
+  },

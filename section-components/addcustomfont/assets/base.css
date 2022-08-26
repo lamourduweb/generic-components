@@ -1,0 +1,8 @@
+// ajouter ce code en haut du fichier
+/* Font Theme LDW */
+:root {
+  --letter-spacing-heading: calc(var(--font-heading-scale) * 0.06rem);
+  --base_line_height: calc(1 + 0.8 / var(--font-body-scale));
+}
+
+[…]

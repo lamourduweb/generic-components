@@ -1,5 +1,5 @@
 ##  Comment ajouter de nouveaux components dans mon theme shopify ?
-**Ajouter une section**
+**1/ Ajouter une section ou un snippet**
 <details>
 <summary>
 1.a Ajouter une section sur le thème
@@ -26,8 +26,6 @@ Je veux que la section se retrouve au dessus du footer sur toutes les pages !
 
 </details>
 
-**Ajouter un snippet**
-
 <details>
 <summary>
 1.b Ajouter un snippet sur le thème
@@ -50,7 +48,8 @@ et on colle le code dans le fichier à l'emplacement souhaité
 
 </details>
 
-2 Ajouter les styles et les traductions sur le thème
+
+**2 Ajouter les styles et les traductions sur le thème**
 
 <details>
 <summary>

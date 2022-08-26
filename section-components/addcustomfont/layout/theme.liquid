@@ -1,0 +1,26 @@
+// 3 ajouter dans au dessus de l'appel du fichier base.css <head> du fichier theme.liquid le fichier 'snippets/custom-font.liquid' 
+Ajouter également des liens pour appeler l'ensemble de la famille (font-weight : 100,200,300,400,500,600,700,800,900) 
+des fonts sélectionnés par défaut dans Shopify
+
+<head>
+[…]
+{%- unless settings.type_body_font.system? -%}
+  <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+  <!-- add link google font -->
+  <link href="https://fonts.googleapis.com/css2?family={{- settings.type_body_font.family -}}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+{%- endunless -%}
+{%- unless settings.type_header_font.system? -%}
+  <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+  <!-- add link google font -->
+  <link href="https://fonts.googleapis.com/css2?family={{- settings.type_header_font.family -}}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+{%- endunless -%}
+{%- if settings.predictive_search_enabled -%}
+  <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+<!-- add render custom font -->
+{% render 'custom-fonts' %}
+
+{{ 'base.css' | asset_url | stylesheet_tag }}
+[…]
+</head>

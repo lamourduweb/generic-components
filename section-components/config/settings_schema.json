@@ -1,0 +1,47 @@
+{
+    "name": "Éléments de réassurance",
+    "settings": [
+      {
+        "content": "Élement 1",
+        "type": "header"
+      },
+      {
+        "id": "icon-reassurance-1",
+        "type": "image_picker",
+        "label": "Icone"
+      },
+      {
+        "id": "text-block-1",
+        "type": "richtext",
+        "label": "Texte"
+      },
+      {
+        "content": "Élement 2",
+        "type": "header"
+      },
+      {
+        "id": "icon-reassurance-2",
+        "type": "image_picker",
+        "label": "Icone"
+      },
+      {
+        "id": "text-block-2",
+        "type": "richtext",
+        "label": "Texte"
+      },
+      {
+        "content": "Élement 3",
+        "type": "header"
+      },
+      {
+        "id": "icon-reassurance-3",
+        "type": "image_picker",
+        "label": "Icone"
+      },
+      {
+        "id": "text-block-3",
+        "type": "richtext",
+        "label": "Texte"
+      }
+    ]
+  },

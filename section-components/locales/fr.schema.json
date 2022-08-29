@@ -596,3 +596,19 @@
       }
     },
 /* add traduction title-columns // END */
+/* add traduction reinsurances */
+"reinsurances": {
+  "name": "Réassurances",
+  "settings": {
+    "reinsurances_enable": {
+      "label": "Afficher les réassurances"
+    },
+    "margin_top": {
+      "label": "Marge supérieure"
+    }
+  },
+  "presets": {
+    "name": "Réassurances"
+  }
+},
+/* add traduction reinsurances // END */

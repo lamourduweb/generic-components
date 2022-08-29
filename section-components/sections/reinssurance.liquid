@@ -1,5 +1,5 @@
 {%- style -%}
-  .reinssurances {
+  .reinsurances {
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
   }
 
@@ -9,7 +9,7 @@
   }
 
   @media screen and (min-width: 750px) {
-    .reinssurances {
+    .reinsurances {
       margin-top: {{ section.settings.margin_top }}px;
     }
 
@@ -20,14 +20,14 @@
   }
 {%- endstyle -%}
 
-<div class="reinssurances color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<div class="reinsurances color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {% render 'reinsurance-footer' %}
 </div>
 
 {% schema %}
 {
   "name": "t:sections.reinsurances.name",
-  "class": "section-reinssurances",
+  "class": "section-reinsurances",
   "settings": [
     {
       "type": "checkbox",

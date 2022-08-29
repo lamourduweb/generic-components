@@ -42,6 +42,20 @@
         "id": "text-block-3",
         "type": "richtext",
         "label": "Texte"
+      },
+        {
+        "content": "Élement 4",
+        "type": "header"
+      },
+      {
+        "id": "icon-reassurance-4",
+        "type": "image_picker",
+        "label": "Icone"
+      },
+      {
+        "id": "text-block-4",
+        "type": "richtext",
+        "label": "Texte"
       }
     ]
   },

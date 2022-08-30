@@ -12,9 +12,18 @@
 - Copier-coller le code figurant dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
 
 **Help !**
-Je veux que la section se retrouve au dessus du footer sur toutes les pages !
+Je veux ajouter des réassurances sur le thème !
 
-- Ouvrez alors le fichier 'layout/theme.liquid'
+- Copier le code concernant les reassurances se trouvant dans fichier 'config/settings_schema.json' sur le repository Git.
+
+- Coller le code dans le fichier 'config/settings_schema.json' de votre boutique.
+
+- Créer le fichier 'sections/reinsurances.liquid' et copier-coller le code se trouvant dans le même fichier sur le repository Git.
+
+
+Pour que la section se retrouve au dessus du footer sur toutes les pages :
+
+- Ouvrez le fichier 'layout/theme.liquid'
 
 - Reperer le code '{% section 'footer' %}'
 

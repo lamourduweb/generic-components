@@ -11,8 +11,9 @@
   
 - Copier-coller le code figurant dans le fichier du repository github vers votre nouveau fichier dans thème Shopify.
 
-**Help !**
-Je veux ajouter des réassurances sur le thème !
+  
+**Help !
+Je veux ajouter des réassurances sur le thème !**
 
 - Copier le code concernant les reassurances se trouvant dans fichier 'config/settings_schema.json' sur le repository Git.
 

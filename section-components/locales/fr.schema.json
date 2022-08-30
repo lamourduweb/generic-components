@@ -597,18 +597,42 @@
     },
 /* add traduction title-columns // END */
 /* add traduction reinsurances */
-"reinsurances": {
-  "name": "Réassurances",
-  "settings": {
-    "reinsurances_enable": {
-      "label": "Afficher les réassurances"
+  "reinsurances": {
+      "name": "Réassurances",
+      "settings": {
+        "reinsurances_enable": {
+          "label": "Afficher les réassurances"
+        },
+        "show_text_box": {
+          "label": "Afficher le conteneur sur le bureau"
+        },
+        "box_direction": {
+          "label": "Disposition du contenu sur ordinateur",
+          "option_1": {
+            "label": "Horizontale"
+          },
+          "option_2": {
+            "label": "Verticale"
+          }
+        },
+        "text_alignment": {
+          "label": "Alignement du contenu sur ordinateur",
+          "option_1": {
+            "label": "Gauche"
+          },
+          "option_2": {
+            "label": "Centre"
+          },
+          "option_3": {
+            "label": "Droite"
+          }
+        },
+        "margin_top": {
+          "label": "Marge supérieure"
+        }
+      },
+      "presets": {
+        "name": "Réassurances"
+      }
     },
-    "margin_top": {
-      "label": "Marge supérieure"
-    }
-  },
-  "presets": {
-    "name": "Réassurances"
-  }
-},
 /* add traduction reinsurances // END */

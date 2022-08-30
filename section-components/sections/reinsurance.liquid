@@ -22,31 +22,79 @@
 {%- if section.settings.reinsurances_enable -%}
 <div class="footer-reinsurances color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {{ 'component-reinsurance.css' | asset_url | stylesheet_tag }}
-  <div class="page-width">
+  <div class="page-width{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %} reinsurance--content-align-{{ section.settings.text_alignment }} reinsurance--flex-{{ section.settings.box_direction }}">
     <div class="grid grid--2-col grid--4-col-tablet grid--4-col-desktop">
       <div class="reinsurance grid__item">
-        {{ settings.icon_reinsurance_1 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_1, 'reinssurance__icon' }}
-        <div class="reinsurance__text-content">
-          <p>{{ settings.text_reinsurance_1 }}</p>
+        {%- if settings.link_reinsurance_1 != blank -%}
+        <a href="{{ section.settings.link_reinsurance_1 }}" class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %} text--{{ section.settings.text_alignment }} full-unstyled-link">
+        {%- else -%}
+        <div class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %}">
+        {%- endif -%}
+          <div class="reinsurance__img-content">
+            {{ settings.icon_reinsurance_1 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_1, 'reinsurance__icon' }}
+          </div>
+          <div class="reinsurance__text-content">
+            {{ settings.text_reinsurance_1 }}
+          </div>
+        {%- if settings.link_reinsurance_1 != blank -%}
+        </a>
+        {%- else -%}
         </div>
+        {%- endif -%}
       </div>
       <div class="reinsurance grid__item">
-        {{ settings.icon_reinsurance_2 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_2, 'reinssurance__icon' }}
-        <div class="reinsurance__text-content">
-          <p>{{ settings.text_reinsurance_2 }}</p>
+        {%- if settings.link_reinsurance_2 != blank -%}
+        <a href="{{ section.settings.link_reinsurance_2 }}" class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %} text--{{ section.settings.text_alignment }} full-unstyled-link">
+        {%- else -%}
+        <div class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %}">
+        {%- endif -%}
+          <div class="reinsurance__img-content">
+            {{ settings.icon_reinsurance_2 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_2, 'reinsurance__icon' }}
+          </div>
+          <div class="reinsurance__text-content">
+            {{ settings.text_reinsurance_2 }}
+          </div>
+        {%- if settings.link_reinsurance_2 != blank -%}
+        </a>
+        {%- else -%}
         </div>
+        {%- endif -%}
       </div>
       <div class="reinsurance grid__item">
-        {{ settings.icon_reinsurance_3 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_3, 'reinssurance__icon' }}
-        <div class="reinsurance__text-content">
-          <p>{{ settings.text_reinsurance_3 }}</p>
+        {%- if settings.link_reinsurance_3 != blank -%}
+        <a href="{{ section.settings.link_reinsurance_3 }}" class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %} text--{{ section.settings.text_alignment }} full-unstyled-link">
+        {%- else -%}
+        <div class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %}">
+        {%- endif -%}
+          <div class="reinsurance__img-content">
+            {{ settings.icon_reinsurance_3 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_3, 'reinsurance__icon' }}
+          </div>
+          <div class="reinsurance__text-content">
+            {{ settings.text_reinsurance_3 }}
+          </div>
+        {%- if settings.link_reinsurance_3 != blank -%}
+        </a>
+        {%- else -%}
         </div>
+        {%- endif -%}
       </div>
       <div class="reinsurance grid__item">
-        {{ settings.icon_reinsurance_4 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_4, 'reinssurance__icon' }}
-        <div class="reinsurance__text-content">
-          <p>{{ settings.text_reinsurance_4 }}</p>
+        {%- if settings.link_reinsurance_4 != blank -%}
+        <a href="{{ section.settings.link_reinsurance_4 }}" class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %} text--{{ section.settings.text_alignment }} full-unstyled-link">
+        {%- else -%}
+        <div class="reinsurance_box{% if section.settings.show_text_box == true %} content-container color-{{ section.settings.color_scheme_text_box }} gradient{% endif %}">
+        {%- endif -%}
+          <div class="reinsurance__img-content">
+            {{ settings.icon_reinsurance_4 | img_url: '40x', scale: 2 | img_tag: settings.text_reinsurance_4, 'reinsurance__icon' }}
+          </div>
+          <div class="reinsurance__text-content">
+            {{ settings.text_reinsurance_4 }}
+          </div>
+        {%- if settings.link_reinsurance_4 != blank -%}
+        </a>
+        {%- else -%}
         </div>
+        {%- endif -%}
       </div>
     </div>
   </div>
@@ -67,6 +115,80 @@
     {
       "type": "select",
       "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "Mise en forme des réassurances"
+    },
+    {
+      "type": "select",
+      "id": "box_direction",
+      "options": [
+        {
+          "value": "row",
+          "label": "t:sections.reinsurances.settings.box_direction.option_1.label"
+        },
+        {
+          "value": "column",
+          "label": "t:sections.reinsurances.settings.box_direction.option_2.label"
+        }
+      ],
+      "default": "row",
+      "label": "t:sections.reinsurances.settings.box_direction.label"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.reinsurances.settings.text_alignment.option_1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.reinsurances.settings.text_alignment.option_2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.reinsurances.settings.text_alignment.option_3.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:sections.reinsurances.settings.text_alignment.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_box",
+      "default": true,
+      "label": "t:sections.reinsurances.settings.show_text_box.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme_text_box",
       "options": [
         {
           "value": "accent-1",

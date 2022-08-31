@@ -41,6 +41,9 @@ Pour que la section se retrouve au dessus du footer sur toutes les pages :
 1.b Ajouter un snippet sur le thème
 </summary>
   
+  **Heuuu ! c'est quoi au juste un snippets 
+> https://www.shopify.com/partners/blog/88186566-tips-for-using-snippets-in-your-shopify-theme**
+  
 - Dans le dossier snippets de votre thème
   
 - Créer un nouveau fichier en nommant bien votre snippet

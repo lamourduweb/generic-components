@@ -14,7 +14,10 @@
 4/ ajouter 2 nouvelle variables dans le fichier 'assets/base.css'
 >> Aller dans le fichier en question pour voir le code.
 
-5/ Le code est en place, reste plus qu'à ajouter les fichier fonts sur la boutique !
+5/ ajouter le snippet dans le <head> du theme 'layout/theme.liquid'
+>> Aller dans le fichier en question pour voir le code.
+
+6/ Le code est en place, reste plus qu'à ajouter les fichier fonts sur la boutique !
 >> Ajouter les fichier (en format : ttf, otf, woff ou woff2) dans Shopify files > [site pour convertir les fonts](https://transfonter.org/)
 >> 
 >> Appuyer sur le bouton 'Copier le lien' et copier l'url du fichier dans le champs 'URL des fichiers de police' dans la personnalisation de la typo du thème.

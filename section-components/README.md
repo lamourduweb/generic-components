@@ -56,7 +56,7 @@ on ouvre le fichier en question 'sections/main-product.liquid'
 et on colle le code dans le fichier à l'emplacement souhaité
   
 ```
-{% render 'breadcrumb' %}
+{% render 'breadcrumbs' %}
 ```
 
 </details>

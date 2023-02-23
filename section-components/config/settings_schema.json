@@ -82,3 +82,93 @@
     ]
   },
 /* reassurances END */ 
+/* progress-bar delivery in drawer */
+  {
+    "name": "t:settings_schema.cart_progress_bar.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_progress_bar",
+        "label": "t:settings_schema.cart_progress_bar.settings.show_progress_bar.label",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.cart_progress_bar.settings.header__1.content"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.cart_progress_bar.settings.description.content"
+      },
+      {
+        "type": "text",
+        "id": "price_2",
+        "label": "t:settings_schema.cart_progress_bar.settings.price_2.label",
+        "placeholder": "t:settings_schema.cart_progress_bar.settings.price_2.placeholder"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.cart_progress_bar.settings.header__2.content"
+      },
+      {
+        "type": "text",
+        "id": "text_motivation_first",
+        "label": "t:settings_schema.cart_progress_bar.settings.text_motivation_first.label",
+        "default": "t:settings_schema.cart_progress_bar.settings.text_motivation_first.default"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.cart_progress_bar.settings.amount.content"
+      },
+      {
+        "type": "text",
+        "id": "text_motivation_last",
+        "label": "t:settings_schema.cart_progress_bar.settings.text_motivation_last.label",
+        "default": "t:settings_schema.cart_progress_bar.settings.text_motivation_last.default"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.cart_progress_bar.settings.header__3.content"
+      },
+      {
+        "type": "text",
+        "id": "text_success",
+        "label": "t:settings_schema.cart_progress_bar.settings.text_success.label",
+        "info": "t:settings_schema.cart_progress_bar.settings.text_success.info",
+        "default": "t:settings_schema.cart_progress_bar.settings.text_success.default"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.cart_progress_bar.settings.header__4.content"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.cart_progress_bar.settings.gift.content"
+      },
+      {
+        "type": "text",
+        "id": "price_1",
+        "label": "t:settings_schema.cart_progress_bar.settings.price_1.label",
+        "placeholder": "t:settings_schema.cart_progress_bar.settings.price_1.placeholder"
+      },
+      {
+        "type": "text",
+        "id": "name_gift",
+        "label": "t:settings_schema.cart_progress_bar.settings.name_gift.label"
+      },
+      {
+        "type": "html",
+        "id": "icon_gift",
+        "label": "t:settings_schema.cart_progress_bar.settings.icon_gift.label",
+        "info": "t:settings_schema.cart_progress_bar.settings.icon_gift.info",
+        "default": "t:settings_schema.cart_progress_bar.settings.icon_gift.default"
+      },
+      {
+        "type": "text",
+        "id": "text_gift",
+        "label": "t:settings_schema.cart_progress_bar.settings.text_gift.label",
+        "default": "t:settings_schema.cart_progress_bar.settings.text_gift.default"
+      }
+    ]
+  },
+/* progress-bar delivery in drawer END */ 

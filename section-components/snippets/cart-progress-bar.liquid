@@ -1,0 +1,76 @@
+
+<div id="CartDrawer-progress">
+    {% if settings.price_1 contains ',' %}
+        {% assign price_1_array = settings.price_1 | split: ',' %}
+    {% elsif settings.price_1 contains '.' %}
+        {% assign price_1_array = settings.price_1 | split: '.' %}
+    {% else %}
+        {%- assign price_1_array = settings.price_1 -%}
+    {% endif %}
+    {% unless settings.price_1 contains ',' and settings.price_1 contains '.' %}
+        {%- assign price_free_sample_array = price_1_array | append: '00' -%}
+    {% else %}
+        {%- assign price_free_sample_array = price_1_array -%}
+    {% endunless %}
+
+    {% if settings.price_2 contains ',' %}
+        {% assign price_2_array = settings.price_2 | split: ',' %}
+    {% elsif settings.price_2 contains '.' %}
+        {% assign price_2_array = settings.price_2 | split: '.' %}
+    {% else %}
+        {%- assign price_2_array = settings.price_2 -%}
+    {% endif %}
+    {% unless settings.price_2 contains ',' and settings.price_2 contains '.' %}
+        {%- assign price_free_delivery_array = price_2_array | append: '00' -%}
+    {% else %}
+        {%- assign price_free_delivery_array = price_2_array -%}
+    {% endunless %}
+
+
+    {%- assign price_free_sample = price_free_sample_array | plus: 0 -%}
+    {%- assign price_free_delivery = price_free_delivery_array | plus: 0 -%}
+
+    {%- assign remaining_price = price_free_delivery | minus : cart.total_price -%}
+
+    {%- assign results = 0.000 | plus: price_free_sample | divided_by: price_free_delivery -%}
+    {%- assign price_percent = results | times: '100' -%}
+
+    {%- assign objectif = 0.000 | plus: price_free_sample | divided_by: '100'  -%}
+    
+    {%- assign total = 0.000 | plus: cart.total_price | divided_by: price_free_delivery -%}
+    {%- assign total_price_percent = total | times: '100' -%}
+
+    {% if cart.total_price <= price_free_delivery %}
+        <div class="notif-price">
+           {{ settings.text_motivation_first }} <strong class="money">{{ remaining_price | money  }}</strong> {{ settings.text_motivation_last }}
+        </div>
+        {% else %}
+        <div class="notif-price">
+            {{ settings.text_success }}
+        </div>
+    {% endif %}
+    <div class="progress">
+        <small class="money">
+            0 €
+        </small>
+        <div class="progress-bar-fill{% if total_price_percent >= price_percent %} win{% endif %}{% if cart.total_price >= price_free_delivery %} success{% endif %}">
+            <span class="progress-bar-value" style="width: {{ total_price_percent }}%; max-width: 100%;"></span>
+            {% if settings.price_1 != blank %}
+                <span class="objectif-step{% if total_price_percent >= price_percent %} win{% endif %}" style="padding-left: {{ price_percent }}%">
+                    {{ settings.icon_gift }}
+                    <small class="money">
+                        {% if total_price_percent <= price_percent %}
+                            {{ price_free_sample | money }}
+                        {% endif %}
+                    </small>
+                </span>
+            {% endif %}
+            <span class="objectif">
+                <i class="fas fa-truck"></i>
+            </span>
+        </div>
+        <small class="money">
+            {{ price_free_delivery | money }}
+        </small>
+    </div>
+</div>

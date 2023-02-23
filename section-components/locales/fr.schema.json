@@ -728,3 +728,68 @@
       }
     },
 /*add traduction footer // END*/
+/*add traduction progress-bar delivery in drawer */
+    "cart_progress_bar": {
+      "name": "Panier : Barre de progression",
+      "settings": {
+        "show_progress_bar": {
+          "label": "Activer la barre de progression"
+        },
+        "header__1": {
+          "content": "Paramètres des prix"
+        },
+        "description": {
+          "content": "Saisir les prix au format: 30 ou 30,00 sans symbole € ni texte : euros"
+        },
+        "price_2": {
+          "label": "Prix palier : Livraison gratuite",
+          "placeholder": "130"
+        },
+        "header__2": {
+          "content": "Message de Motivation :"
+        },
+        "text_motivation_first": {
+          "label": "Début du message",
+          "default": "<b>Dépensez</b> encore"
+        },
+        "amount": {
+          "content": "XX,XX €"
+        },
+        "text_motivation_last": {
+          "label": "Fin du message",
+          "default": "pour bénéficier de la <b>livraison GRATUITE<b>"
+        },
+        "header__3": {
+          "content": "Message livraison Gratuite"
+        },
+        "text_success": {
+          "label": "Message de succès",
+          "info": "Visible si le total est = au prix pallier de la livraison gratuite.",
+          "default": "<b>Bravo !</b> Vous êtes éligible à la <b>livraison GRATUITE</b>"
+        },
+        "header__4": {
+          "content": "Paramètres du cadeau optionnel"
+        },
+        "gift": {
+          "content": "Visible seulement si un prix pallier est renseignés."
+        },
+        "price_1": {
+          "label": "Prix palier : Cadeau offert",
+          "placeholder": "50"
+        },
+        "name_gift": {
+          "label": "Intitulé du cadeau",
+          "default": "Testeur"
+        },
+        "icon_gift": {
+          "label": "Icone du cadeau",
+          "info": "Utiliser une balise icone Fontawesome : https:\/\/fontawesome.com\/v5\/search?q=color&o=r&m=free&s=solid",
+          "default": "<i class=\"fas fa-fill-drip\"></i>"
+        },
+        "text_gift": {
+          "label": "Message motivation cadeau",
+          "default": "Ajoutez un <b>testeur</b> dans votre panier, il est <b>OFFERT</b>"
+        }
+      }
+    },
+/*add traduction progress-bar delivery in drawer // END*/

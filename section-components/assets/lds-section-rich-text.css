@@ -1,4 +1,4 @@
-/* rich-text-content */
+/* LdS lds-section-rich-text */
 .hxl {
   font-size: calc(var(--font-heading-scale) * 5rem);
 }
@@ -282,4 +282,4 @@ hr.color-inverse {
   color: rgb(var(--color-base-inverse),1);
 }
 
-/* rich-text-content // END */
+/* End LdS lds-section-rich-text */

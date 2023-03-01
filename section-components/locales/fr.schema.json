@@ -1,10 +1,16 @@
 /* Ce fichier sert a créer les traductions des nouveaux champs personnalisables des sections et block qui apparaissent en mode Personnaliser le thème */
-/* add all */
+/* add traduction all */
 "sections": {
     "all": {
       "class": {
         "section_class_heading": "Class de la section",
         "section_class_name": "Ajouter une classe CSS"
+      },
+      "full_width": {
+        "label": "Rendre la section pleine largeur"
+      },
+      "adapt_width_container": {
+        "label": "Adapter la largeur de la section au container"
       },
       "decoration_section": {
         "label": "Ajouter de la décoration à la section"
@@ -25,6 +31,48 @@
         },
         "options__3": {
           "label": "Droite"
+        }
+      },
+      "button_style": {
+        "button--primary": {
+          "label": "Plein"
+        },
+        "button--secondary": {
+          "label": "Contour"
+        },
+        "link": {
+          "label": "Lien styliser"
+        },
+        "full-unstyled-link": {
+          "label": "Lien standard"
+        },
+        "label": "Style du boutton"
+      },
+      "heading_html": {
+        "label": "Balise Titre SEO (html)",
+        "options__7": {
+          "label": "p"
+        },
+        "options__6": {
+          "label": "h6"
+        },
+        "options__5": {
+          "label": "h5"
+        },
+        "options__4": {
+          "label": "h4"
+        },
+        "options__3": {
+          "label": "h3"
+        },
+        "options__2": {
+          "label": "h2"
+        },
+        "options__1": {
+          "label": "h1"
+        },
+        "options__0": {
+          "label": "hxl"
         }
       },
       "heading_size_hn": {
@@ -51,12 +99,80 @@
           "label": "hxl"
         }
       },
+      "margin": {
+        "section_margin_heading": "Marge de la section",
+        "margin_top": "Marge supérieure",
+        "margin_bottom": "Marge inférieure"
+      },
+      "horizontal_spacing_columns": {
+        "label": "Augmenter l'espacement entre les colonnes"
+      },
     […]
 },
 […]
-/* add rich-text-content */
-"rich-text-content": {
-  "name": "Texte enrichi page",
+/* add traduction lds-image-with-text */
+"lds-image-with-text": {
+  "name": "Image ou Vidéo avec texte [LdS]",
+  "settings": {
+    "media_shadow": {
+      "label": "Ajouter une ombre aux images"
+    }
+  },
+  "presets": {
+    "name": "Image ou Vidéo avec texte [LdS]"
+  }
+},
+/* add traduction lds-multicolumn */
+"lds-multicolumn": {
+  "name": "Multicolonne [LdS]",
+  "settings": {
+    "subtext": {
+      "label": "Sous-titre"
+    },
+    "column_style": {
+      "label": "Style des colonnes",
+      "options__1": {
+        "label": "Standard"
+      },
+      "options__2": {
+        "label": "Colonnes numérotées"
+      }
+    },
+    "shadow_columns": {
+      "label": "Ajouter une ombre aux blocks"
+    },
+    "shadow_contains": {
+      "label": "Ajouter une ombre au container"
+    },
+    "no_color_bg_container": {
+      "label": "Masquer l'arrière-plan du container"
+    },
+    "bg_container": {
+      "label": "Ajouter une image en arrière-plan"
+    },
+    "header_columns": {
+      "content": "Style des boutons des colonnes"
+    },
+    "media_shadow": {
+      "label": "Ajouter une ombre aux images"
+    },
+    "container_padding_heading": {
+      "content": "Marge intérieur du container"
+    },
+    "container_padding_top": {
+      "label": "Marge intérieur supérieure"
+    },
+    "container_padding_bottom": {
+      "label": "Marge intérieur inférieure"
+    }
+  },
+  "presets": {
+    "name": "Multicolonne [LdS]"
+  }
+},
+/* add traduction lds-rich-text */
+"lds-rich-text": {
+  "name": "Texte enrichi [LdS]",
   "settings": {
     "full_width": {
       "label": "Rendre la section pleine largeur"
@@ -213,10 +329,68 @@
     }
   },
   "presets": {
-    "name": "Texte enrichi page"
+    "name": "Texte enrichi [LdS]"
   }
 },
-/* add traduction breaking-news */
+/* add traduction lds-article-hero-slider */
+"lds-article-hero-slider": {
+  "name": "Bannière d'entête avec diaporama [LdS]",
+  "settings": {
+    "diaporama": {
+      "content": "Parametres du diaporama"
+    },
+    "content": {
+      "content": "Contenu texte"
+    }
+  },
+  "blocks": {
+    "slide": {
+      "name": "Diapositive",
+      "settings": {
+      }
+    }
+  },
+  "presets": {
+    "name": "Bannière d'entête avec diaporama [LdS]"
+  }
+},
+/* add traduction lds_collapsible_content */
+"lds_collapsible_content": {
+  "name": "Contenu réductible [LdS]",
+  "settings": {
+    "header_video": {
+      "content": "Mise en page de la vidéo"
+    },
+    "video_ratio": {
+      "label": "Ratio de la video",
+      "options__1": {
+        "label": "Format video carré 1:1"
+      },
+      "options__2": {
+        "label": "Format video 4:3"
+      },
+      "options__3": {
+        "label": "Format video 16:9"
+      }
+    },
+    "video_url": {
+      "label": "Vidéo",
+      "placeholder": "https:\/\/youtube.com\/embed\/id... ou https:\/\/vimeo.com\/id…",
+      "info": "La vidéo est lue sur la page."
+    },
+    "video_autoplay": {
+      "label": "Lecture automatique"
+    },
+    "video_mute": {
+      "label": "Couper le son"
+    }
+  },
+  "presets": {
+    "name": "Contenu réductible [LdS]"
+  }
+},
+
+/* add traduction lds-breaking-news */
 "alert_info": {
       "name": "Barre d'alert info",
       "settings": {

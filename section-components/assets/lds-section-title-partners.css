@@ -1,3 +1,4 @@
+/* LdS lds-section-title-partners */
 /* section title-partners */
 .partners h2 {
   font-family: var(--font-body-family);
@@ -82,4 +83,4 @@
     width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
   }
 }
-/* section title-partners//end */
+/* End LdS lds-section-title-partners */

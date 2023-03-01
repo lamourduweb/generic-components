@@ -1,3 +1,4 @@
+/* LdS lds-section-title-columns */
 /* section title with columns */
 .grid--content-align-top {
   align-items: flex-start;
@@ -65,4 +66,4 @@
     text-align: center;
   }
 }
-/* section title with columns //end */
+/* End LdS lds-section-title-columns */

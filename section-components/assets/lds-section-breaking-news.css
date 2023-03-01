@@ -1,3 +1,4 @@
+/* LdS lds-section-breaking-news.css */
 /* alert infos */
 #shopify-section-alert_info {
   position: relative;
@@ -82,6 +83,7 @@
             transform: translateX(-100%);
   }
 }
+
 @media screen and (min-width: 750px) {
   .alert-info {
     padding-left: calc( 5rem + 15rem);
@@ -90,3 +92,4 @@
     padding-left: 5rem;
   }
 }
+/* End LdS lds-section-breaking-news.css */

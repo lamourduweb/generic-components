@@ -1,8 +1,9 @@
+<!-- Section lds-article-hero-slider by Lamour du Shop -->
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
-{{ 'component-article-hero.css' | asset_url | stylesheet_tag }}
+{{ 'lds-component-article-hero.css' | asset_url | stylesheet_tag }}
 
 
 {%- style -%}
@@ -176,7 +177,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.article-hero-slider.name",
+  "name": "t:sections.lds-article-hero-slider.name",
   "class": "section hero-slider",
   "enabled_on": {
     "templates": ["*"]
@@ -324,7 +325,7 @@
     },
     {
       "type": "header",
-      "content": "t:sections.article-hero-slider.settings.diaporama.content"
+      "content": "t:sections.lds-article-hero-slider.settings.diaporama.content"
     },
     {
       "type": "select",
@@ -375,7 +376,7 @@
     },
     {
       "type": "header",
-      "content": "t:sections.article-hero-slider.settings.content.content"
+      "content": "t:sections.lds-article-hero-slider.settings.content.content"
     },
     {
       "type": "text",
@@ -498,7 +499,7 @@
   ],
   "presets": [
     {
-      "name": "t:sections.article-hero-slider.presets.name",
+      "name": "t:sections.lds-article-hero-slider.presets.name",
       "blocks": [
         {
           "type": "slide"

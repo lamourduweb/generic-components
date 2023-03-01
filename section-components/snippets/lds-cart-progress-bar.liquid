@@ -1,4 +1,4 @@
-
+<!-- CartDrawer-progress by LDS -->
 <div id="CartDrawer-progress">
     {% if settings.price_1 contains ',' %}
         {% assign price_1_array = settings.price_1 | split: ',' %}
@@ -42,7 +42,7 @@
 
     {% if cart.total_price <= price_free_delivery %}
         <div class="notif-price">
-           {{ settings.text_motivation_first }} <strong class="money">{{ remaining_price | money  }}</strong> {{ settings.text_motivation_last }}
+           {{ settings.text_motivation_first }} <strong class="money">{{ remaining_price | money }}</strong> {{ settings.text_motivation_last }}
         </div>
         {% else %}
         <div class="notif-price">
@@ -74,3 +74,4 @@
         </small>
     </div>
 </div>
+<!-- End // CartDrawer-progress by Lamour du Shop -->

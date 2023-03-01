@@ -1,4 +1,5 @@
-{{ 'section-rich-text-content.css' | asset_url | stylesheet_tag }}
+<!-- Section lds-rich-text by Lamour du Web -->
+{{ 'lds-section-rich-text.css' | asset_url | stylesheet_tag }}
 <link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -20,7 +21,7 @@
 {%- endstyle -%}
 
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+  <div class="rich-text content-container color-{{ section.settings.color_scheme }}{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
     <div class="{% if section.settings.decoration_section == true %} block-stylized{% endif %} rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}
       {%- for block in section.blocks -%}
@@ -79,31 +80,9 @@
               </div>
             {%- endif -%}
             {%- when 'heading' -%}
-              {% if block.settings.heading_size_hn == 'h2' %}
-                <h2 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
-                  {{ block.settings.heading | replace: 'p>', 'span>' }}
-                </h2>
-              {%- endif -%}
-              {% if block.settings.heading_size_hn == 'h3' %}
-                <h3 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
-                  {{ block.settings.heading | replace: 'p>', 'span>' }}
-                </h3>
-              {%- endif -%}
-              {% if block.settings.heading_size_hn == 'h4' %}
-                <h4 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
-                  {{ block.settings.heading | replace: 'p>', 'span>' }}
-                </h4>
-              {%- endif -%}
-              {% if block.settings.heading_size_hn == 'h5' %}
-                <h5 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
-                  {{ block.settings.heading | replace: 'p>', 'span>' }}
-                </h5>
-              {%- endif -%}
-              {% if block.settings.heading_size_hn == 'h6' %}
-                <h6 class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
-                  {{ block.settings.heading | replace: 'p>', 'span>' }}
-                </h6>
-              {%- endif -%}
+              <{{ block.settings.heading_html }} class="rich-text__heading rte {{ block.settings.heading_size_hn }}{% if block.settings.decoration_title == true %} title_styled{% endif %} {{ block.settings.title_alignment }}" {{ block.shopify_attributes }}>
+                {{ block.settings.heading | replace: 'p>', 'span>' }}
+              </{{ block.settings.heading_html }}>
             {%- when 'caption' -%}
               <p class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}" {{ block.shopify_attributes }}>
                 {{ block.settings.caption | escape }}
@@ -149,7 +128,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.rich-text-content.name",
+  "name": "t:sections.lds-rich-text.name",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -213,12 +192,24 @@
           "label": "t:sections.all.colors.accent_2.label"
         },
         {
+          "value": "accent-2 gradient",
+          "label": "t:sections.all.colors.gradient_accent_2.label"
+        },
+        {
           "value": "background-1",
           "label": "t:sections.all.colors.background_1.label"
         },
         {
+          "value": "background-1 gradient",
+          "label": "t:sections.all.colors.gradient_background_1.label"
+        },
+        {
           "value": "background-2",
           "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "background-2 gradient",
+          "label": "t:sections.all.colors.gradient_background_2.label"
         },
         {
           "value": "inverse",
@@ -232,7 +223,7 @@
       "type": "checkbox",
       "id": "full_width",
       "default": true,
-      "label": "t:sections.rich-text-content.settings.full_width.label"
+      "label": "t:sections.lds-rich-text.settings.full_width.label"
     },
     {
       "type": "header",
@@ -262,18 +253,18 @@
   "blocks": [
     {
       "type": "image",
-      "name": "t:sections.rich-text-content.blocks.image.name",
+      "name": "t:sections.lds-rich-text.blocks.image.name",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "t:sections.rich-text-content.blocks.image.settings.image.label"
+          "label": "t:sections.lds-rich-text.blocks.image.settings.image.label"
         },
         {
           "type": "checkbox",
           "id": "full_width",
           "default": false,
-          "label": "t:sections.rich-text-content.blocks.image.settings.full_width.label"
+          "label": "t:sections.lds-rich-text.blocks.image.settings.full_width.label"
         },
         {
           "type": "select",
@@ -281,23 +272,23 @@
           "options": [
             {
               "value": "adapt",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_width.options__0.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_width.options__0.label"
             },
             {
               "value": "third",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_width.options__1.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_width.options__1.label"
             },
             {
               "value": "half",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_width.options__2.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_width.options__2.label"
             },
             {
               "value": "full",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_width.options__3.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_width.options__3.label"
             }
           ],
           "default": "full",
-          "label": "t:sections.rich-text-content.blocks.image.settings.image_width.label"
+          "label": "t:sections.lds-rich-text.blocks.image.settings.image_width.label"
         },
         {
           "type": "range",
@@ -306,9 +297,9 @@
           "max": 480,
           "step": 10,
           "default": 250,
-          "unit": "t:sections.rich-text-content.blocks.image.settings.image_width_range.unit",
-          "label": "t:sections.rich-text-content.blocks.image.settings.image_width_range.label",
-          "info": "t:sections.rich-text-content.blocks.image.settings.image_width_range.info"
+          "unit": "t:sections.lds-rich-text.blocks.image.settings.image_width_range.unit",
+          "label": "t:sections.lds-rich-text.blocks.image.settings.image_width_range.label",
+          "info": "t:sections.lds-rich-text.blocks.image.settings.image_width_range.info"
         },
         {
           "type": "select",
@@ -316,23 +307,23 @@
           "options": [
             {
               "value": "adapt",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_ratio.options__1.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_ratio.options__1.label"
             },
             {
               "value": "portrait",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_ratio.options__2.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_ratio.options__2.label"
             },
             {
               "value": "square",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_ratio.options__3.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_ratio.options__3.label"
             },
             {
               "value": "circle",
-              "label": "t:sections.rich-text-content.blocks.image.settings.image_ratio.options__4.label"
+              "label": "t:sections.lds-rich-text.blocks.image.settings.image_ratio.options__4.label"
             }
           ],
           "default": "adapt",
-          "label": "t:sections.rich-text-content.blocks.image.settings.image_ratio.label"
+          "label": "t:sections.lds-rich-text.blocks.image.settings.image_ratio.label"
         }
       ]
     },
@@ -370,8 +361,52 @@
         },
         {
           "type": "select",
+          "id": "heading_html",
+          "options": [
+            {
+              "value": "p",
+              "label": "t:sections.all.heading_html.options__7.label"
+            },
+            {
+              "value": "h6",
+              "label": "t:sections.all.heading_html.options__6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.heading_html.options__5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.heading_html.options__4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.heading_html.options__3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_html.options__2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_html.options__1.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_html.options__0.label"
+            }
+          ],
+          "default": "h2",
+          "label": "t:sections.all.heading_html.label"
+        },
+        {
+          "type": "select",
           "id": "heading_size_hn",
           "options": [
+            {
+              "value": "rte",
+              "label": "t:sections.all.heading_size_hn.options__7.label"
+            },
             {
               "value": "h6",
               "label": "t:sections.all.heading_size_hn.options__6.label"
@@ -422,7 +457,7 @@
           "options": [
             {
               "value": "inverse",
-              "label": "t:sections.rich-text-content.blocks.text.settings.color_scheme.inverse.label"
+              "label": "t:sections.lds-rich-text.blocks.text.settings.color_scheme.inverse.label"
             },
             {
               "value": "accent-1",
@@ -431,10 +466,14 @@
             {
               "value": "accent-2",
               "label": "t:sections.all.colors.accent_2.label"
+            },
+            {
+              "value": "accent-2 gradient",
+              "label": "t:sections.all.colors.gradient_accent_2.label"
             }
           ],
           "default": "inverse",
-          "label": "t:sections.rich-text-content.blocks.text.settings.color_scheme.label"
+          "label": "t:sections.lds-rich-text.blocks.text.settings.color_scheme.label"
         },
         {
           "type": "select",
@@ -460,13 +499,13 @@
     },
     {
       "type": "text_column",
-      "name": "t:sections.rich-text-content.blocks.text_column.name",
+      "name": "t:sections.lds-rich-text.blocks.text_column.name",
       "settings": [
         {
           "type": "richtext",
           "id": "text_left",
           "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
-          "label": "t:sections.rich-text-content.blocks.text_column.settings.text_right.label"
+          "label": "t:sections.lds-rich-text.blocks.text_column.settings.text_right.label"
         },
         {
           "type": "select",
@@ -474,7 +513,7 @@
           "options": [
             {
               "value": "inverse",
-              "label": "t:sections.rich-text-content.blocks.text_column.settings.color_scheme_1.inverse.label"
+              "label": "t:sections.lds-rich-text.blocks.text_column.settings.color_scheme_1.inverse.label"
             },
             {
               "value": "accent-1",
@@ -483,10 +522,14 @@
             {
               "value": "accent-2",
               "label": "t:sections.all.colors.accent_2.label"
+            },
+            {
+              "value": "accent-2 gradient",
+              "label": "t:sections.all.colors.gradient_accent_2.label"
             }
           ],
           "default": "inverse",
-          "label": "t:sections.rich-text-content.blocks.text_column.settings.color_scheme_1.label"
+          "label": "t:sections.lds-rich-text.blocks.text_column.settings.color_scheme_1.label"
         },
         {
           "type": "select",
@@ -506,13 +549,13 @@
             }
           ],
           "default": "left",
-          "label": "t:sections.rich-text-content.blocks.text_column.settings.title_alignment_left.label"
+          "label": "t:sections.lds-rich-text.blocks.text_column.settings.title_alignment_left.label"
         },
         {
           "type": "richtext",
           "id": "text_right",
           "default": "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
-          "label": "t:sections.rich-text-content.blocks.text_column.settings.text_right.label"
+          "label": "t:sections.lds-rich-text.blocks.text_column.settings.text_right.label"
         },
         {
           "type": "select",
@@ -532,7 +575,7 @@
             }
           ],
           "default": "left",
-          "label": "t:sections.rich-text-content.blocks.text_column.settings.title_alignment_right.label"
+          "label": "t:sections.lds-rich-text.blocks.text_column.settings.title_alignment_right.label"
         },
         {
           "type": "select",
@@ -540,7 +583,7 @@
           "options": [
             {
               "value": "inverse",
-              "label": "t:sections.rich-text-content.blocks.text_column.settings.color_scheme_2.inverse.label"
+              "label": "t:sections.lds-rich-text.blocks.text_column.settings.color_scheme_2.inverse.label"
             },
             {
               "value": "accent-1",
@@ -549,10 +592,14 @@
             {
               "value": "accent-2",
               "label": "t:sections.all.colors.accent_2.label"
+            },
+            {
+              "value": "accent-2 gradient",
+              "label": "t:sections.all.colors.gradient_accent_2.label"
             }
           ],
           "default": "inverse",
-          "label": "t:sections.rich-text-content.blocks.text_column.settings.color_scheme_2.label"
+          "label": "t:sections.lds-rich-text.blocks.text_column.settings.color_scheme_2.label"
         }
       ]
     },
@@ -606,14 +653,14 @@
     },
     {
       "type": "list",
-      "name": "t:sections.rich-text-content.blocks.list.name",
+      "name": "t:sections.lds-rich-text.blocks.list.name",
       "settings": [
         {
           "type": "richtext",
           "id": "list",
           "default": "<p>Et olim licet otiosae sint tribus pacataeque.</p><p>Mensarum enim voragines et varias voluptatum.</p><p>Nec vox accusatoris ulla licet subditicii in his.</p>",
-          "label": "t:sections.rich-text-content.blocks.text.settings.text.label",
-          "info": "t:sections.rich-text-content.blocks.list.settings.list.info"
+          "label": "t:sections.lds-rich-text.blocks.text.settings.text.label",
+          "info": "t:sections.lds-rich-text.blocks.list.settings.list.info"
         },
         {
           "type": "select",
@@ -621,27 +668,27 @@
           "options": [
             {
               "value": "ul",
-              "label": "t:sections.rich-text-content.blocks.list.settings.list_style.options__1.label"
+              "label": "t:sections.lds-rich-text.blocks.list.settings.list_style.options__1.label"
             },
             {
               "value": "ol",
-              "label": "t:sections.rich-text-content.blocks.list.settings.list_style.options__2.label"
+              "label": "t:sections.lds-rich-text.blocks.list.settings.list_style.options__2.label"
             }
           ],
           "default": "ul",
-          "label": "t:sections.rich-text-content.blocks.list.settings.list_style.label"
+          "label": "t:sections.lds-rich-text.blocks.list.settings.list_style.label"
         }
       ]
     },
     {
       "type": "blockquote",
-      "name": "t:sections.rich-text-content.blocks.blockquote.name",
+      "name": "t:sections.lds-rich-text.blocks.blockquote.name",
       "settings": [
         {
           "type": "richtext",
           "id": "blockquote",
           "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
-          "label": "t:sections.rich-text-content.blocks.blockquote.settings.blockquote.label"
+          "label": "t:sections.lds-rich-text.blocks.blockquote.settings.blockquote.label"
         },
         {
           "type": "select",
@@ -663,7 +710,7 @@
     },
     {
       "type": "divider",
-      "name": "t:sections.rich-text-content.blocks.divider.name",
+      "name": "t:sections.lds-rich-text.blocks.divider.name",
       "settings": [
         {
           "type": "select",
@@ -671,15 +718,15 @@
           "options": [
             {
               "value": "is-style-wide",
-              "label": "t:sections.rich-text-content.blocks.divider.settings.divider_style.options__1.label"
+              "label": "t:sections.lds-rich-text.blocks.divider.settings.divider_style.options__1.label"
             },
             {
               "value": "is-style-dots",
-              "label": "t:sections.rich-text-content.blocks.divider.settings.divider_style.options__2.label"
+              "label": "t:sections.lds-rich-text.blocks.divider.settings.divider_style.options__2.label"
             }
           ],
           "default": "is-style-wide",
-          "label": "t:sections.rich-text-content.blocks.divider.settings.divider_style.label"
+          "label": "t:sections.lds-rich-text.blocks.divider.settings.divider_style.label"
         },
         {
           "type": "select",
@@ -694,12 +741,20 @@
               "label": "t:sections.all.colors.accent_2.label"
             },
             {
+              "value": "accent-2 gradient",
+              "label": "t:sections.all.colors.gradient_accent_2.label"
+            },
+            {
               "value": "background-1",
               "label": "t:sections.all.colors.background_1.label"
             },
             {
               "value": "background-2",
               "label": "t:sections.all.colors.background_2.label"
+            },
+            {
+              "value": "background-2 gradient",
+              "label": "t:sections.all.colors.gradient_background_2.label"
             },
             {
               "value": "inverse",
@@ -715,19 +770,19 @@
           "options": [
             {
               "value": "small",
-              "label": "t:sections.rich-text-content.blocks.divider.settings.space_size.options__1.label"
+              "label": "t:sections.lds-rich-text.blocks.divider.settings.space_size.options__1.label"
             },
             {
               "value": "medium",
-              "label": "t:sections.rich-text-content.blocks.divider.settings.space_size.options__2.label"
+              "label": "t:sections.lds-rich-text.blocks.divider.settings.space_size.options__2.label"
             },
             {
               "value": "large",
-              "label": "t:sections.rich-text-content.blocks.divider.settings.space_size.options__3.label"
+              "label": "t:sections.lds-rich-text.blocks.divider.settings.space_size.options__3.label"
             }
           ],
           "default": "small",
-          "label": "t:sections.rich-text-content.blocks.divider.settings.space_size.label"
+          "label": "t:sections.lds-rich-text.blocks.divider.settings.space_size.label"
         }
       ]
     },
@@ -791,7 +846,7 @@
   ],
   "presets": [
     {
-      "name": "t:sections.rich-text-content.presets.name",
+      "name": "t:sections.lds-rich-text.presets.name",
       "blocks": [
         {
           "type": "heading"

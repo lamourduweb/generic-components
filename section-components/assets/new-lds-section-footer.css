@@ -1,0 +1,118 @@
+/* LdS lds-section-footer */
+/* footer top */
+.footer-block__heading {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.footer__list-social, .footer__button {
+  margin-top: 2rem;
+}
+.footer__list-social.center {
+  justify-content: center;
+}
+.footer-block__details-content.rte {
+  font-size: 1.4rem;
+}
+
+.footer__top-wrapper.grid {
+  column-gap: 6rem;
+}
+
+.footer-block-newsletter.content-container {
+  padding: 3rem;
+}
+.newsletter__title.title-wrapper {
+  margin-bottom: 1rem;
+}
+.newsletter__title .footer-block__heading {
+  margin-bottom: .5rem;
+}
+
+.footer-block__newsletter:not(:only-child) .center + .footer__newsletter {
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer-block__newsletter:not(:only-child) .right + .footer__newsletter {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .grid--3-col-tablet .footer__content-newsletter {
+    flex-grow: 0;
+  }
+  .footer-block--menu .footer_menu .icon-caret {
+    display: none;
+  }
+}
+
+/* footer bottom */
+.footer .footer__content-bottom {
+  padding: 2rem 0;
+}
+.footer__menu .list-menu__item {
+  padding: 1.2rem;
+  font-size: 1rem;
+}
+.footer__copyright > .copyright__content {
+  padding: 0.6rem 0;
+}
+.color-background-1 .lds-signature,
+.color-background-2 .lds-signature {
+  filter: invert(1);
+}
+.lds-signature {
+  vertical-align: middle;
+}
+
+@media screen and (min-width: 750px) {
+  .footer .footer__column--info {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .footer .footer__payment, .footer .footer__copyright {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 749px) {
+  .policies {
+    display: block;
+  }
+  .policies li:first-child::before {
+    display: none;
+  }
+}
+
+/* footer dropdown menu mobile */
+@media screen and (max-width: 749px) {
+  .footer-block--menu .footer_menu {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 0;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  .footer-block--menu .footer_menu .icon-caret {
+    position: absolute;
+    height: 0.6rem;
+    right: 1.5rem;
+    top: calc(50% - 0.2rem);
+  }
+  .footer-block--menu .active .icon-caret {
+    transform: rotate(180deg);
+  }
+  .footer-block--menu .list-unstyled:not(.list-social) {
+    padding: 0 10px;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s linear;
+  }
+}
+/* End LdS lds-section-footer */

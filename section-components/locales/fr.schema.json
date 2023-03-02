@@ -902,6 +902,51 @@
       }
     },
 /*add traduction footer // END*/
+/*add traduction NEW lds-footer */
+"lds-footer": {
+      "name": "Pied de page [LdS]",
+      "blocks": {
+        "newsletter": {
+          "name": "Newsletter",
+          "settings": {
+            "alignment": {
+              "label": "Alignement de colonne"
+            },
+            "show_boxed_newsletter": {
+              "label": "Afficher la newsletter dans un container"
+            }
+          }
+        }
+      },
+      "settings": {
+        "show_boxed_newsletter": {
+          "label": "Afficher la newsletter dans un container",
+          "info": "Visible si la newsletter est positionner au milieu du footer"
+        },
+        "enable_button_text": {
+          "label": "Changer style du bouton"
+        },
+        "newsletter_position": {
+          "bottom": {
+            "label": "En bas"
+          },
+          "middle": {
+            "label": "Au milieu"
+          },
+          "top": {
+            "label": "En haut"
+          },
+          "label": "Position de la section newsletter"
+        },
+        "newsletter_text": {
+          "label": "Texte d'incitation à l'inscription"
+        }
+      },
+      "presets": {
+        "name": "Pied de page [LdS]"
+      }
+    },
+/*add traduction NEW lds-footer // END*/
 /*add traduction progress-bar delivery in drawer */
     "cart_progress_bar": {
       "name": "Panier : Barre de progression",

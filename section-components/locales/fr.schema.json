@@ -156,6 +156,9 @@
     "media_shadow": {
       "label": "Ajouter une ombre aux images"
     },
+    "stretched_link": {
+      "label": "Étirer le lien sur toute la colonne"
+    },
     "container_padding_heading": {
       "content": "Marge intérieur du container"
     },

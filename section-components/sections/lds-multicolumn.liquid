@@ -107,36 +107,42 @@
 
             <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}" {{ block.shopify_attributes }}>
               <div class="multicolumn-card content-container{% if section.settings.shadow_columns == true and section.settings.background_style != 'none' %} shadow{% endif %}">
-                {%- if block.settings.image != blank -%}
-                  {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
-                    {% assign spaced_image = true %}
-                  {% endif %}
-                  <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
-                    <div class="media media--transparent media--{{ section.settings.image_ratio }}{% if section.settings.media_shadow == true %} media__shadow{% endif %}"
-                      {% if section.settings.image_ratio == 'adapt' %}
-                        style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
-                      {% endif %}>
-                      {%- capture sizes -%}(min-width: 990px) {% if section.blocks.size <= 2 %}710px{% else %}550px{% endif %}, (min-width: 750px) {% if section.blocks.size == 1 %}710px{% else %}550px{% endif %}, calc(100vw - 30px){%- endcapture -%}
-                      {{ block.settings.image | image_url: width: 1420 | image_tag:
-                        loading: 'lazy',
-                        sizes: sizes,
-                        widths: '275, 550, 710, 1420',
-                        class: 'multicolumn-card__image'
-                      }}
-                    </div>
-                  </div>
+                {%- if section.settings.stretched_link and block.settings.link != blank and block.settings.link_label == blank -%}
+                  <a class="stretched-link" {% if block.settings.link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.link }}"{% endif %}>
                 {%- endif -%}
-                <div class="multicolumn-card__info">
-                  {%- if block.settings.title != blank -%}
-                    <{{ block.settings.heading_html }} class="{{ block.settings.heading_size_hn }}">{{ block.settings.title }}</{{ block.settings.heading_html }}>
+                  {%- if block.settings.image != blank -%}
+                    {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
+                      {% assign spaced_image = true %}
+                    {% endif %}
+                    <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                      <div class="media media--transparent media--{{ section.settings.image_ratio }}{% if section.settings.media_shadow == true %} media__shadow{% endif %}"
+                        {% if section.settings.image_ratio == 'adapt' %}
+                          style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                        {% endif %}>
+                        {%- capture sizes -%}(min-width: 990px) {% if section.blocks.size <= 2 %}710px{% else %}550px{% endif %}, (min-width: 750px) {% if section.blocks.size == 1 %}710px{% else %}550px{% endif %}, calc(100vw - 30px){%- endcapture -%}
+                        {{ block.settings.image | image_url: width: 1420 | image_tag:
+                          loading: 'lazy',
+                          sizes: sizes,
+                          widths: '275, 550, 710, 1420',
+                          class: 'multicolumn-card__image'
+                        }}
+                      </div>
+                    </div>
                   {%- endif -%}
-                  {%- if block.settings.text != blank -%}
-                    <div class="rte">{{ block.settings.text }}</div>
-                  {%- endif -%}
-                  {%- if block.settings.link_label != blank -%}
-                    <a class="{% if section.settings.button_style != 'link' and section.settings.button_style != 'full-unstyled-link' %}button {% endif %}{{ section.settings.button_style }}{% if section.settings.button_style == 'link' %} animate-arrow{% endif %}" {% if block.settings.link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}{% if section.settings.button_style == 'link' %}<span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span>{% endif %}</a>
-                  {%- endif -%}
-                </div>
+                  <div class="multicolumn-card__info">
+                    {%- if block.settings.title != blank -%}
+                      <{{ block.settings.heading_html }} class="{{ block.settings.heading_size_hn }}">{{ block.settings.title }}</{{ block.settings.heading_html }}>
+                    {%- endif -%}
+                    {%- if block.settings.text != blank -%}
+                      <div class="rte">{{ block.settings.text }}</div>
+                    {%- endif -%}
+                    {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+                      <a class="{% if section.settings.button_style != 'link' and section.settings.button_style != 'full-unstyled-link' %}button {% endif %}{{ section.settings.button_style }}{% if section.settings.button_style == 'link' %} animate-arrow{% endif %}{% if section.settings.stretched_link %} stretched-link{% endif %}" {% if block.settings.link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}{% if section.settings.button_style == 'link' %}<span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span>{% endif %}</a>
+                    {%- endif -%}
+                  </div>
+              {%- if section.settings.stretched_link and block.settings.link != blank and block.settings.link_label == blank -%}
+                </a>
+              {%- endif -%}
               </div>
             </li>
           {%- endfor -%}
@@ -423,6 +429,12 @@
       "id": "media_shadow",
       "default": false,
       "label": "t:sections.lds-multicolumn.settings.media_shadow.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "stretched_link",
+      "default": false,
+      "label": "t:sections.lds-multicolumn.settings.stretched_link.label"
     },
     {
       "type": "select",

@@ -38,33 +38,6 @@
   padding-bottom: 3rem;
 }
 
-.multicolumn .multicolumn--step::before{
-  content: "";
-  display: block;
-  position: absolute;
-  background: url(shape-algae-4.svg) no-repeat center / contain;
-  width: 200px;
-  height: 260px;
-  left: -7rem;
-  right: auto;
-  top: calc(50% - 160px);
-  bottom: auto;
-  z-index: -1;
-}
-.multicolumn .multicolumn--step::after{
-  content: "";
-  display: block;
-  position: absolute;
-  background: url(shape-algae-6.svg) no-repeat center / contain;
-  width: 360px;
-  height: 360px;
-  right: -8rem;
-  left: auto;
-  top: auto;
-  bottom: 0;
-  z-index: -1;
-}
-
 /* .multicolumn .multicolumn_spacing_large */
 @media screen and (min-width: 990px){
   .multicolumn .multicolumn_spacing_large .grid {

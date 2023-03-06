@@ -419,121 +419,121 @@
       }
 },
 /* add traduction breaking-news // END */
-/* add traduction reviews */  
-"reviews": {
-      "name": "Avis",
-      "settings": {
-        "title": {
-          "label": "Titre"
-        },
-        "image_width": {
-          "label": "Largeur d'image",
-          "options__1": {
-            "label": "Un tiers de largeur de la colonne"
-          },
-          "options__2": {
-            "label": "Demi-largeur de colonne"
-          },
-          "options__3": {
-            "label": "Largeur complète de colonne"
-          }
-        },
-        "image_ratio": {
-          "label": "Rapport d'image",
-          "options__1": {
-            "label": "Adapter à l'image"
-          },
-          "options__2": {
-            "label": "Portrait"
-          },
-          "options__3": {
-            "label": "Square"
-          },
-          "options__4": {
-            "label": "Cercle"
-          }
-        },
-        "column_alignment": {
-          "label": "Alignement de colonne",
-          "options__1": {
-            "label": "Gauche"
-          },
-          "options__2": {
-            "label": "Centre"
-          }
-        },
-        "background_style": {
-          "label": "Arrière-plan secondaire",
-          "options__1": {
-            "label": "Aucune"
-          },
-          "options__2": {
-            "label": "Afficher comme arrière-plan de la colonne"
-          }
-        },
-        "button_label": {
-          "label": "Texte du bouton"
-        },
-        "button_link": {
-          "label": "Lien du bouton"
-        },
-        "swipe_on_mobile": {
-          "label": "Activer le balayage sur mobile"
-        },
-        "columns_desktop": {
-          "label": "Nombre de colonnes sur ordinateur"
-        },
-        "header_mobile": {
-          "content": "Mise en page sur mobile"
-        },
-        "columns_mobile": {
-          "label": "Nombre de colonnes sur mobile",
-          "options__1": {
-            "label": "1 colonne"
-          },
-          "options__2": {
-            "label": "2 colonnes"
-          }
-        }
+/* add traduction lds-reviews */  
+"lds-reviews": {
+  "name": "Avis [LdS]",
+  "settings": {
+    "title": {
+      "label": "Titre"
+    },
+    "image_width": {
+      "label": "Largeur d'image",
+      "options__1": {
+        "label": "Un tiers de largeur de la colonne"
       },
-      "blocks": {
-        "column": {
-          "name": "Avis",
-          "settings": {
-            "image": {
-              "label": "Image utilisateur"
-            },
-            "stars-review": {
-              "label": "Note",
-              "options__1": {
-                "label": "étoiles"
-              },
-              "options__2": {
-                "label": "étoiles"
-              },
-              "options__3": {
-                "label": "étoiles"
-              },
-              "options__4": {
-                "label": "étoiles"
-              },
-              "options__5": {
-                "label": "5 étoiles"
-              }
-            },
-            "text": {
-              "label": "Témoignage"
-            },
-            "author": {
-              "label": "Auteur"
-            }
-          }
-        }
+      "options__2": {
+        "label": "Demi-largeur de colonne"
       },
-      "presets": {
-        "name": "Multicolonne"
+      "options__3": {
+        "label": "Largeur complète de colonne"
       }
     },
+    "image_ratio": {
+      "label": "Rapport d'image",
+      "options__1": {
+        "label": "Adapter à l'image"
+      },
+      "options__2": {
+        "label": "Portrait"
+      },
+      "options__3": {
+        "label": "Square"
+      },
+      "options__4": {
+        "label": "Cercle"
+      }
+    },
+    "column_alignment": {
+      "label": "Alignement de colonne",
+      "options__1": {
+        "label": "Gauche"
+      },
+      "options__2": {
+        "label": "Centre"
+      }
+    },
+    "background_style": {
+      "label": "Arrière-plan secondaire",
+      "options__1": {
+        "label": "Aucune"
+      },
+      "options__2": {
+        "label": "Afficher comme arrière-plan de la colonne"
+      }
+    },
+    "button_label": {
+      "label": "Texte du bouton"
+    },
+    "button_link": {
+      "label": "Lien du bouton"
+    },
+    "swipe_on_mobile": {
+      "label": "Activer le balayage sur mobile"
+    },
+    "columns_desktop": {
+      "label": "Nombre de colonnes sur ordinateur"
+    },
+    "header_mobile": {
+      "content": "Mise en page sur mobile"
+    },
+    "columns_mobile": {
+      "label": "Nombre de colonnes sur mobile",
+      "options__1": {
+        "label": "1 colonne"
+      },
+      "options__2": {
+        "label": "2 colonnes"
+      }
+    }
+  },
+  "blocks": {
+    "column": {
+      "name": "Avis",
+      "settings": {
+        "image": {
+          "label": "Image utilisateur"
+        },
+        "stars-review": {
+          "label": "Note",
+          "options__1": {
+            "label": "étoiles"
+          },
+          "options__2": {
+            "label": "étoiles"
+          },
+          "options__3": {
+            "label": "étoiles"
+          },
+          "options__4": {
+            "label": "étoiles"
+          },
+          "options__5": {
+            "label": "5 étoiles"
+          }
+        },
+        "text": {
+          "label": "Témoignage"
+        },
+        "author": {
+          "label": "Auteur"
+        }
+      }
+    }
+  },
+  "presets": {
+    "name": "Avis [LdS]"
+  }
+},
 /* add traduction reviews // END */
 /* add traduction title-partners */
     "partners": {

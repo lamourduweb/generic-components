@@ -2,7 +2,6 @@
 /* reinsurance generic */
 .reinsurance img {
   width: 40px;
-  margin-right: 1rem;
 }
 .reinsurance p {
   margin-top: 0;
@@ -53,10 +52,17 @@
   align-items: center;
   gap: 1rem;
 }
+.reinsurance--flex-row .reinsurance img {
+  margin-right: 1rem;
+}
 .reinsurance--flex-column .reinsurance_box {
   display: flex;
   flex-direction: column;
   gap: .5rem;
+}
+.reinsurance--flex-column .reinsurance img {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .reinsurance--content-align-left .reinsurance_box {

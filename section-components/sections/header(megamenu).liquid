@@ -1,0 +1,91 @@
+{%- if childlink.links != blank -%}
+  <ul class="list-unstyled" role="list">
+    {%- for grandchildlink in childlink.links -%}
+      {% comment %}LdS ajout des variables pour récupérer les metafiels des produits a afficher dans le megamenu {% endcomment %}
+      {%- assign product1 = link.object.metafields.custom.produit_megamenu_1.value -%}
+      {%- assign product2 = link.object.metafields.custom.produit_megamenu_2.value -%}
+      {%- assign linkCollection = grandchildlink.object -%} 
+      <li 
+        {% if grandchildlink.type == 'collection_link' and linkCollection.image != blank or grandchildlink.object.metafields.custom.visuel_megamenu != blank %}class="mega-menu__img"{% endif %}
+        {% if product1.url == grandchildlink.url or product2.url == grandchildlink.url %}class="mega-menu__product"{% endif %}
+      >
+        <a href="{{ grandchildlink.url }}" class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+          {% comment %}LdS Ajout d'un produit dans le mega-menu. Visuel via les metafields si rempli {% endcomment %}
+          {% if product1.url == grandchildlink.url %}
+            <div class="media media--transparent media--square media--hover-effect">
+              {{ product1.featured_media.src | media_tag: width: 180, height: 180, image_size: "360x" }}
+            </div>
+            <div class="card__content">
+              <div class="card__information">
+                <h3 class="card__heading h5">
+                  {{ product1.title }}
+                </h3>
+                <div class="card-information">
+                  <div class="caption-with-letter-spacing light">
+                    {{ product1.vendor }}
+                  </div>
+                  <div class="price">
+                    <div class="price__container">
+                      <span class="price-item">
+                      {{ product1.price | money }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% elsif product2.url == grandchildlink.url %}
+            <div class="media media--transparent media--square media--hover-effect">
+              {{ product2.featured_media.src | media_tag: width: 180, height: 180, image_size: "360x" }}
+            </div>
+            <div class="card__content">
+              <div class="card__information">
+                <h3 class="card__heading h5">
+                  {{ product2.title }}
+                </h3>
+                <div class="card-information">
+                  <div class="caption-with-letter-spacing light">
+                    {{ product2.vendor }}
+                  </div>
+                  <div class="price">
+                    <div class="price__container">
+                      <span class="price-item">
+                      {{ product2.price | money }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            {% comment %}LdS Ajout d'un visuel dans le mega-menu. Visuel ajouté via l'image de collection ou via les metafields si rempli {% endcomment %}
+            {%- if grandchildlink.type == 'collection_link' and linkCollection.image != blank and grandchildlink.object.metafields.custom.visuel_megamenu == blank -%}
+              <div class="media media--transparent media--square media--hover-effect"> 
+                <img 
+                  src="{{linkCollection.image.src | product_img_url: '300x'}}"
+                  alt="{{grandchild_link.title}}"
+                  crossorigin="anonymous" 
+                  class="motion-reduce"
+                >
+              </div> 
+            {%- elsif grandchildlink.object.metafields.custom.visuel_megamenu != blank %}
+              <div class="media media--transparent media--square media--hover-effect">
+                <img
+                  src="{{ grandchildlink.object.metafields.custom.visuel_megamenu | image_url: width: 300 }}"
+                  alt="{{grandchild_link.title}}"
+                  height="auto"
+                  width="100%"
+                  loading="lazy"
+                  class="motion-reduce"
+                >
+              </div>
+            {% endif %}
+            <span>
+              {{ grandchildlink.title | escape }}
+            </span>
+          {% endif %}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

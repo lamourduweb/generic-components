@@ -6,12 +6,36 @@
 {%- unless settings.type_body_font.system? -%}
   <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
   <!-- add link google font for body font -->
-  <link href="https://fonts.googleapis.com/css2?family={{- settings.type_body_font.family -}}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+ {% if settings.type_body_font.family contains """ %}
+    {% assign type_body_font_base = settings.type_body_font.family | split: '"' %}
+    {% assign type_body_font_base = type_body_font_base.last  %}
+    {% assign type_body_font = type_body_font_base | split: " " %}
+  {% else %}
+    {% assign type_body_font_base = type_body_font_base.last  %}
+    {% assign type_body_font = type_body_font_base | split: " " %}
+  {% endif %}
+  <link href="https://fonts.googleapis.com/css2?family={% for type_font in type_body_font -%}
+              {%- if forloop.length > 0 -%}
+                {{ type_font }}{% unless forloop.last %}+{% endunless -%}
+              {%- endif -%}
+              {% endfor %}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 {%- endunless -%}
 {%- unless settings.type_header_font.system? -%}
   <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
   <!-- add link google font for heading font -->
-  <link href="https://fonts.googleapis.com/css2?family={{- settings.type_header_font.family -}}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  {% if settings.type_header_font.family contains """ %}
+    {% assign type_header_font_base = settings.type_header_font.family | split: '"' %}
+    {% assign type_header_font_base = type_header_font_base.last  %}
+    {% assign type_header_font = type_header_font_base | split: " " %}
+  {% else %}
+    {% assign type_header_font_base = type_header_font_base.last  %}
+    {% assign type_header_font = type_header_font_base | split: " " %}
+  {% endif %}
+  <link href="https://fonts.googleapis.com/css2?family={% for type_font in type_header_font -%}
+              {%- if forloop.length > 0 -%}
+                {{ type_font }}{% unless forloop.last %}+{% endunless -%}
+              {%- endif -%}
+              {% endfor %}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 {%- endunless -%}
 {%- if settings.predictive_search_enabled -%}
   <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">

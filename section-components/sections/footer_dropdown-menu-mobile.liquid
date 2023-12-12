@@ -1,7 +1,8 @@
 <style>
-/* footer dropdown menu mobile */
- @media screen and (max-width: 749px) {
-   .footer-block--menu .footer_menu {
+ /* footer dropdown menu mobile */
+@media screen and (max-width: 749px) {
+  .footer-block--menu .footer_menu {
+    position: relative;
     cursor: pointer;
     padding: 10px 0;
     width: 100%;
@@ -10,21 +11,14 @@
     outline: none;
     transition: 0.4s;
   }
-  .footer-block--menu .footer_menu:after {
-    content: "+";
-    content: "\f067";
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    font-size: 13px;
-    color: rgba(var(--color-foreground), 1);
-    float: right;
-    margin-left: 5px;
+  .footer-block--menu .footer_menu .icon-caret {
+    position: absolute;
+    height: 0.6rem;
+    right: 1.5rem;
+    top: calc(50% - 0.2rem);
   }
-  .footer-block--menu .active:after {
-    content: "-";
-    content: "\f068";
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+  .footer-block--menu .active .icon-caret {
+    transform: rotate(180deg);
   }
   .footer-block--menu .list-unstyled:not(.list-social) {
     padding: 0 10px;
@@ -33,15 +27,15 @@
     overflow: hidden;
     transition: max-height 0.1s linear;
   }
- }
-/* footer dropdown menu mobile // END */
+}
+/* End LdS lds-section-footer */
 </style>
 
 <!-- Remplacer les <h2 class="footer-block__heading"> par des <span class="footer-block__heading"> -->
 <!-- Puis Ajouter la classe 'footer_menu' class sur l'élément pour le convertir en menu dropdown en mobile -->
-{%- if block.settings.heading != blank -%}
-  <span class="footer-block__heading {% if block.type == 'link_list' and block.settings.heading != blank %} footer_menu{% endif %}">{{- block.settings.heading | escape -}}</span>
-{%- endif -%}
+ {%- if block.settings.heading != blank -%}
+    <p class="h2 footer-block__heading inline-richtext{% if block.type == 'link_list' %} footer_menu{% endif %}">{{- block.settings.heading -}}{% if block.type == 'link_list' %}{% render 'icon-caret' %}{% endif %}</p>
+  {%- endif -%}
 
 <!-- Ajouter le script pour le dropdown menu mobile -->
 <script>

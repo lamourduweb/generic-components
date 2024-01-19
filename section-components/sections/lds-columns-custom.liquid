@@ -320,7 +320,7 @@
                   {% if block.settings.image_ratio == 'adapt' or block.settings.image_ratio == 'circle' %}
                     {% assign spaced_image = true %}
                   {% endif %}
-                  <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ block.settings.image_width }}-width{% if block.settings.background_image %} has_background_image{% endif %}{% unless block.settings.no_spacing_image %}{% if block.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}{% endunless %}">
+                  <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ block.settings.image_width }}-width{% if block.settings.image != blank and block.settings.background_image %} has_background_image{% endif %}{% unless block.settings.no_spacing_image %}{% if block.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}{% endunless %}">
                     <div
                       class="media media--transparent media--{{ block.settings.image_ratio }}"
                       {% if block.settings.image_ratio == 'adapt' %}
@@ -358,8 +358,8 @@
                     </div>
                   </div>
                 {%- endif -%}
-                <div class="multicolumn-card__content{% if block.settings.background_image %} has_background_image{% endif %}{% if block.settings.image != blank %} has-image{% endif %}{% if block.settings.enable_breadcrumb %} has-breadcrumb{% endif %} content-align-{{ block.settings.content_alignment }}{% if block.settings.column_alignment == 'center' %} center{% endif %}"
-                     {% if block.settings.background_image %}style="background: rgba(0,0,0,{{ block.settings.image_overlay_opacity | divided_by: 100.0 }});"{% endif %}
+                <div class="multicolumn-card__content{% if block.settings.image != blank and block.settings.background_image %} has_background_image{% endif %}{% if block.settings.image != blank %} has-image{% endif %}{% if block.settings.enable_breadcrumb %} has-breadcrumb{% endif %} content-align-{{ block.settings.content_alignment }}{% if block.settings.column_alignment == 'center' %} center{% endif %}"
+                     {% if block.settings.image != blank and block.settings.background_image %}style="background: rgba(0,0,0,{{ block.settings.image_overlay_opacity | divided_by: 100.0 }});"{% endif %}
                 >
                   <div class="multicolumn-card__info">
                     {%- if block.settings.title != blank -%}

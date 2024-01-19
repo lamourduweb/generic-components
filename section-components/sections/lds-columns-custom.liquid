@@ -157,9 +157,11 @@
       padding-left: 0;
       padding-right: 0;
     }
-    .lds-columns-custom .multicolumn-card_column,
-    .lds-columns-custom .multicolumn-card_page{
-      padding: 0 5rem;
+    .lds-multicolumn .multicolumn-card_column:not(.has_background_image),
+    .lds-multicolumn .multicolumn-card__content.has_background_image,
+    .lds-multicolumn .multicolumn-card_page{
+      padding-left: 5rem;
+      padding-right: 5rem;
     }
     
     .section-{{ section.id }}-padding {
@@ -169,8 +171,9 @@
   }
   
   @media screen and (max-width: 749px) {
-    .lds-columns-custom .multicolumn-card_column,
-    .lds-columns-custom .multicolumn-card_page{
+    .lds-multicolumn .multicolumn-card_column:not(.has_background_image),
+    .lds-multicolumn .multicolumn-card__content.has_background_image,
+    .lds-multicolumn .multicolumn-card_page{
       padding-left: 2rem;
       padding-right: 2rem;
     }

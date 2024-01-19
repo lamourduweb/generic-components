@@ -173,6 +173,98 @@
     "name": "Multicolonne [LdS]"
   }
 },
+/* add traduction lds-columns-custom */
+"lds-columns-custom": {
+      "name": "Colonnes custom [LdS]",
+      "settings": {
+        "content_alignment": {
+          "label": "Alignement du contenu",
+          "options__1": {
+            "label": "Haut"
+          },
+          "options__2": {
+            "label": "Centre"
+          },
+          "options__3": {
+            "label": "Bas"
+          }
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Image",
+          "settings": {
+            "image": {
+              "label": "Image"
+            }
+          }
+        },
+        "page_content": {
+          "name": "Contenu de la page",
+          "settings": {
+            "page": {
+              "label": "Contenu de la page"
+            }
+          }
+        },
+        "custom_liquid": {
+          "name": "Code Liquid",
+          "settings": {
+            "custom_liquid": {
+              "label": "Code Liquid",
+              "info": "Ajoutez des extraits d’application ou autre code pour créer des personnalisations avancées. [En savoir plus](https:\/\/shopify.dev\/docs\/api\/liquid)"
+            }
+          }
+        },
+        "column": {
+          "name": "Colonne",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Titre"
+            },
+            "caption": {
+              "label": "Sous-titre"
+            },
+            "text_style": {
+              "label": "Style de sous-titre",
+              "options__1": {
+                "label": "Sous‑titre"
+              },
+              "options__2": {
+                "label": "Minuscule"
+              }
+            },
+            "caption_size": {
+              "label": "Taille du sous-titre",
+              "options__1": {
+                "label": "Petit"
+              },
+              "options__2": {
+                "label": "Moyen"
+              },
+              "options__3": {
+                "label": "Grand"
+              }
+            },
+            "text": {
+              "label": "Description"
+            },
+            "link_label": {
+              "label": "Étiquette de lien"
+            },
+            "link": {
+              "label": "Lien"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Colonnes custom [LdS]"
+      }
+    },    
 /* add traduction lds-rich-text */
 "lds-rich-text": {
   "name": "Texte enrichi [LdS]",

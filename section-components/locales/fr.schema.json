@@ -1107,3 +1107,105 @@
       }
     },
 /*add traduction progress-bar delivery in drawer // END*/
+/*add traduction lds-slideshow-list collection and product */
+"lds-slideshow-list": {
+      "settings": {
+        "title": {
+          "label": "Titre"
+        },
+        "image_ratio": {
+          "label": "Rapport d'image",
+          "options__1": {
+            "label": "Adapter à l'image"
+          },
+          "options__2": {
+            "label": "Portrait"
+          },
+          "options__3": {
+            "label": "Square"
+          },
+          "info": "Pour ajouter des images, modifiez vos collections. [En savoir plus](https:\/\/help.shopify.com\/manual\/products\/collections)"
+        },
+        "swipe_on_mobile": {
+          "label": "Activer le balayage sur mobile"
+        },
+        "show_view_all": {
+          "label": "Activer le bouton « Tout afficher » si la liste comprend plus de collections que celles affichées"
+        },
+        "view_all_style": {
+          "options__1": {
+            "label": "Lien"
+          },
+          "options__2": {
+            "label": "Bouton en relief"
+          },
+          "options__3": {
+            "label": "Bouton plein"
+          },
+          "label": "Style « Tout afficher »"
+        },
+        "enable_desktop_slider": {
+          "label": "Activer le carrousel sur ordinateur"
+        },
+        "products_to_show": {
+          "label": "Quantité maximale de produits à afficher"
+        },
+        "columns_desktop": {
+          "label": "Nombre de colonnes sur ordinateur"
+        },
+        "header_mobile": {
+          "content": "Mise en page sur mobile"
+        },
+        "columns_tablet": {
+          "label": "Nombre de colonnes sur tablette",
+          "options__2": {
+            "label": "2 colonnes"
+          },
+          "options__3": {
+            "label": "3 colonnes"
+          }
+        },
+        "columns_mobile": {
+          "label": "Nombre de colonnes sur mobile",
+          "options__1": {
+            "label": "1 colonne"
+          },
+          "options__2": {
+            "label": "2 colonnes"
+          }
+        }
+      }
+    },
+    "lds-slideshow-products": {
+      "name": "Liste de produits [LdS]",
+      "blocks": {
+        "featured_product": {
+          "name": "Produit",
+          "settings": {
+            "product": {
+              "label": "Produit"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Liste de produits [LdS]"
+      }
+    },
+    "lds-slideshow-collection": {
+      "name": "Liste des collections [LdS]",
+      "blocks": {
+        "featured_collection": {
+          "name": "Collection",
+          "settings": {
+            "collection": {
+              "label": "Collection"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Liste des collections [LdS]"
+      }
+    },
+/*add traduction lds-slideshow-list collection and product //END */

@@ -1,1 +1,428 @@
+{% assign toggle_collection = collection.metafields.custom.collections_associees.value %}
+{%- if toggle_collection -%}
+  {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+  {{ 'lds-multicolumn-slide.css' | asset_url | stylesheet_tag }}
+  
+  {%- style -%}
+
+    .lds-slider-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .lds-slider-container.center {
+      justify-content: center;
+    }
+    .lds-slider {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 1rem;
+      overflow-x: scroll; /* Permettre le défilement horizontal */
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .lds-slider::-webkit-scrollbar {
+      display: none; /* Safari et Chrome */
+    }
+    
+    .lds-slide-item {
+      flex: 0 0 auto;
+      line-height: 1.2;
+      font-size: clamp(1.2rem,1vw,1.5rem);
+      font-weight: 500;
+      background: rgb(var(--color-background),1);
+      padding: .25rem 1.25rem;
+      font-family: var(--font-body-family);
+    }
+    .lds-slide-item:not(.has-image) {
+      display: block;
+    }
+    .lds-slide-item.has-image {
+      display: grid;
+      grid-template-columns: 35px auto;
+      align-items: center;
+      gap: 1rem;
+      transition: all var(--duration-medium);
+      padding-left: .25rem;
+    }
+    .lds-slider.has-media--circle .lds-slide-item {
+      border-radius: 50px;
+    }
+    .lds-slider:not(.has-media--circle) .lds-slide-item,
+    .lds-slider:not(.has-media--circle) .lds-slide-item img {
+      border-radius: var(--text-boxes-radius);
+    }
+    .lds-slide-item.current--item {
+      background: rgb(var(--color-foreground));
+      color: rgb(var(--color-background));
+      pointer-events: none;
+    }
+    .lds-slide-item:not(.current--item):hover {
+      background: rgba(var(--color-foreground),.06);
+    }
+
+    
+    .lds-slider-control {
+      display: none; /* Initialement masqué */
+      color: rgb(var(--color-foreground));
+      background: rgb(var(--color-background));
+      border: none;
+      box-shadow: 0 .4rem 4rem rgba(var(--color-foreground),.1);
+      border-radius: 50%;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      overflow: hidden;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all .25s ease;
+      z-index: 2;
+    }
+    .lds-slider-control.show {
+      display: block;
+    }
+    
+    /* Positionnement des boutons */
+    .lds-slider-control.prev {
+      left: -1.5rem;
+    }
+    .lds-slider-control.prev .icon {
+      transform: rotate(90deg);
+    }
+    .lds-slider-control.next {
+      right: -1.5rem;
+    }
+    .lds-slider-control.next .icon {
+      transform: rotate(-90deg);
+    }
+
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+    
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+  {%- endstyle -%}
+  
+   <div class="{{ section.settings.css_class }} lds-collection-toggle-list color-{{ section.settings.color_scheme_section }} gradient">
+    <div 
+      class="{{ section.settings.page_width }} section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      {% if settings.animations_reveal_on_scroll %} data-cascade {% endif %}
+    >
+      <div class="lds-slider-toggle-list lds-slider-container {% if section.settings.column_alignment == 'center' %} center{% endif %}">
+        <button
+          type="button"
+          class="lds-slider-control prev"
+          name="prev"
+        >
+          {% render 'icon-caret' %}
+        </button>
+        
+        <div id="Lds--Slider-{{ section.id }}" class="lds-slider has-media--{{ section.settings.image_ratio }} contains-content-container" role="list">
+          {%- for related_collection in toggle_collection limit: section.settings.blocks_to_show -%}
+            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+            {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+            <h2 class="lds-slide-item{% if related_collection.title == collection.title %} current--item{% endif %} color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_collection_image %} has-image{% endif %}">
+              {%- if section.settings.show_collection_image -%}
+                {%- if related_collection.image != blank  -%}
+                  <div class="media media--transparent media--{{ section.settings.image_ratio }}{% if section.settings.media_shadow == true %} media__shadow{% endif %}">
+                    {%- liquid
+                      assign number_of_columns = section.settings.columns_desktop
+                      assign number_of_columns_mobile = section.settings.columns_mobile
+                      assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                      assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                      assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                      assign image_width = 1
+                    -%}
+                    {% capture sizes %}
+                      (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                      (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                      (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                      calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                    {% endcapture %}
+                    {{
+                      related_collection.image
+                      | image_url: width: 150
+                      | image_tag:
+                        widths: '50, 75, 100, 150',
+                        sizes: sizes,
+                        class: 'multicolumn-card__image'
+                    }}
+                  </div>
+                {%- else -%}
+                  <div class="media media--transparent media--{{ section.settings.image_ratio }}{% if section.settings.media_shadow == true %} media__shadow{% endif %}">
+                    {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+              <a href="{{ related_collection.url }}" class="full-unstyled-link">
+                {{ related_collection.title | default: related_collection.metafields.custom.name | truncate: 50 | escape }}
+              </a>
+            </h2>
+          {%- endfor -%}
+        </div>
+        <button
+          type="button"
+          class="lds-slider-control next"
+          name="next"
+        >
+          {% render 'icon-caret' %}
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.getElementById('Lds--Slider-{{ section.id }}');
+      const prevButton = document.querySelector('.lds-slider-control.prev');
+      const nextButton = document.querySelector('.lds-slider-control.next');
+    
+      const slideItems = document.querySelectorAll('.lds-slide-item');
+      const itemWidth = slideItems[0].offsetWidth + parseInt(getComputedStyle(slideItems[0]).marginRight, 10); // La largeur d'un élément avec la marge droite
+      const itemsPerSlide = Math.floor(slider.clientWidth / itemWidth);
+    
+      function updateButtons() {
+        // Afficher ou masquer les boutons en fonction de la position de défilement
+        if (slider.scrollLeft > 0) {
+          prevButton.classList.add('show');
+        } else {
+          prevButton.classList.remove('show');
+        }
+    
+        if (slider.scrollLeft + slider.clientWidth < slider.scrollWidth) {
+          nextButton.classList.add('show');
+        } else {
+          nextButton.classList.remove('show');
+        }
+      }
+    
+      // Initialement, vérifier si les boutons doivent être affichés
+      updateButtons();
+    
+      prevButton.addEventListener('click', function () {
+        slider.scrollBy({ left: -itemWidth * itemsPerSlide, behavior: 'smooth' });
+        setTimeout(updateButtons, 300); // Mise à jour après le défilement
+      });
+    
+      nextButton.addEventListener('click', function () {
+        slider.scrollBy({ left: itemWidth * itemsPerSlide, behavior: 'smooth' });
+        setTimeout(updateButtons, 300); // Mise à jour après le défilement
+      });
+    
+      // Mise à jour des boutons lorsque le slider est défilé manuellement
+      slider.addEventListener('scroll', updateButtons);
+    
+      // Mise à jour des boutons lors du redimensionnement de la fenêtre
+      window.addEventListener('resize', function () {
+        updateButtons();
+      });
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.lds-collection-toggle-list.name",
+  "class": "section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.lds-multicolumn-slide.settings.layout_columns.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "circle",
+          "label": "t:sections.multicolumn.settings.image_ratio.options__4.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.multicolumn.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.multicolumn.settings.image_ratio.options__2.label"
+        }
+      ],
+      "default": "circle",
+      "label": "t:sections.multicolumn.settings.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.multicolumn.settings.column_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.multicolumn.settings.column_alignment.options__2.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:sections.multicolumn.settings.column_alignment.label"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.multicolumn.settings.background_style.options__1.label"
+        },
+        {
+          "value": "primary",
+          "label": "t:sections.multicolumn.settings.background_style.options__2.label"
+        }
+      ],
+      "default": "primary",
+      "label": "t:sections.multicolumn.settings.background_style.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "",
+          "label": "t:sections.all.page_width.options__1.label"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.all.page_width.options__2.label"
+        },
+        {
+          "value": "page-width page-width--narrow",
+          "label": "t:sections.all.page_width.options__3.label"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.all.page_width.label"
+    },
+    {
+      "type": "range",
+      "id": "blocks_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.lds-multicolumn-slide.settings.blocks_to_show.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.multicolumn.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_desktop_slider",
+      "label": "t:sections.lds-multicolumn-slide.settings.enable_desktop_slider.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme_section",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.multicolumn.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.multicolumn.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.multicolumn.settings.columns_mobile.options__2.label"
+        }
+      ],
+      "default": "1",
+      "label": "t:sections.multicolumn.settings.columns_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": false,
+      "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.class.class_heading"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "t:sections.all.class.class_name"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.lds-collection-toggle-list.presets.name"
+    }
+  ]
+}
+{% endschema %}
 

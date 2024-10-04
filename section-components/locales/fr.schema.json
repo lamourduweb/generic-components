@@ -1209,3 +1209,21 @@
       }
     },
 /*add traduction lds-slideshow-list collection and product //END */
+/*add traduction lds-main-contenu-seo */
+    "lds-main-contenu-seo": {
+      "name": "♥ LdS - Contenu SEO",
+      "blocks": {
+        "content": {
+          "name": "Contenu",
+          "settings": {
+            "content": {
+              "label": "Contenu"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "♥ LdS - Contenu SEO"
+      }
+    }
+/*add traduction lds-main-contenu-seo //END */

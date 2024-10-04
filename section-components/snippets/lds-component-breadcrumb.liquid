@@ -1,110 +1,45 @@
-{% liquid
-  assign class = ''
-  if section.settings.hide_mobile
-    assign class = 'small-hide'
-  endif
-        
-  assign container = section.settings.full_width
-  assign justify = section.settings.title_alignment
+{% comment %}
+  Renders a breadcrumb
+
+  Accepts:
   
-  if container-value == null
-    assign page-width = 'page-width'
-  endif
+  - hide_mobile: {Boolean} 
+  - page-width: {String} 
+  - justify: {String}
+  - breadcrumb_color_scheme: {String}
 
-  assign hide_current = section.settings.hide_current
-%}
-
-{%- style -%}
-  .breadcrumbs {
-    z-index: 2;
-    position: relative;
-  }
-  .breadcrumbs nav {
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: {{ justify }};
-    font-size: 1rem;
-  }
-
-  .breadcrumbs__list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .breadcrumbs__item {
-    display: inline-block;
-  }
-
-  .breadcrumbs .icon-caret {
-    width: .75rem;
-    height: .75rem;
-    margin-left: .5rem;
-    position: relative;
-    transform: rotate(-90deg);
-    vertical-align: baseline;
-  }
-
-  .breadcrumbs__link {
-    color: inherit;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  .breadcrumbs__link[aria-current="page"] {
-    color: inherit;
-    font-weight: normal;
-    text-decoration: none;
-  }
-
-  .breadcrumbs__link[aria-current="page"]:hover,
-  .breadcrumbs__link[aria-current="page"]:focus {
-    text-decoration: none;
-  }
-
-  .breadcrumbs nav:not(.page-width) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .breadcrumbs nav:not(.page-width) {
-      padding-left: 5rem;
-      padding-right: 5rem;
-    }
-
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
+  Usage:
+  {% render 'lds-component-breadcrumb'
+    breadcrumb_color_scheme: section.settings.breadcrumb_color_scheme,
+    page-width: section.settings.page_width, 
+    justify: section.settings.title_alignment, 
+    hide_current: section.settings.hide_current,
+    hide_desktop: section.settings.hide_desktop,
+    hide_tablet: section.settings.hide_tablet,
+    hide_mobile: section.settings.hide_mobile,
+    class: section.settings.breadcrumb_css_class
+  %}
+{% endcomment %}
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign t = template | split: '.' | first -%}
-  <div class="breadcrumbs color-{{ color_scheme }} section-{{ section.id }}-padding">
+  <div id="breadcrumb-{{ section.id }}" class="{{ class }} breadcrumb color-{{ breadcrumb_color_scheme }} section-{{ section.id }}-padding{% if hide_desktop %} largupHide{% endif %}{% if hide_tablet %} mediumHide{% endif %}{% if hide_mobile %} smallHide{% endif %}">
     <nav
-      class="{{ page-width }} {{ class }}"
+      class="{{ page-width }}"
       role="navigation"
-      aria-label="breadcrumbs"
+      aria-label="breadcrumb"
     >
-      <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumbs__list">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb__list">
         <li
           itemprop="itemListElement" itemscope
           itemtype="https://schema.org/ListItem"
-          class="breadcrumbs__item"
+          class="breadcrumb__item"
         >
           <a
             itemscope itemtype="https://schema.org/WebPage"
             itemprop="item" itemid="{{ routes.root_url }}"
             href="{{ routes.root_url }}"
-            class="breadcrumbs__link"
+            class="breadcrumb__link"
             title="{{ 'general.breadcrumb.home' | t }}">
             <span itemprop="name">{{ 'general.breadcrumb.home' | t }}</span>
           </a>
@@ -117,16 +52,15 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item"
+                class="breadcrumb__item breadcrumb__item_last"
               >
-                <a 
+                <span
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ page.url }}"
-                  href="{{ page.url }}"
-                  class="breadcrumbs__link" aria-current="page"
+                  class="breadcrumb__link" aria-current="page"
                   title="{{ page.title }}">
                   <span itemprop="name">{{ page.title }}</span>
-                </a>
+                </span>
                 <meta itemprop="position" content="2">
               </li>
             {% endunless %}
@@ -136,13 +70,13 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item"
+                class="breadcrumb__item"
               >
                 <a
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ collection.url }}"
                   href="{{ collection.url }}"
-                  class="breadcrumbs__link"
+                  class="breadcrumb__link"
                   title="{{ collection.title }}">
                   <span itemprop="name">{{ collection.title }}</span>
                 </a>
@@ -154,13 +88,13 @@
                   <li 
                     itemprop="itemListElement" itemscope
                     itemtype="https://schema.org/ListItem"
-                    class="breadcrumbs__item"
+                    class="breadcrumb__item"
                     >
                     <a
                       itemscope itemtype="https://schema.org/WebPage"
                       itemprop="item" itemid="{{ collection.url }}"
                       href="{{ collection.url }}"
-                      class="breadcrumbs__link"
+                      class="breadcrumb__link"
                       title="{{ collection.title }}">
                       <span itemprop="name">{{ collection.title }}</span>
                     </a>
@@ -172,13 +106,13 @@
                 <li
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
-                  class="breadcrumbs__item"
+                  class="breadcrumb__item"
                 >
                   <a
                     itemscope itemtype="https://schema.org/WebPage"
                     itemprop="item" itemid="{{ product.collections.first.url }}"
                     href="{{ product.collections.first.url }}"
-                    class="breadcrumbs__link"
+                    class="breadcrumb__link"
                     title="{{ product.collections.first.title }}">
                     <span itemprop="name">
                       {{- product.collections.first.title -}}
@@ -199,15 +133,14 @@
                 <li
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
-                  class="breadcrumbs__item"
+                  class="breadcrumb__item breadcrumb__item_last"
                 >
-                  <a
+                  <span
                     itemscope itemtype="https://schema.org/WebPage"
                     itemprop="item" itemid="{{ product.url }}"
-                    href="{{ product.url }}"
-                    class="breadcrumbs__link" aria-current="page">
+                    class="breadcrumb__link" aria-current="page">
                     <span itemprop="name">{{ product.title }}</span>
-                  </a>
+                  </span>
                   <meta itemprop="position" content="{{ position }}">
                 </li>
               {% endunless %}
@@ -216,15 +149,14 @@
                 <li
                     itemprop="itemListElement" itemscope
                     itemtype="https://schema.org/ListItem"
-                    class="breadcrumbs__item"
+                    class="breadcrumb__item breadcrumb__item_last"
                   >
-                  <a
+                  <span
                     itemscope itemtype="https://schema.org/WebPage"
                     itemprop="item" itemid="{{ product.url }}"
-                    href="{{ product.url }}"
-                    class="breadcrumbs__link" aria-current="page">
+                    class="breadcrumb__link" aria-current="page">
                     <span itemprop="name">{{ product.title }}</span>
-                  </a>
+                  </span>
                   <meta itemprop="position" content="3">
                 </li>
               {% endunless %}
@@ -235,13 +167,13 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item 1_current_tags"
+                class="breadcrumb__item 1_current_tags"
               >
                 <a 
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{  collection.url }}"
                   href="{{ collection.url }}"
-                  class="breadcrumbs__link" 
+                  class="breadcrumb__link" 
                   title="{{ collection.title }}">
                   <span itemprop="name">{{ collection.title }}</span>
                 </a>
@@ -251,14 +183,14 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item 2_current_tags"
+                class="breadcrumb__item 2_current_tags"
               >
                 {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+" }}{%- endcapture -%}
                 <a 
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ tag_url }}"
                   href="{{ tag_url }}"
-                  class="breadcrumbs__link" aria-current="page">
+                  class="breadcrumb__link" aria-current="page">
                   <span itemprop="name">{{ current_tags | join: ' + ' }}</span>
                 </a>
                 <meta itemprop="position" content="3">
@@ -271,13 +203,13 @@
                 <li 
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
-                  class="breadcrumbs__item {{ forloop.index }}_current_meta_collection"
+                  class="breadcrumb__item {{ forloop.index }}_current_meta_collection"
                 >
                   <a
                     itemscope itemtype="https://schema.org/WebPage"
                     itemprop="item" itemid="{{ collection.url }}"
                     href="{{ collection.url }}"
-                    class="breadcrumbs__link"
+                    class="breadcrumb__link"
                     title="{{ collection.title }}">
                     <span itemprop="name">{{ collection.title }}</span>
                   </a>
@@ -288,17 +220,16 @@
                 <li
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
-                  class="breadcrumbs__item last_current_collection"
+                  class="breadcrumb__item last_current_collection"
                 >
-                  <a
+                  <span
                     itemscope itemtype="https://schema.org/WebPage"
                     itemprop="item" itemid="{{ collection.url }}"
-                    href="{{ collection.url }}"
-                    class="breadcrumbs__link" aria-current="page"
+                    class="breadcrumb__link" aria-current="page"
                     title="{{ collection.title }}"
                   >
                     <span itemprop="name">{{ collection.title }}</span>
-                  </a>
+                  </span>
                   <meta itemprop="position" content="{{ position }}">
                 </li>
             {%- else -%}
@@ -306,17 +237,16 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item last_of_collection"
+                class="breadcrumb__item last_of_collection"
               >
-                <a
+                <span
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ collection.url }}"
-                  href="{{ collection.url }}"
-                  class="breadcrumbs__link" aria-current="page"
+                  class="breadcrumb__link" aria-current="page"
                   title="{{ collection.title }}"
                 >
                   <span itemprop="name">{{ collection.title }}</span>
-                </a>
+                </span>
                 <meta itemprop="position" content="2">
               </li>
             {%- endif -%}
@@ -326,13 +256,13 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item"
+                class="breadcrumb__item"
               >
                 <a 
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ blog.url }}"
                   href="{{ blog.url }}"
-                  class="breadcrumbs__link" 
+                  class="breadcrumb__link" 
                   title="{{ blog.title }}">
                   <span itemprop="name">{{ blog.title }}</span>
                 </a>
@@ -342,14 +272,14 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item"
+                class="breadcrumb__item"
               >
                 {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
                 <a 
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ tag_url }}"
                   href="{{ tag_url }}"
-                  class="breadcrumbs__link" aria-current="page">
+                  class="breadcrumb__link" aria-current="page">
                   <span itemprop="name">{{ current_tags | join: ' + ' }}</span>
                 </a>
                 <meta itemprop="position" content="3">
@@ -359,13 +289,13 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item"
+                class="breadcrumb__item"
               >
                 <a 
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ blog.url }}"
                   href="{{ blog.url }}"
-                  class="breadcrumbs__link" aria-current="page">
+                  class="breadcrumb__link" aria-current="page">
                   <span itemprop="name">{{ blog.title }}</span>
                 </a>
                 <meta itemprop="position" content="2">
@@ -376,13 +306,13 @@
             <li
               itemprop="itemListElement" itemscope
               itemtype="https://schema.org/ListItem"
-              class="breadcrumbs__item"
+              class="breadcrumb__item"
             >
               <a
                 itemscope itemtype="https://schema.org/WebPage"
                 itemprop="item" itemid="{{ blog.url }}"
                 href="{{ blog.url }}"
-                class="breadcrumbs__link" title="{{ blog.title }}">
+                class="breadcrumb__link" title="{{ blog.title }}">
                 <span itemprop="name">{{ blog.title }}</span>
               </a>
               <meta itemprop="position" content="2">
@@ -392,15 +322,14 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item"
+                class="breadcrumb__item breadcrumb__item_last"
               >
-                <a
+                <span
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ article.url }}"
-                  href="{{ article.url }}"
-                  class="breadcrumbs__link" aria-current="page">
+                  class="breadcrumb__link" aria-current="page">
                   <span itemprop="name">{{ article.title }}</span>
-                </a>
+                </span>
                 <meta itemprop="position" content="3">
               </li>
             {% endunless %}
@@ -410,15 +339,14 @@
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
-                class="breadcrumbs__item"
+                class="breadcrumb__item breadcrumb__item_last"
               >
-                <a 
+                <span
                   itemscope itemtype="https://schema.org/WebPage"
                   itemprop="item" itemid="{{ request.path }}"
-                  href="{{ request.path }}"
-                  class="breadcrumbs__link" aria-current="page">
+                  class="breadcrumb__link" aria-current="page">
                   <span itemprop="name">{{ page_title }}</span>
-                </a>
+                </span>
                 <meta itemprop="position" content="2">
               </li>
             {% endunless %}
@@ -427,3 +355,90 @@
     </nav>
   </div>
 {%- endunless -%}
+
+{%- style -%}
+  .breadcrumb {
+    z-index: 2;
+    position: relative;
+  }
+  
+  #breadcrumb-{{ section.id }} nav {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: {{ justify }};
+    font-size: 1rem;
+  }
+
+  .breadcrumb__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: scroll;
+    gap: .25rem;
+  }
+
+  .breadcrumb__item {
+    display: inline-block;
+  }
+
+  .breadcrumb .icon-caret {
+    width: .75rem;
+    height: .75rem;
+    position: relative;
+    transform: rotate(-90deg);
+    vertical-align: baseline;
+    min-width: .75rem;
+  }
+
+  .breadcrumb__link {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .breadcrumb__link[aria-current="page"] {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .breadcrumb__link[aria-current="page"]:hover,
+  .breadcrumb__link[aria-current="page"]:focus {
+    text-decoration: none;
+  }
+
+  .breadcrumb nav:not(.page-width) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .breadcrumb.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.breadcrumb_padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.breadcrumb_padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+     .breadcrumb__list {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .breadcrumb__item.breadcrumb__item_last {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .breadcrumb nav:not(.page-width) {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    .breadcrumb.section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.breadcrumb_padding_top }}px;
+      padding-bottom: {{ section.settings.breadcrumb_padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}

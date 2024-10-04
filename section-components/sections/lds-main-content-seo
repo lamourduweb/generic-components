@@ -1,18 +1,25 @@
 {% assign t = template | split: '.' | first %}
-{% liquid
-  if t == 'collection'
-    assign content_seo = collection.metafields.custom.contenu_seo | metafield_tag
-  elsif t == 'product'
-    assign content_seo = product.metafields.custom.contenu_seo | metafield_tag
-  elsif t == 'page'
-    assign content_seo = page.metafields.custom.contenu_seo | metafield_tag
-  elsif t == 'blog'
-    assign content_seo = blog.metafields.custom.contenu_seo | metafield_tag
-  elsif t == 'article'
-    assign content_seo = article.metafields.custom.contenu_seo | metafield_tag
-  endif
-%}
-{% assign truncated_content = content_seo | truncate: 500 %}
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'content' %}
+      {% assign limit_truncate = block.settings.limit_truncate %}
+      {% assign content_seo = block.settings.text %}
+  {% endcase %}
+{% endfor %}
+
+{% if t == 'collection' and collection.metafields.custom.contenu_seo != blank %}
+  {% assign content_seo = collection.metafields.custom.contenu_seo | metafield_tag %}
+{% elsif t == 'product' and product.metafields.custom.contenu_seo != blank %}
+  {% assign content_seo = product.metafields.custom.contenu_seo | metafield_tag %}
+{% elsif t == 'page' and page.metafields.custom.contenu_seo != blank %}
+  {% assign content_seo = page.metafields.custom.contenu_seo | metafield_tag %}
+{% elsif t == 'blog' and blog.metafields.custom.contenu_seo != blank %}
+  {% assign content_seo = blog.metafields.custom.contenu_seo | metafield_tag %}
+{% elsif t == 'article' and article.metafields.custom.contenu_seo != blank %}
+  {% assign content_seo = article.metafields.custom.contenu_seo | metafield_tag %}
+{% endif %}
+
+{% assign truncated_content = content_seo | truncate: limit_truncate %}
 
 {% if content_seo != blank %}
   {{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
@@ -190,9 +197,6 @@
   "name": "t:sections.lds-main-contenu-seo.name",
   "tag": "section",
   "class": "section",
-  "enabled_on": {
-    "templates": ["*"]
-  },
   "settings": [
     {
       "type": "select",
@@ -429,7 +433,23 @@
     {
       "type": "content",
       "name": "t:sections.lds-main-contenu-seo.blocks.content.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "limit_truncate",
+          "min": 150,
+          "max": 600,
+          "step": 10,
+          "label": "Nombre de caractères avant troncage",
+          "default": 250
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        }
+      ]
     }
   ],
   "presets": [

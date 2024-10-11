@@ -201,6 +201,10 @@
       }
     }
   },
+  "presets": {
+    "name": "♥ LdS - Multicolonne réseaux sociaux"
+  }
+},
 /* add traduction lds-columns-custom */
 "lds-columns-custom": {
       "name": "Colonnes custom [LdS]",

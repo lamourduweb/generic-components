@@ -173,6 +173,34 @@
     "name": "Multicolonne [LdS]"
   }
 },
+/* add traduction lds-multicolumn-social */
+"lds-multicolumn-social": {
+  "name": "♥ LdS - Multicolonne réseaux sociaux",
+  "blocks": {
+    "column": {
+      "name": "Colonne",
+      "settings": {
+        "icon": {
+          "options__0": {
+            "label": "Aucune"
+          },
+          "options__1": {
+            "label": "Instagram"
+          },
+          "options__2": {
+            "label": "Facebook"
+          },
+          "options__3": {
+            "label": "Pinterest"
+          },
+          "options__4": {
+            "label": "youtube"
+          },
+          "label": "Icone"
+        }
+      }
+    }
+  },
 /* add traduction lds-columns-custom */
 "lds-columns-custom": {
       "name": "Colonnes custom [LdS]",

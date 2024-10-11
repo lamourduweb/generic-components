@@ -1156,13 +1156,13 @@
           "options__3": {
             "label": "Square"
           },
-          "info": "Pour ajouter des images, modifiez vos collections. [En savoir plus](https:\/\/help.shopify.com\/manual\/products\/collections)"
+          "info": "Pour ajouter des images, modifiez vos collections. [En savoir plus](https://help.shopify.com/manual/products/collections)"
         },
         "swipe_on_mobile": {
           "label": "Activer le balayage sur mobile"
         },
         "show_view_all": {
-          "label": "Activer le bouton « Tout afficher » si la liste comprend plus de collections que celles affichées"
+          "label": "Activer le bouton « Tout afficher » si la liste comprend plus de collections que celles affichées"
         },
         "view_all_style": {
           "options__1": {
@@ -1174,7 +1174,7 @@
           "options__3": {
             "label": "Bouton plein"
           },
-          "label": "Style « Tout afficher »"
+          "label": "Style « Tout afficher »"
         },
         "enable_desktop_slider": {
           "label": "Activer le carrousel sur ordinateur"
@@ -1191,26 +1191,48 @@
         "columns_tablet": {
           "label": "Nombre de colonnes sur tablette",
           "options__2": {
-            "label": "2 colonnes"
+            "label": "2 colonnes"
           },
           "options__3": {
-            "label": "3 colonnes"
+            "label": "3 colonnes"
           }
         },
         "columns_mobile": {
           "label": "Nombre de colonnes sur mobile",
           "options__1": {
-            "label": "1 colonne"
+            "label": "1 colonne"
           },
           "options__2": {
-            "label": "2 colonnes"
+            "label": "2 colonnes"
           }
         }
       }
     },
     "lds-slideshow-products": {
-      "name": "Liste de produits [LdS]",
+      "name": "♥ LdS - Liste de produits en caroussel",
+      "settings": {
+        "collection_hero_layout": {
+          "label": "Mise en page du titre de la collection",
+          "options__0": {
+            "label": "Par défaut"
+          },
+          "options__1": {
+            "label": "Demi colonne gauche"
+          },
+          "options__2": {
+            "label": "Demi colonne droite"
+          }
+        }
+      },
       "blocks": {
+        "featured_collection": {
+          "name": "Collection",
+          "settings": {
+            "collection": {
+              "label": "Collection"
+            }
+          }
+        },
         "featured_product": {
           "name": "Produit",
           "settings": {
@@ -1221,11 +1243,11 @@
         }
       },
       "presets": {
-        "name": "Liste de produits [LdS]"
+        "name": "♥ LdS - Liste de produits en caroussel"
       }
     },
     "lds-slideshow-collection": {
-      "name": "Liste des collections [LdS]",
+      "name": "♥ LdS - Liste des collections en caroussel",
       "blocks": {
         "featured_collection": {
           "name": "Collection",
@@ -1237,7 +1259,30 @@
         }
       },
       "presets": {
-        "name": "Liste des collections [LdS]"
+        "name": "♥ LdS - Liste des collections en caroussel"
+      }
+    },
+    "lds-slideshow-collection-tabs": {
+      "name": "♥ LdS - Liste de collections en onglets",
+      "settings": {
+        "title": {
+          "label": "Notre sélection"
+        },
+        "collection_1": {
+          "label": "Collection 1"
+        },
+        "collection_2": {
+          "label": "Collection 2"
+        },
+        "collection_3": {
+          "label": "Collection 3"
+        },
+        "title_collection": {
+          "label": "Titre de substitution"
+        },
+      },
+      "presets": {
+        "name": "♥ LdS - Liste de collections en onglets"
       }
     },
 /*add traduction lds-slideshow-list collection and product //END */

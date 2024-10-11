@@ -17,6 +17,9 @@
     .title-wrapper-with-link {
         margin: 5rem 0 1.5rem;
     }
+    .lds-social-multicolumn .grid__item:nth-child(odd) {
+      margin-top: 3rem;
+    }
   }
   .multicolumn-social-card.content-container {
     --text-boxes-radius: .6rem;
@@ -65,18 +68,20 @@
   >
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin {% if section.settings.title_alignment == 'center' %} center{% endif %}">
+        <div>
+          <{{ section.settings.heading_html }} class="title inline-richtext {{ section.settings.heading_size_hn }}">
+            {{ section.settings.title | replace: "  ", "<br>"}}
+          </{{ section.settings.heading_html }}>
+          {%- if section.settings.description != blank -%}
+            <div class="{{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.description -}}
+            </div>
+          {%- endif -%}
+        </div>
         {%- if section.settings.button_label != blank and show_mobile_slider -%}
           <a href="{{ section.settings.button_link }}" class="link underlined-link large-up-hide">
             {{- section.settings.button_label | escape -}}
           </a>
-        {%- endif -%}
-        <{{ section.settings.heading_html }} class="title inline-richtext {{ section.settings.heading_size_hn }}">
-          {{ section.settings.title | replace: "  ", "<br>"}}
-        </{{ section.settings.heading_html }}>
-        {%- if section.settings.description != blank -%}
-          <div class="{{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-            {{ section.settings.description -}}
-          </div>
         {%- endif -%}
       </div>
     {%- endunless -%}
@@ -159,7 +164,9 @@
                   {%- endif -%}
                 </div>
                 <div class="icon_social-media">
-                  {%- render 'icon-social', icon: block.settings.icon -%}
+                  <span class="svg-wrapper"
+                    >{{ 'icon-' | append: block.settings.icon | append: '.svg' | inline_asset_content }}</span
+                  >
                 </div>
               </div>
               {%- if block.settings.link != blank -%}
@@ -176,8 +183,10 @@
                     {% endif %}
                   >
                     {{- block.settings.link_label | escape -}}
-                    <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a
-                  >
+                    <span class="svg-wrapper"
+                      ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
+                    >
+                  </a>
                 {%- endif -%}
               </div>
             </div>
@@ -193,7 +202,7 @@
             name="previous"
             aria-label="{{ 'general.slider.previous_slide' | t }}"
           >
-            {% render 'icon-caret' %}
+            <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
           </button>
           <div class="slider-counter caption">
             <span class="slider-counter--current">1</span>
@@ -207,7 +216,7 @@
             name="next"
             aria-label="{{ 'general.slider.next_slide' | t }}"
           >
-            {% render 'icon-caret' %}
+            <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
           </button>
         </div>
       {%- endif -%}
@@ -415,7 +424,7 @@
           "label": "t:sections.multicolumn.settings.columns_mobile.options__2.label"
         }
       ],
-      "default": "1",
+      "default": "2",
       "label": "t:sections.multicolumn.settings.columns_mobile.label"
     },
     {
@@ -470,27 +479,27 @@
           "options": [
             {
               "value": "none",
-              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__1.label"
+              "label": "t:sections.lds-multicolumn-social.blocks.column.settings.icon.options__0.label"
             },
             {
               "value": "instagram",
-              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__instagram.label"
+              "label": "t:sections.lds-multicolumn-social.blocks.column.settings.icon.options__1.label"
             },
             {
               "value": "facebook",
-              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__facebook.label"
+              "label": "t:sections.lds-multicolumn-social.blocks.column.settings.icon.options__2.label"
             },
             {
               "value": "pinterest",
-              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__pinterest.label"
+              "label": "t:sections.lds-multicolumn-social.blocks.column.settings.icon.options__3.label"
             },
             {
               "value": "youtube",
-              "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__youtube.label"
+              "label": "t:sections.lds-multicolumn-social.blocks.column.settings.icon.options__4.label"
             }
           ],
           "default": "instagram",
-          "label": "t:sections.main-product.blocks.icon_with_text.settings.icon_1.label"
+          "label": "t:sections.lds-multicolumn-social.blocks.column.settings.icon.label"
         },
         {
           "type": "url",

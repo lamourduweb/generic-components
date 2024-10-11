@@ -33,26 +33,28 @@
 -%}
 
 <div class="{{ section.settings.css_class }} color-{{ section.settings.color_scheme }} gradient">
-  <div class="lds-slideshow-list collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
+  <div class="collection-list-wrapper{% if section.settings.full_width %} list-wrapper--full-width{% else %} page-width{% if show_mobile_slider %} page-width-desktop{% endif %}{% endif %} isolate{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
-      <div class="title-wrapper-with-link{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
-        <{{ section.settings.heading_html }}
-          id="SectionHeading-{{ section.id }}"
-          class="collection-list-title inline-richtext {{ section.settings.heading_size_hn }}"
-        >
-          {{ section.settings.title }}
-        </{{ section.settings.heading_html }}>
-        {%- if section.settings.description != blank -%}
-          <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-            {{ section.settings.description -}}
-          </div>
-        {%- endif -%}
-      </div>
+      {% if section.settings.full_width %}<div class="page-width">{% endif %}
+        <div class="title-wrapper{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
+          <{{ section.settings.heading_html }}
+            id="SectionHeading-{{ section.id }}"
+            class="collection-list-title inline-richtext {{ section.settings.heading_size_hn }}"
+          >
+            {{ section.settings.title }}
+          </{{ section.settings.heading_html }}>
+          {%- if section.settings.description != blank -%}
+            <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.description -}}
+            </div>
+          {%- endif -%}
+        </div>
+      {% if section.settings.full_width %}</div>{% endif %}
     {%- endunless -%}
 
-    <{% if section.settings.slider_visual == 'dots' or section.settings.slider_visual == 'numbers' %}slideshow-component{% else %}slider-component{% endif %} class="slider-mobile-gutter">
+    <{% if section.settings.slider_visual == 'dots' or section.settings.slider_visual == 'numbers' %}slideshow-component{% else %}slider-component{% endif %} class="slider-mobile-gutter{% if section.settings.full_width %} component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
-        class="slideshow-list collection-list contains-card contains-card--collection{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid{% if section.settings.columns_tablet == '3' %} grid--{{ section.settings.columns_tablet }}-col-tablet-down{% endif %} grid--{{ section.settings.columns_mobile }}-col-tablet-down {% if section.settings.columns_desktop == 1 %} grid--full-width grid--{{ section.settings.columns_desktop }}-col-desktop{% else %} grid--{{ section.settings.columns_desktop }}-col-desktop{% endif %}{% if section.settings.swipe_on_mobile or show_desktop_slider %} lds-slideshow slideshow slider {% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %} collection-list--{{ section.blocks.size }}-items"
+        class="slideshow-list collection-list contains-card contains-card--collection{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid grid--{{ section.settings.columns_tablet }}-col-tablet grid--{{ section.settings.columns_mobile }}-col-tablet-down {% if section.settings.columns_desktop == 1 %} grid--full-width grid--{{ section.settings.columns_desktop }}-col-desktop{% else %} grid--{{ section.settings.columns_desktop }}-col-desktop{% endif %}{% if section.settings.swipe_on_mobile or show_desktop_slider %} lds-slideshow slideshow slider {% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %} collection-list--{{ section.blocks.size }}-items"
         id="Slider-{{ section.id }}"
         role="list"
       >
@@ -93,16 +95,18 @@
             name="previous"
             aria-label="{{ 'general.slider.previous_slide' | t }}"
           >
-            {% render 'icon-caret' %}
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
           </button>
-          {% if section.settings.slider_visual != 'arrows'%}
+          {% if section.settings.slider_visual != 'arrows' %}
             <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
               {%- if section.settings.slider_visual == 'counter' -%}
                 <span class="slider-counter--current">1</span>
                 <span aria-hidden="true"> / </span>
                 <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
                 <span class="slider-counter--total">{{ section.blocks.size }}</span>
-              {%- else-%}
+              {%- else -%}
                 {%- liquid
                   assign product_size = section.blocks.size
                   assign columns_desktop = section.settings.columns_desktop
@@ -111,34 +115,75 @@
                   
                   if product_size >= limit_to_show
                     assign dot_count_desktop = limit_to_show | minus: columns_desktop | plus: 1
-                    assign dot_count_mobile = product_size | minus: columns_mobile
+                    if columns_tablet == '3' and columns_mobile == '1'
+                      assign dot_count_desktop = limit_to_show | minus: columns_desktop | plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_tablet | minus: 3 
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet | plus: 1
+                    elsif columns_tablet == '3' and columns_mobile == '2'
+                      assign dot_count_desktop = limit_to_show | minus: columns_desktop| plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_tablet | minus: 3
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet
+                    elsif columns_tablet == '2' and columns_mobile == '2'
+                      assign dot_count_desktop = limit_to_show | minus: columns_desktop | plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_desktop | minus: columns_tablet
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet | minus: 3
+                    elsif columns_tablet == '2' and columns_mobile == '1'
+                      assign dot_count_desktop = limit_to_show | minus: columns_desktop | plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_desktop | minus: columns_tablet 
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet | minus: 1
+                    endif
                   else
                     assign dot_count_desktop = product_size | minus: columns_desktop | plus: 1
-                    assign dot_count_mobile = product_size | minus: columns_mobile
+                    if columns_tablet == '3' and columns_mobile == '1'
+                      assign dot_count_desktop = product_size | minus: columns_desktop | plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_tablet | minus: 3
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet | plus: 1
+                    elsif columns_tablet == '3' and columns_mobile == '2'
+                      assign dot_count_desktop = product_size | minus: columns_desktop | plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_tablet | minus: 3
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet
+                    elsif columns_tablet == '2' and columns_mobile == '2'
+                      assign dot_count_desktop = product_size | minus: columns_desktop | plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_desktop | minus: columns_tablet
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet | minus: 3
+                    elsif columns_tablet == '2' and columns_mobile == '1'
+                      assign dot_count_desktop = product_size | minus: columns_desktop | plus: 1
+                      assign dot_count_tablet  = product_size | minus: columns_desktop | minus: columns_tablet 
+                      assign dot_count_mobile  = product_size | minus: columns_desktop | minus: columns_tablet | minus: 1
+                    endif
                   endif
                 -%}
                 <div class="slideshow__control-wrapper">
                   {%- for product in section.blocks limit: dot_count_desktop -%}
-                    <button class="slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link" aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}" aria-controls="Slider-{{ section.id }}">
+                    <button class="dot_count_desktop slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link" aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}" aria-controls="Slider-{{ section.id }}">
                       {%- if section.settings.slider_visual == 'numbers' -%}{{ forloop.index }}{% else %}<span class="dot"></span>{%- endif -%}
                     </button>
                   {%- endfor -%}
+                  
+                  {%- for product in section.blocks limit: dot_count_tablet -%}
+                    <button class="dot_count_tablet large-up-hide slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link" aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}" aria-controls="Slider-{{ section.id }}">
+                      {%- if section.settings.slider_visual == 'numbers' -%}{{ forloop.index }}{% else %}<span class="dot"></span>{%- endif -%}
+                    </button>
+                  {%- endfor -%}
+                  
                   {%- for product in section.blocks limit: dot_count_mobile -%}
-                    <button class="large-up-hide slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link" aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}" aria-controls="Slider-{{ section.id }}">
+                    <button class="dot_count_mobile medium-hide large-up-hide slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link" aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}" aria-controls="Slider-{{ section.id }}">
                       {%- if section.settings.slider_visual == 'numbers' -%}{{ forloop.index }}{% else %}<span class="dot"></span>{%- endif -%}
                     </button>
                   {%- endfor -%}
                 </div>
               {%- endif -%}
             </div>
-            {%- endif -%}
+          {%- endif -%}
           <button
             type="button"
             class="slider-button slider-button--next"
             name="next"
             aria-label="{{ 'general.slider.next_slide' | t }}"
           >
-            {% render 'icon-caret' %}
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
           </button>
         </div>
       {%- endif -%}
@@ -148,7 +193,7 @@
       <div class="center collection-list-view-all">
         <a
           href="{{ routes.collections_url }}"
-          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+          class="{% if section.settings.view_all_style == 'link' or section.settings.view_all_style == 'full-unstyled-link' %}{{ section.settings.view_all_style }}{% if section.settings.view_all_style == 'link' %} animate-arrow{% endif %}{% else %}button {{ section.settings.view_all_style }}{% endif %} button--small"
           id="ViewAllButton-{{ section.id }}"
           aria-labelledby="ViewAllButton-{{ section.id }} SectionHeading-{{ section.id }}"
         >
@@ -163,7 +208,7 @@
 {
   "name": "t:sections.lds-slideshow-collection.name",
   "tag": "section",
-  "class": "section section-collection-list lds",
+  "class": "section lds-slideshow-list lds-slideshow-collection",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -280,10 +325,16 @@
       "type": "range",
       "id": "columns_desktop",
       "min": 1,
-      "max": 5,
+      "max": 6,
       "step": 1,
       "default": 4,
       "label": "t:sections.lds-slideshow-list.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.featured-collection.settings.full_width.label",
+      "default": false
     },
     {
       "type": "checkbox",
@@ -310,19 +361,27 @@
       "label": "t:sections.featured-collection.settings.view_all_style.label",
       "options": [
         {
+          "value": "button--primary",
+          "label": "t:sections.all.button_style.button--primary.label"
+        },
+        {
+          "value": "button--secondary",
+          "label": "t:sections.all.button_style.button--secondary.label"
+        },
+        {
+          "value": "button--underline",
+          "label": "t:sections.all.button_style.button--underline.label"
+        },
+        {
           "value": "link",
-          "label": "t:sections.featured-collection.settings.view_all_style.options__1.label"
+          "label": "t:sections.all.button_style.link.label"
         },
         {
-          "value": "outline",
-          "label": "t:sections.featured-collection.settings.view_all_style.options__2.label"
-        },
-        {
-          "value": "solid",
-          "label": "t:sections.featured-collection.settings.view_all_style.options__3.label"
+          "value": "full-unstyled-link",
+          "label": "t:sections.all.button_style.full-unstyled-link.label"
         }
       ],
-      "default": "outline"
+      "default": "button--secondary"
     },
     {
       "type": "header",

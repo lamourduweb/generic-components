@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const tabLinks = document.querySelectorAll('.lds-tabs__links a[data-tab]');
+  const tabButtons = document.querySelectorAll('.lds-tabs__links button[data-tab]');
   const tabContents = document.querySelectorAll('.lds-tab__content');
 
-  tabLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
+  tabButtons.forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault(); // Empêche le défilement
 
       const tabId = this.getAttribute('data-tab');
 
       // Activer l'onglet cliqué et désactiver les autres
-      tabLinks.forEach(function(tabLink) {
-        tabLink.parentElement.classList.remove('active');
+      tabButtons.forEach(function(tabButton) {
+        tabButton.parentElement.classList.remove('active');
       });
       this.parentElement.classList.add('active');
 
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
-  
+    
   var skipLink = document.querySelector('.skip-to-description-link');
   var targetSection = document.getElementById('TabsDescription');
 

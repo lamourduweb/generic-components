@@ -110,6 +110,39 @@
     […]
 },
 […]
+/* add traduction lds-breadcrumb-bar */
+"lds-breadcrumb-bar": {
+  "name": "♥ LdS - Fil d'Ariane",
+  "settings": {
+    "page_width": {
+      "options__1": {
+        "label": "Largeur pleine page"
+      },
+      "options__2": {
+        "label": "Largeur de la page"
+      },
+      "options__3": {
+        "label": "Largeur de la page reduite"
+      },
+      "label": "Largeur du container"
+    },
+    "hide_current": {
+      "label": "Cacher la page actuelle"
+    },
+    "hide_desktop": {
+      "label": "Cacher sur ordinateur"
+    },
+    "hide_tablet": {
+      "label": "Cacher sur tablette"
+    },
+    "hide_mobile": {
+      "label": "Cacher sur mobile"
+    }
+  },
+  "presets": {
+    "name": "♥ LdS - Fil d'Ariane"
+  }
+},
 /* add traduction lds-image-with-text */
 "lds-image-with-text": {
   "name": "Image ou Vidéo avec texte [LdS]",

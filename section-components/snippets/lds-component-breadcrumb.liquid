@@ -48,7 +48,7 @@
         {%- case t -%}
           {%- when 'page' -%}
             {% unless hide_current %}
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -65,7 +65,7 @@
               </li>
             {% endunless %}
           {%- when 'product' -%}
-            {% render 'icon-caret' %}
+            <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
             {%- if collection.url -%}
               <li
                 itemprop="itemListElement" itemscope
@@ -100,7 +100,7 @@
                     </a>
                     <meta itemprop="position" content="{{ forloop.index | plus: 1 }}">
                   </li>
-                  {% render 'icon-caret' %}
+                  <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
                 {% endfor %}
               {%- else -%}
                 <li
@@ -121,7 +121,7 @@
                   <meta itemprop="position" content="2">
                 </li>
                 {% unless hide_current %}
-                  {% render 'icon-caret' %}
+                  <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
                 {% endunless %}
               {%- endif -%}
             {%- endif -%}
@@ -163,7 +163,7 @@
             {%- endif -%}
           {%- when 'collection' and collection.handle -%}
             {%- if current_tags -%}
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -179,7 +179,7 @@
                 </a>
                 <meta itemprop="position" content="2">
               </li>
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -195,11 +195,11 @@
                 </a>
                 <meta itemprop="position" content="3">
               </li>
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
             {%- elsif collection.metafields.custom.breadcrumb != blank -%}
               {% for collection in collection.metafields.custom.breadcrumb.value %}
                 {% assign position = forloop.length | plus: 2 %}
-                {% render 'icon-caret' %}
+                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
                 <li 
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
@@ -216,7 +216,7 @@
                   <meta itemprop="position" content="{{ forloop.index | plus: 1 }}">
                 </li>
               {% endfor %}
-                {% render 'icon-caret' %}
+                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
                 <li
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
@@ -233,7 +233,7 @@
                   <meta itemprop="position" content="{{ position }}">
                 </li>
             {%- else -%}
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -252,7 +252,7 @@
             {%- endif -%}
           {%- when 'blog' -%}
             {%- if current_tags -%}
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -268,7 +268,7 @@
                 </a>
                 <meta itemprop="position" content="2">
               </li>
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -285,7 +285,7 @@
                 <meta itemprop="position" content="3">
               </li>
             {%- else -%}
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -302,7 +302,7 @@
               </li>
             {%- endif -%}
           {%- when 'article' -%}
-            {% render 'icon-caret' %}
+            <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
             <li
               itemprop="itemListElement" itemscope
               itemtype="https://schema.org/ListItem"
@@ -318,7 +318,7 @@
               <meta itemprop="position" content="2">
             </li>
             {% unless hide_current %}
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -335,7 +335,7 @@
             {% endunless %}
           {%- else -%}
             {% unless hide_current %}
-              {% render 'icon-caret' %}
+              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"

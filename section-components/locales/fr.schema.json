@@ -3,53 +3,29 @@
 "sections": {
     "all": {
       "class": {
-        "section_class_heading": "Class de la section",
-        "section_class_name": "Ajouter une classe CSS"
+        "class_heading": "Class de la section",
+        "class_name": "Ajouter une classe CSS"
       },
       "full_width": {
         "label": "Rendre la section pleine largeur"
       },
-      "adapt_width_container": {
-        "label": "Adapter la largeur de la section au container"
-      },
-      "decoration_section": {
-        "label": "Ajouter de la décoration à la section"
-      },
-      "decoration_block": {
-        "label": "Ajouter de la décoration à le conteneur"
-      },
-      "decoration_title": {
-        "label": "Styliser le titre"
-      },
-      "title_alignment": {
-        "label": "Alignement du titre",
+      "page_width": {
         "options__1": {
-          "label": "Gauche"
+          "label": "Largeur pleine page"
         },
         "options__2": {
-          "label": "Centre"
+          "label": "Largeur de la page"
         },
         "options__3": {
-          "label": "Droite"
-        }
-      },
-      "button_style": {
-        "button--primary": {
-          "label": "Plein"
+          "label": "Largeur de la page réduite"
         },
-        "button--secondary": {
-          "label": "Contour"
-        },
-        "link": {
-          "label": "Lien styliser"
-        },
-        "full-unstyled-link": {
-          "label": "Lien standard"
-        },
-        "label": "Style du boutton"
+        "label": "Largeur de la page"
       },
       "heading_html": {
         "label": "Balise Titre SEO (html)",
+        "options__8": {
+          "label": "span"
+        },
         "options__7": {
           "label": "p"
         },
@@ -70,13 +46,16 @@
         },
         "options__1": {
           "label": "h1"
-        },
-        "options__0": {
-          "label": "hxl"
         }
       },
       "heading_size_hn": {
-        "label": "Taille du titre (balisage)",
+        "label": "Taille du titre",
+        "options__caption": {
+          "label": "caption"
+        },
+        "options__rte": {
+          "label": "rte"
+        },
         "options__6": {
           "label": "h6"
         },
@@ -96,16 +75,91 @@
           "label": "h1"
         },
         "options__0": {
+          "label": "h0"
+        },
+        "options__xl": {
           "label": "hxl"
+        },
+        "options__xxl": {
+          "label": "hxxl"
         }
       },
+      "title_alignment": {
+        "label": "Alignement du titre",
+        "options__1": {
+          "label": "Gauche"
+        },
+        "options__2": {
+          "label": "Centre"
+        },
+        "options__3": {
+          "label": "Droite"
+        }
+      },
+      "text_alignment": {
+        "options__1": {
+          "label": "Gauche"
+        },
+        "options__2": {
+          "label": "Centre"
+        },
+        "options__3": {
+          "label": "Droite"
+        },
+        "label": "Alignement du texte"
+      },
+      "button_style": {
+        "button--primary": {
+          "label": "Plein"
+        },
+        "button--secondary": {
+          "label": "Contour"
+        },
+        "button--underline": {
+          "label": "Souligner"
+        },
+        "link": {
+          "label": "Lien avec flèche"
+        },
+        "full-unstyled-link": {
+          "label": "Lien standard"
+        },
+        "label": "Style du bouton"
+      },
+      "button_size": {
+        "options__0": {
+          "label": "Très petit"
+        },
+        "options__1": {
+          "label": "Petit"
+        },
+        "options__2": {
+          "label": "Normal"
+        },
+        "options__3": {
+          "label": "Grand"
+        },
+        "label": "Taille du bouton"
+      },
+      "horizontal_spacing_columns": {
+        "label": "Augmenter l'espacement entre les colonnes"
+      },
+      "adapt_width_container": {
+        "label": "Adapter la largeur de la section au container"
+      },
+      "decoration_section": {
+        "label": "Ajouter de la décoration à la section"
+      },
+      "decoration_block": {
+        "label": "Ajouter de la décoration à le conteneur"
+      },
+      "decoration_title": {
+        "label": "Styliser le titre"
+      }
       "margin": {
         "section_margin_heading": "Marge de la section",
         "margin_top": "Marge supérieure",
         "margin_bottom": "Marge inférieure"
-      },
-      "horizontal_spacing_columns": {
-        "label": "Augmenter l'espacement entre les colonnes"
       },
     […]
 },

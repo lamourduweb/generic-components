@@ -260,6 +260,30 @@
     "name": "Multicolonne [LdS]"
   }
 },
+/* add traduction lds-multicolumn-slide */    
+"lds-multicolumn-slide": {
+  "name": "♥ LdS - Multicolonne slide",
+  "settings": {
+    "layout_columns": {
+      "content": "Mise en page des colonnes"
+    },
+    "columns_desktop": {
+      "label": "Nombre de colonnes sur ordinateur"
+    },
+    "blocks_to_show": {
+      "label": "Quantité maximale de colonnes à afficher"
+    },
+    "enable_desktop_slider": {
+      "label": "Activer le carrousel sur ordinateur"
+    },
+    "video": {
+      "label": "Vidéo"
+    }
+  },
+  "presets": {
+    "name": "♥ LdS - Multicolonne slide"
+  }
+},
 /* add traduction lds-multicolumn-social */
 "lds-multicolumn-social": {
   "name": "♥ LdS - Multicolonne réseaux sociaux",

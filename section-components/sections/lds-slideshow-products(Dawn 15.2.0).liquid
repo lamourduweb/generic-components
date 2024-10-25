@@ -9,12 +9,21 @@
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
-{%- if section.settings.enable_quick_add -%}
+{%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -39,6 +48,7 @@
     justify-content: start;
     padding: 10rem 3rem 4rem;
     margin: 0 0 var(--grid-mobile-vertical-spacing);
+    width: 100%;
   }
   .title-wrapper-with-hero .collection-hero {
     position: absolute;
@@ -79,13 +89,18 @@
     .is-grid--2-col-desktop{
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .product-list-wrapper--grid-reverse .title-wrapper-with-hero {
+    .product-list-wrapper--grid-reverse .title-wrapper {
       order: 2;
     }
+  }
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .title__column-sticky + .page-width-desktop {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 {%- endstyle -%}
@@ -273,8 +288,9 @@
                   show_secondary_image: section.settings.show_secondary_image,
                   show_vendor: section.settings.show_vendor,
                   show_rating: section.settings.show_rating,
-                  show_quick_add: section.settings.enable_quick_add,
-                  section_id: section.id
+                  skip_styles: skip_card_product_styles,
+                  section_id: section.id,
+                  quick_add: section.settings.quick_add
                 %}
               </li>
           {%- endcase -%}
@@ -712,9 +728,31 @@
     },
     {
       "type": "checkbox",
-      "id": "enable_quick_add",
-      "default": false,
-      "label": "t:sections.featured-collection.settings.enable_quick_buy.label"
+      "id": "show_benefice",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.show_benefice.label",
+      "info": "t:sections.main-collection-product-grid.settings.show_benefice.info"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "none",
+      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+      "info": "t:sections.main-collection-product-grid.settings.quick_add.info",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+        },
+        {
+          "value": "standard",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+        },
+        {
+          "value": "bulk",
+          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+        }
+      ]
     },
     {
       "type": "header",

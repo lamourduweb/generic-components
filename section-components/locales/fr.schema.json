@@ -1415,3 +1415,19 @@
       }
     }
 /*add traduction lds-main-contenu-seo //END */
+/*add traduction lds-faqs */
+    "lds-faqs": {
+      "name": "♥ LdS - Faqs",
+      "settings": {
+        "heading": {
+          "default": "Questions fréquentes"
+        },
+        "button_label": {
+          "default": "Poser une question"
+        }
+      },
+      "presets": {
+        "name": "♥ LdS - Faqs"
+      }
+    },
+/*add traduction lds-faqs //END */

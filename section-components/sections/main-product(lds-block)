@@ -1,1 +1,18 @@
 
+{%- when 'icon_badges' -%}
+{% assign icon_badges = product.metafields.custom.pictos_produits.value %}
+{% if icon_badges %}
+  <div class="badge_picto" {{ block.shopify_attributes }}>
+    {% for icon_badge in icon_badges %}
+      <div class="{{ icon_badge.nom | replace: " ", "_" }}">
+        {{
+          icon_badge.icon
+          | image_url: width: 120
+          | image_tag:
+            sizes: sizes,
+            widths: '50, 70, 100, 120,'
+        }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

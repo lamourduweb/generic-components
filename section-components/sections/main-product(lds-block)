@@ -1,18 +1,55 @@
-
-{%- when 'icon_badges' -%}
-{% assign icon_badges = product.metafields.custom.pictos_produits.value %}
-{% if icon_badges %}
-  <div class="badge_picto" {{ block.shopify_attributes }}>
-    {% for icon_badge in icon_badges %}
-      <div class="{{ icon_badge.nom | replace: " ", "_" }}">
-        {{
-          icon_badge.icon
-          | image_url: width: 120
-          | image_tag:
-            sizes: sizes,
-            widths: '50, 70, 100, 120,'
-        }}
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'icon_badges' -%}
+      {% assign icon_badges = product.metafields.custom.pictos_produits.value %}
+      {% if icon_badges %}
+        <div class="badge_picto" {{ block.shopify_attributes }}>
+          {% for icon_badge in icon_badges %}
+            <div class="{{ icon_badge.nom | replace: " ", "_" }}">
+              {{
+                icon_badge.icon
+                | image_url: width: 120
+                | image_tag:
+                  sizes: sizes,
+                  widths: '50, 70, 100, 120,'
+              }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {%- when 'variant_list' -%}
+      {% assign related_products = product.metafields.custom.liste_des_variantes.value %} 
+      {% if related_products %}  
+        <ul class="product__color_variant list-unstyled" {{ block.shopify_attributes }}>
+          {% for related_product in related_products %}
+            {% assign produit_couleur = related_product.metafields.custom.code_couleur_motif.value %}
+            <li
+            {% if related_product.title == product.title %}
+              class="active" 
+              style="border: 6px solid {{ produit_couleur.hex }};"
+            {% endif %}
+            >
+            {% assign current_lang = shop.locale %}
+            {% capture product_url %}
+              {% if current_lang != 'fr' %}
+                {{shop.url | append: "/" | append: current_lang | append: "/products/" | append: related_product.handle }}
+              {% else %}
+                {{shop.url | append: "/products/" | append: related_product.handle }}
+              {% endif %}
+            {% endcapture %}
+            
+              <a
+                class="related-product_color"
+                href="{{ product_url }}"
+                title="{{ related_product.title }}"
+                style="background: {{ produit_couleur.hex }}{% if produit_couleur.motif != blank %} url('{{ produit_couleur.motif | img_url: 'master' }}') no-repeat 0 0 / cover;{% endif %}"
+              >
+                <span class="visibility-hidden">{{ related_product.title }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+  {%- endcase -%}
+{%- endfor -%}
+  

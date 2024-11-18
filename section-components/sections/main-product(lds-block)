@@ -50,6 +50,29 @@
           {% endfor %}
         </ul>
       {% endif %}
+    {%- when 'description' -%}
+      {%- if block.settings.type_description == 'short' and product.metafields.custom.description_courte != blank -%}
+        <div class="product__description product__short-description rte quick-add-hidden" {{ block.shopify_attributes }}>
+          {% liquid
+            assign shortDescription = product.metafields.custom.description_courte
+          %}
+          {{ shortDescription | metafield_tag }}
+          <a id="scrollLink" class="skip-to-description button button--tertiary button--text" href="#RowDescription">
+            {{ 'products.product.read_more_description' | t }}
+          </a>
+        </div>
+      {%- elsif block.settings.type_description == 'short' and product.metafields.custom.description_courte == blank -%}
+        {% assign paragraphs = product.description | split: '</p>' %}
+        {% assign first_paragraph = paragraphs[0] | replace: '<p>', '' %}
+        {{ first_paragraph | metafield_tag }}
+        <a id="scrollLink"  class="skip-to-description button button--tertiary button--text" href="#RowDescription">
+          {{ 'products.product.read_more_description' | t }}
+        </a>
+      {%- elsif product.description != blank -%}
+        <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+          {{ product.description }}
+        </div>
+      {%- endif -%}
   {%- endcase -%}
 {%- endfor -%}
   

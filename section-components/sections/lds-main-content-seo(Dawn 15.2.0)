@@ -7,25 +7,27 @@
   {% endcase %}
 {% endfor %}
 
-{%- if section.settings.show_description -%}
-  {% if t == 'collection' %}
-    {% assign content_seo = collection.description %}
-  {% elsif t == 'product' %}
-    {% assign content_seo = product.description %}
-  {% endif %}
-{%- else -%}
-  {% if t == 'collection' and collection.metafields.custom.contenu_seo != blank %}
-    {% assign content_seo = collection.metafields.custom.contenu_seo | metafield_tag %}
-  {% elsif t == 'product' and product.metafields.custom.contenu_seo != blank %}
-    {% assign content_seo = product.metafields.custom.contenu_seo | metafield_tag %}
-  {% elsif t == 'page' and page.metafields.custom.contenu_seo != blank %}
-    {% assign content_seo = page.metafields.custom.contenu_seo | metafield_tag %}
-  {% elsif t == 'blog' and blog.metafields.custom.contenu_seo != blank %}
-    {% assign content_seo = blog.metafields.custom.contenu_seo | metafield_tag %}
-  {% elsif t == 'article' and article.metafields.custom.contenu_seo != blank %}
-    {% assign content_seo = article.metafields.custom.contenu_seo | metafield_tag %}
-  {% endif %}
-{%- endif -%}
+{%- for block in section.blocks -%}
+  {%- if block.settings.show_description -%}
+    {% if t == 'collection' %}
+      {% assign content_seo = collection.description %}
+    {% elsif t == 'product' %}
+      {% assign content_seo = product.description %}
+    {% endif %}
+  {%- else -%}
+    {% if t == 'collection' and collection.metafields.custom.contenu_seo != blank %}
+      {% assign content_seo = collection.metafields.custom.contenu_seo | metafield_tag %}
+    {% elsif t == 'product' and product.metafields.custom.contenu_seo != blank %}
+      {% assign content_seo = product.metafields.custom.contenu_seo | metafield_tag %}
+    {% elsif t == 'page' and page.metafields.custom.contenu_seo != blank %}
+      {% assign content_seo = page.metafields.custom.contenu_seo | metafield_tag %}
+    {% elsif t == 'blog' and blog.metafields.custom.contenu_seo != blank %}
+      {% assign content_seo = blog.metafields.custom.contenu_seo | metafield_tag %}
+    {% elsif t == 'article' and article.metafields.custom.contenu_seo != blank %}
+      {% assign content_seo = article.metafields.custom.contenu_seo | metafield_tag %}
+    {% endif %}
+  {%- endif -%}
+{%- endfor -%}
 
 {% assign truncated_content = content_seo | truncate: limit_truncate %}
 

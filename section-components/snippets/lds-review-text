@@ -1,0 +1,38 @@
+{%- assign testimonial_text_class = 'testimonial__text' -%}
+{%- if text_size > 1.5 -%}
+  {%- assign testimonial_text_class = 'testimonial__text testimonial__text--large' -%}
+{%- endif -%}
+
+{%- style -%}
+  #Testimonials--{{ section.id }} .testimonial__text { --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }}); }
+{%- endstyle -%}
+
+{%- unless heading == blank and subheading == blank -%}
+  <div class="lds-reviews-item lds-reviews-item__text content-container color-{{ color_scheme }} gradient"
+    data-item
+    {{ block_shopify_attributes }}>
+    <div class="lds-reviews__item__inner {{ text_alignment }}">
+      <div class="lds-reviews__item__content">
+        <div class="{{ testimonial_text_class }}">{{ heading }}</div>
+        {%- if subheading != blank -%}
+          <div>{{ subheading }}</div>
+        {%- endif -%}
+        {%- if view_all_label != blank -%}
+          <a
+            {% if view_all_link == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ view_all_link }}"
+            {% endif %}
+            class="{% if view_all_style == 'link' or view_all_style == 'full-unstyled-link' %}{{ view_all_style }}{% if view_all_style == 'link' %} animate-arrow{% endif %}{% else %}button {{ view_all_style }}{% endif %} button--small"
+            id="ViewAllButton-{{ section.id }}"
+            aria-label="{{ view_all_label | escape }}"
+            aria-labelledby="ViewAllButton-{{ section.id }} SectionHeading-{{ section.id }}"
+          >
+            {{ view_all_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endunless -%}

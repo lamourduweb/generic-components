@@ -1396,6 +1396,107 @@
         "name": "♥ LdS - Liste de collections en onglets"
       }
     },
+    "lds-slideshow-reviews": {
+      "name": "♥ Liste d'avis en caroussel [LdS]",
+      "settings": {
+        "reviews_to_show": {
+          "label": "Quantité maximale d'avis à afficher"
+        },
+        "header": {
+          "content": "Block d'avis"
+        },
+        "color_scheme_block": {
+          "label": "Couleur des blocs"
+        },
+        "color_scheme_stars": {
+          "label": "Couleur des étoiles"
+        },
+        "image_width": {
+          "label": "Largeur d'image",
+          "options__1": {
+            "label": "Un tiers de largeur de la colonne"
+          },
+          "options__2": {
+            "label": "Demi-largeur de colonne"
+          },
+          "options__3": {
+            "label": "Largeur complète de colonne"
+          }
+        },
+        "view_stars": {
+          "label": "Afficher les étoiles"
+        },
+        "view_image": {
+          "label": "Afficher l'image"
+        },
+        "view_author": {
+          "label": "Afficher l'auteur"
+        },
+        "view_date": {
+          "label": "Afficher la date"
+        },
+        "button_label": {
+          "label": "Texte du bouton"
+        },
+        "button_link": {
+          "label": "Lien du bouton"
+        }
+      },
+      "blocks": {
+        "featured_text": {
+          "name": "Texte",
+          "settings": {
+          }
+        },
+        "featured_review": {
+          "name": "Avis",
+          "settings": {
+            "product": {
+              "label": "Produit"
+            },
+            "image": {
+              "label": "Image utilisateur"
+            },
+            "stars-review": {
+              "label": "Note",
+              "options__1": {
+                "label": "étoiles"
+              },
+              "options__2": {
+                "label": "étoiles"
+              },
+              "options__3": {
+                "label": "étoiles"
+              },
+              "options__4": {
+                "label": "étoiles"
+              },
+              "options__5": {
+                "label": "5 étoiles"
+              }
+            },
+            "title": {
+              "label": "Témoignage"
+            },
+            "text": {
+              "label": "Résumé"
+            },
+            "subheading": {
+              "label": "Texte"
+            },
+            "date": {
+              "label": "Date"
+            },
+            "author": {
+              "label": "Auteur"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "♥ Liste d'avis en caroussel [LdS]"
+      }
+    },
 /*add traduction lds-slideshow-list collection and product //END */
 /*add traduction lds-main-contenu-seo */
     "lds-main-contenu-seo": {

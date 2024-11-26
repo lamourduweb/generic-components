@@ -1,0 +1,107 @@
+{%- unless author == blank and text == blank and subheading == blank -%}
+  <div class="lds-reviews-item content-container color-{{ color_scheme_block }} gradient"
+    data-item
+    {{ block_shopify_attributes }}>
+    <div class="lds-reviews__item__inner">
+      <div class="lds-reviews__item__content">
+        {%- unless star_rating == 0 -%}
+          <div class="lds-reviews__stars">
+            {%- if view_stars -%}
+              {% assign rating_size = review_size %}
+              {% assign rating_width = rating_size | times: 6.0833 %}
+              {% assign rating_width = rating_width | round: 2 %}
+              {% assign note = star_rating | times: 100 %}
+              {% assign pourcent = note | divided_by: 5 %}
+              <div class="stars-review-note-wrapper color-{{ color_scheme_stars }}" style="color: rgb(var(--color-background)); background: none; width: {{ rating_width }}px; height: {{ rating_size }}px;{% if section.settings.column_alignment == 'center' %} margin-left: auto; margin-right: auto;{% endif %}">
+                <span class="stars-review-note" style="height: {{ rating_size }}px; width: {{ pourcent }}%; max-width: 100%; overflow: hidden;">
+                  <svg class="icon icon-stars-review" viewBox="0 0 146 24" fill="none" aria-hidden="true" focusable="false" style="height: {{ rating_size }}px; width: calc(100% +{{ pourcent }}%);">
+                    <path d="M11.1919 0.825948L8.14621 7.05793L1.25823 8.04193C0.0399457 8.22936 -0.428624 9.72878 0.461659 10.6191L5.38164 15.4453L4.21022 22.2396C4.02279 23.4579 5.33479 24.395 6.4125 23.8327L12.5508 20.5996L18.6422 23.8327C19.7199 24.395 21.0319 23.4579 20.8445 22.2396L19.673 15.4453L24.593 10.6191C25.4833 9.72878 25.0147 8.22936 23.7964 8.04193L16.9553 7.05793L13.8628 0.825948C13.3473 -0.251763 11.7542 -0.29862 11.1919 0.825948Z" fill="currentColor"/>
+                    <path d="M41.3875 0.825948L38.3418 7.05793L31.4538 8.04193C30.2355 8.22936 29.7669 9.72878 30.6572 10.6191L35.5772 15.4453L34.4058 22.2396C34.2184 23.4579 35.5303 24.395 36.6081 23.8327L42.7463 20.5996L48.8377 23.8327C49.9154 24.395 51.2274 23.4579 51.04 22.2396L49.8686 15.4453L54.7886 10.6191C55.6789 9.72878 55.2103 8.22936 53.992 8.04193L47.1509 7.05793L44.0583 0.825948C43.5429 -0.251763 41.9498 -0.29862 41.3875 0.825948Z" fill="currentColor"/>
+                    <path d="M71.583 0.825948L68.5373 7.05793L61.6493 8.04193C60.4311 8.22936 59.9625 9.72878 60.8528 10.6191L65.7728 15.4453L64.6013 22.2396C64.4139 23.4579 65.7259 24.395 66.8036 23.8327L72.9419 20.5996L79.0333 23.8327C80.111 24.395 81.423 23.4579 81.2356 22.2396L80.0642 15.4453L84.9841 10.6191C85.8744 9.72878 85.4059 8.22936 84.1876 8.04193L77.3464 7.05793L74.2539 0.825948C73.7385 -0.251763 72.1453 -0.29862 71.583 0.825948Z" fill="currentColor"/>
+                    <path d="M101.779 0.825948L98.7329 7.05793L91.8449 8.04193C90.6266 8.22936 90.1581 9.72878 91.0483 10.6191L95.9683 15.4453L94.7969 22.2396C94.6095 23.4579 95.9215 24.395 96.9992 23.8327L103.137 20.5996L109.229 23.8327C110.307 24.395 111.619 23.4579 111.431 22.2396L110.26 15.4453L115.18 10.6191C116.07 9.72878 115.601 8.22936 114.383 8.04193L107.542 7.05793L104.449 0.825948C103.934 -0.251763 102.341 -0.29862 101.779 0.825948Z" fill="currentColor"/>
+                    <path d="M131.974 0.825948L128.928 7.05793L122.04 8.04193C120.822 8.22936 120.354 9.72878 121.244 10.6191L126.164 15.4453L124.992 22.2396C124.805 23.4579 126.117 24.395 127.195 23.8327L133.333 20.5996L139.424 23.8327C140.502 24.395 141.814 23.4579 141.627 22.2396L140.455 15.4453L145.375 10.6191C146.266 9.72878 145.797 8.22936 144.579 8.04193L137.738 7.05793L134.645 0.825948C134.13 -0.251763 132.536 -0.29862 131.974 0.825948Z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <svg class="icon icon-review-fill" viewBox="0 0 146 24" fill="none" style="color: rgba(var(--color-background),.25);" aria-hidden="true" focusable="false" style="height: {{ rating_size }}px;">
+                  <path d="M11.1919 0.825948L8.14621 7.05793L1.25823 8.04193C0.0399457 8.22936 -0.428624 9.72878 0.461659 10.6191L5.38164 15.4453L4.21022 22.2396C4.02279 23.4579 5.33479 24.395 6.4125 23.8327L12.5508 20.5996L18.6422 23.8327C19.7199 24.395 21.0319 23.4579 20.8445 22.2396L19.673 15.4453L24.593 10.6191C25.4833 9.72878 25.0147 8.22936 23.7964 8.04193L16.9553 7.05793L13.8628 0.825948C13.3473 -0.251763 11.7542 -0.29862 11.1919 0.825948Z" fill="currentColor"/>
+                  <path d="M41.3875 0.825948L38.3418 7.05793L31.4538 8.04193C30.2355 8.22936 29.7669 9.72878 30.6572 10.6191L35.5772 15.4453L34.4058 22.2396C34.2184 23.4579 35.5303 24.395 36.6081 23.8327L42.7463 20.5996L48.8377 23.8327C49.9154 24.395 51.2274 23.4579 51.04 22.2396L49.8686 15.4453L54.7886 10.6191C55.6789 9.72878 55.2103 8.22936 53.992 8.04193L47.1509 7.05793L44.0583 0.825948C43.5429 -0.251763 41.9498 -0.29862 41.3875 0.825948Z" fill="currentColor"/>
+                  <path d="M71.583 0.825948L68.5373 7.05793L61.6493 8.04193C60.4311 8.22936 59.9625 9.72878 60.8528 10.6191L65.7728 15.4453L64.6013 22.2396C64.4139 23.4579 65.7259 24.395 66.8036 23.8327L72.9419 20.5996L79.0333 23.8327C80.111 24.395 81.423 23.4579 81.2356 22.2396L80.0642 15.4453L84.9841 10.6191C85.8744 9.72878 85.4059 8.22936 84.1876 8.04193L77.3464 7.05793L74.2539 0.825948C73.7385 -0.251763 72.1453 -0.29862 71.583 0.825948Z" fill="currentColor"/>
+                  <path d="M101.779 0.825948L98.7329 7.05793L91.8449 8.04193C90.6266 8.22936 90.1581 9.72878 91.0483 10.6191L95.9683 15.4453L94.7969 22.2396C94.6095 23.4579 95.9215 24.395 96.9992 23.8327L103.137 20.5996L109.229 23.8327C110.307 24.395 111.619 23.4579 111.431 22.2396L110.26 15.4453L115.18 10.6191C116.07 9.72878 115.601 8.22936 114.383 8.04193L107.542 7.05793L104.449 0.825948C103.934 -0.251763 102.341 -0.29862 101.779 0.825948Z" fill="currentColor"/>
+                  <path d="M131.974 0.825948L128.928 7.05793L122.04 8.04193C120.822 8.22936 120.354 9.72878 121.244 10.6191L126.164 15.4453L124.992 22.2396C124.805 23.4579 126.117 24.395 127.195 23.8327L133.333 20.5996L139.424 23.8327C140.502 24.395 141.814 23.4579 141.627 22.2396L140.455 15.4453L145.375 10.6191C146.266 9.72878 145.797 8.22936 144.579 8.04193L137.738 7.05793L134.645 0.825948C134.13 -0.251763 132.536 -0.29862 131.974 0.825948Z" fill="currentColor"/>
+                </svg>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endunless -%}
+
+        {%- if title != blank or text != blank -%}
+          <div class="lds-reviews__text rte" style="margin: 2rem 0 1rem;">
+            <p class="h4">{{ title }}</p>
+            {{ text }}
+          </div>
+        {%- endif -%}
+
+        {%- if author != blank -%}
+          <footer class="lds-reviews__image {{ image_width }}-width">
+            {%- if product != blank -%}
+              {% assign image_source = product.featured_media %}
+            {%- else -%}
+              {% assign image_source = image_author %}
+            {%- endif -%}
+            {%- if view_image and image_source != blank -%}
+              <div class="media media--transparent media--circle">
+                {%- liquid
+                  assign number_of_columns = section.settings.columns_desktop
+                  assign number_of_columns_mobile = section.settings.columns_mobile
+                  assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                  assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                  assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                  if section.settings.image_width == 'half'
+                    assign image_width = 0.5
+                  elsif section.settings.image_width == 'third'
+                    assign image_width = 0.33
+                  else
+                    assign image_width = 1
+                  endif
+                -%}
+                {% capture sizes %}
+                  (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} /  {{ number_of_columns }}),
+                  (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
+                  (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
+                  calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
+                {% endcapture %}
+                {{
+                  image_source
+                  | image_url: width: 3200
+                  | image_tag:
+                    widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                    sizes: sizes,
+                    class: 'multicolumn-card__image'
+                }}
+              </div>
+            {%- endif -%}
+          
+            <div class="lds-reviews__author right">
+              {%- if product != blank -%}
+                <a
+                  href="{{ product.url }}" class="link">
+                  {{ 'products.product.view_product' | t }}
+                </a>
+              {%- endif -%}
+              {%- if author != blank and view_author or date != blank and view_date -%}
+                 <div>
+                  {% assign author_name = author | split: " " %}
+                  {% assign firstname = author_name.first %}
+                  {% assign name = author_name.last %}
+                  {% assign truncate_name = name | slice: 0, 1 | append: "." %}
+                  <p>{{ firstname }} {{ truncate_name }}</p>
+                  <p class="caption">{{ date | date: "%d/%m/%Y" }}</p>
+                </div>
+              {%- endif -%}
+            </div>
+          </footer>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endunless -%}

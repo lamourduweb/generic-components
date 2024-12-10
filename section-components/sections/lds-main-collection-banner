@@ -1,0 +1,408 @@
+/* add to fr.schema */
+"lds-main-collection-banner": {
+      "name": "♥ LdS - Bannière de collection",
+      "settings": {
+        "show_collection_background": {
+          "label": "Afficher l'image en arrière plan",
+          "info": "Priviligie l'affichage de l'image du méta champ 'Visuel Bannière de collection'"
+        },
+        "collection_image_default": {
+          "label": "Choisissez une image personnalisée afficher en arrière plan par défaut",
+          "info": "s'affiche uniquement si la collection n'a pas d'image"
+        },
+        "type_description": {
+          "label": "Choisissez la source de la description",
+          "options__1": {
+            "label": "Description par defaut"
+          },
+          "options__2": {
+            "label": "Description courte"
+          }
+        }
+      },
+      "presets": {
+        "name": "♥ LdS - Bannière de collection"
+      }
+    },
+/**/
+
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }}-padding_section {
+    padding-top: {{ section.settings.padding_top_section | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_section | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .section-{{ section.id }}-padding_section {
+      padding-top: {{ section.settings.padding_top_section }}px;
+      padding-bottom: {{ section.settings.padding_bottom_section }}px;
+    }
+  }
+  
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+  .banner-collection-hero,
+  .banner-collection-hero__inner{
+    position: relative;
+  }
+  .banner-collection-hero__inner {
+    z-index: 2;
+  }
+  .banner-collection-hero::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #000000;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+  }
+{%- endstyle -%}
+
+<div
+  class="banner-collection-hero color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_collection_background %} has-background{% endif %}"
+  {% if section.settings.show_collection_background %}
+    style="
+    background-repeat: no-repeat; background-size: cover; background-attachment: scroll; background-position: center;
+    {% if collection.metafields.custom.bandeau_collection == blank %}
+      background-image: url('{{ collection.image | default: section.settings.collection_image_default | image_url: width: 2500 }}');
+    {% else %}
+      background-image: url('{{ collection.metafields.custom.bandeau_collection | default: collection.image  | image_url: width: 2500 }}');
+    {% endif %}
+    "
+  {% endif %}
+>
+  {% render 'lds-component-breadcrumb'
+    breadcrumb_color_scheme: section.settings.breadcrumb_color_scheme,
+    page-width: section.settings.page_width, 
+    justify: section.settings.title_alignment, 
+    hide_current: section.settings.hide_current,
+    hide_desktop: section.settings.hide_desktop,
+    hide_tablet: section.settings.hide_tablet,
+    hide_mobile: section.settings.hide_mobile,
+    class: section.settings.breadcrumb_css_class
+    show_collection_background: section.settings.show_collection_background
+  %}
+  <div class="banner-collection-hero__inner section-{{ section.id }}-padding_section collection-hero{% unless section.settings.show_collection_background %}{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %}{% endunless %}">
+    <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}{% unless section.settings.show_collection_image and collection.image %} center{% endunless %}">
+      <div class="collection-hero__text-wrapper">
+        <h1 class="collection-hero__title{% if section.settings.column_alignment == 'center' %} center{% endif %}">
+          {{- collection.title | escape -}}
+        </h1>
+        {%- if collection.metafields.custom.h2_collection != blank -%}
+          <h2 class="h3">{{ collection.metafields.custom.h2_collection }}</h2>
+        {%- endif -%}
+        {%- if section.settings.show_collection_description and collection.description != blank or collection.metafields.custom.description_courte != blank -%}
+          <div class="collection-hero__description{% if settings.settings.type_description == 'short' %} collection-hero__short-description{% endif %} rte{% if section.settings.column_alignment == 'center' %} center{% endif %}{% unless section.settings.show_collection_image and collection.image %} page-width{% endunless %}{% if section.settings.show_collection_background %} full-width{% endif %}">
+   
+            {%- if section.settings.type_description == 'short' -%}
+              {%- if collection.metafields.custom.description_courte != blank -%}
+                {% assign short_description = collection.metafields.custom.description_courte %}
+                {{ short_description }}
+                {%- if collection.description != blank -%}
+                  <a class="skip-to-description link link--text" href="#MainDescription">
+                    {{ 'products.product.read_more_description' | t }}
+                  </a>
+                {%- endif -%}
+              {%- else -%}
+                {% assign paragraphs = collection.description | split: '</p>' %}
+                {% assign first_paragraph = paragraphs[0] | replace: '<p>', '' %}
+                {{ first_paragraph }}
+                {%- if collection.description != blank -%}
+                  <a class="skip-to-description link link--text" href="#MainDescription">
+                    {{ 'products.product.read_more_description' | t }}
+                  </a>
+                {%- endif -%}
+              {%- endif -%}
+            {%- else -%}
+              {{ collection.description }}
+            {%- endif -%}
+          
+          </div>
+        {%- endif -%}
+      </div>
+  
+      {%- unless section.settings.show_collection_background -%}
+        {%- if section.settings.show_collection_image and collection.image -%}
+          <div class="collection-hero__image-container media gradient">
+            <img
+              srcset="
+                {%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 360 }} 360w,{%- endif -%}
+                {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 535 }} 535w,{%- endif -%}
+                {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
+                {%- if collection.image.width >= 1070 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
+                {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                {{ collection.image | image_url }} {{ collection.image.width }}w
+              "
+              src="{{ collection.image | image_url: width: 750 }}"
+              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+              alt=""
+              width="{{ collection.image.width }}"
+              height="{{ collection.image.height }}"
+            >
+          </div>
+        {%- endif -%}
+      {%- endunless -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var link = document.querySelector('.skip-to-description');
+
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      var targetElement = document.querySelector(link.getAttribute('href'));
+      var headerHeight = document.querySelector('header').offsetHeight;
+
+      if (targetElement) {
+        var targetPosition = targetElement.offsetTop - (2 * headerHeight);
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "t:sections.lds-main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Fil d'arianne"
+    },
+    {
+      "type": "color_scheme",
+      "id": "breadcrumb_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "select",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "",
+          "label": "t:sections.all.page_width.options__1.label"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.all.page_width.options__2.label"
+        },
+        {
+          "value": "page-width page-width--narrow",
+          "label": "t:sections.all.page_width.options__3.label"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.all.page_width.label"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:sections.all.title_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.title_alignment.options__2.label"
+        }
+      ],
+      "default": "start",
+      "label": "t:sections.all.title_alignment.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_current",
+      "label": "t:sections.lds-breadcrumb-bar.settings.hide_current.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_desktop",
+      "label": "t:sections.lds-breadcrumb-bar.settings.hide_desktop.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_tablet",
+      "label": "t:sections.lds-breadcrumb-bar.settings.hide_tablet.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mobile",
+      "label": "t:sections.lds-breadcrumb-bar.settings.hide_mobile.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "breadcrumb_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "breadcrumb_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_css_class",
+      "label": "t:sections.all.class.class_name"
+    },
+    {
+      "type": "header",
+      "content": "Bannière de collection"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.multicolumn.settings.column_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.multicolumn.settings.column_alignment.options__2.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.multicolumn.settings.column_alignment.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "select",
+      "id": "type_description",
+      "options": [
+        {
+          "value": "",
+          "label": "t:sections.lds-main-collection-banner.settings.type_description.options__1.label"
+        },
+        {
+          "value": "short",
+          "label": "t:sections.lds-main-collection-banner.settings.type_description.options__2.label"
+        }
+      ],
+      "default": "short",
+      "label": "t:sections.lds-main-collection-banner.settings.type_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_background",
+      "default": true,
+      "label": "t:sections.lds-main-collection-banner.settings.show_collection_background.label",
+      "info": "t:sections.lds-main-collection-banner.settings.show_collection_background.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "collection_image_default",
+      "label": "t:sections.lds-main-collection-banner.settings.collection_image_default.label",
+      "info": "t:sections.lds-main-collection-banner.settings.collection_image_default.info"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+      "default": 0
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+        {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_section",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_section",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.lds-main-collection-banner.presets.name"
+    }
+  ]
+}
+{% endschema %}

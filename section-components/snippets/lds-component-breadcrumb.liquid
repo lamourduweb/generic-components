@@ -23,7 +23,11 @@
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign t = template | split: '.' | first -%}
-  <div id="breadcrumb-{{ section.id }}" class="{{ class }} breadcrumb color-{{ breadcrumb_color_scheme }} section-{{ section.id }}-padding{% if hide_desktop %} largupHide{% endif %}{% if hide_tablet %} mediumHide{% endif %}{% if hide_mobile %} smallHide{% endif %}">
+  <div
+    id="breadcrumb-{{ section.id }}"
+    class="breadcrumb {{ class }} color-{{ breadcrumb_color_scheme }} section-{{ section.id }}-padding{% if hide_desktop %} largupHide{% endif %}{% if hide_tablet %} mediumHide{% endif %}{% if hide_mobile %} smallHide{% endif %}"
+    {% if show_collection_background %}style="background: none transparent;"{% endif %}
+  >
     <nav
       class="{{ page-width }}"
       role="navigation"
@@ -48,7 +52,7 @@
         {%- case t -%}
           {%- when 'page' -%}
             {% unless hide_current %}
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -65,7 +69,7 @@
               </li>
             {% endunless %}
           {%- when 'product' -%}
-            <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+            <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
             {%- if collection.url -%}
               <li
                 itemprop="itemListElement" itemscope
@@ -100,7 +104,7 @@
                     </a>
                     <meta itemprop="position" content="{{ forloop.index | plus: 1 }}">
                   </li>
-                  <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                  <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
                 {% endfor %}
               {%- else -%}
                 <li
@@ -121,7 +125,7 @@
                   <meta itemprop="position" content="2">
                 </li>
                 {% unless hide_current %}
-                  <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                  <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
                 {% endunless %}
               {%- endif -%}
             {%- endif -%}
@@ -163,7 +167,7 @@
             {%- endif -%}
           {%- when 'collection' and collection.handle -%}
             {%- if current_tags -%}
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -179,7 +183,7 @@
                 </a>
                 <meta itemprop="position" content="2">
               </li>
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -195,11 +199,11 @@
                 </a>
                 <meta itemprop="position" content="3">
               </li>
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
             {%- elsif collection.metafields.custom.breadcrumb != blank -%}
               {% for collection in collection.metafields.custom.breadcrumb.value %}
                 {% assign position = forloop.length | plus: 2 %}
-                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
                 <li 
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
@@ -216,7 +220,7 @@
                   <meta itemprop="position" content="{{ forloop.index | plus: 1 }}">
                 </li>
               {% endfor %}
-                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
                 <li
                   itemprop="itemListElement" itemscope
                   itemtype="https://schema.org/ListItem"
@@ -233,7 +237,7 @@
                   <meta itemprop="position" content="{{ position }}">
                 </li>
             {%- else -%}
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -252,7 +256,7 @@
             {%- endif -%}
           {%- when 'blog' -%}
             {%- if current_tags -%}
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -268,7 +272,7 @@
                 </a>
                 <meta itemprop="position" content="2">
               </li>
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -285,7 +289,7 @@
                 <meta itemprop="position" content="3">
               </li>
             {%- else -%}
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -302,7 +306,7 @@
               </li>
             {%- endif -%}
           {%- when 'article' -%}
-            <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+            <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
             <li
               itemprop="itemListElement" itemscope
               itemtype="https://schema.org/ListItem"
@@ -318,7 +322,7 @@
               <meta itemprop="position" content="2">
             </li>
             {% unless hide_current %}
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
@@ -335,7 +339,7 @@
             {% endunless %}
           {%- else -%}
             {% unless hide_current %}
-              <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
               <li
                 itemprop="itemListElement" itemscope
                 itemtype="https://schema.org/ListItem"
